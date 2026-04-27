@@ -17,7 +17,7 @@
  ******************************************************************************
  */
 #include "app_usbx.h"
-__ALIGN_BEGIN static UCHAR dma_pool_buffer[0x48000] __ALIGN_END __attribute__((section(".data_ram_d2")));
+// __ALIGN_BEGIN static UCHAR dma_pool_buffer[0x48000] __ALIGN_END __attribute__((section(".data_ram_d2")));
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -49,7 +49,7 @@ UINT MX_USBX_Init(VOID *memory_ptr)
   }
 
   /* Initialize USBX Memory */
-  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, dma_pool_buffer, sizeof(dma_pool_buffer)) != UX_SUCCESS)
+  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, UX_NULL, 0) != UX_SUCCESS)
   {
     /* USER CODE BEGIN USBX_SYSTEM_INITIALIZE_ERROR */
     // dma_pool_buffer, sizeof(dma_pool_buffer)

@@ -57,6 +57,12 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define DEFAULT_MEMORY_POOL_SIZE 0x2000
+#define DEFAULT_APP_STACK_SIZE 0x1000
+#define EN_OSC_12M_Pin GPIO_PIN_4
+#define EN_OSC_12M_GPIO_Port GPIOE
+#define CH132_RESET_Pin GPIO_PIN_3
+#define CH132_RESET_GPIO_Port GPIOE
 
 /* USER CODE BEGIN Private defines */
 

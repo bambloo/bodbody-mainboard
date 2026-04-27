@@ -168,6 +168,33 @@ SECTIONS
     . = ALIGN(4);
   } >DTCMRAM AT> FLASH
 
+  .d1ram (NOLOAD): {
+    . = ALIGN(4);
+    _sd1ram = .;
+    *(.d1ram)
+    *(.d1ram*)
+    _ed1ram = .;
+    . = ALIGN(4);
+  } > RAM
+  
+  .d2ram (NOLOAD): {
+    . = ALIGN(4);
+    _sd2ram = .;
+    *(.d2ram)
+    *(.d2ram*)
+    _ed2ram = .;
+    . = ALIGN(4);
+  } > RAM_D2
+
+  .d3ram (NOLOAD): {
+    . = ALIGN(4);
+    _sd3ram = .;
+    *(.d3ram)
+    *(.d3ram*)
+    _ed3ram = .;
+    . = ALIGN(4);
+  } > RAM_D3
+
  /* Initialized TLS data section */
   .tdata : ALIGN(4)
   {

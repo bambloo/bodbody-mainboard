@@ -59,10 +59,15 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define DEFAULT_MEMORY_POOL_SIZE 0x2000
 #define DEFAULT_APP_STACK_SIZE 0x1000
+#define CODE_GENERATED 0
 #define EN_OSC_12M_Pin GPIO_PIN_4
 #define EN_OSC_12M_GPIO_Port GPIOE
 #define CH132_RESET_Pin GPIO_PIN_3
 #define CH132_RESET_GPIO_Port GPIOE
+#define LED_EN_Pin GPIO_PIN_0
+#define LED_EN_GPIO_Port GPIOA
+#define LCD_RESET_Pin GPIO_PIN_1
+#define LCD_RESET_GPIO_Port GPIOG
 
 /* USER CODE BEGIN Private defines */
 

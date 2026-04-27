@@ -7,10 +7,11 @@
                 "UsbX/App",
                 "Middlewares/ST/usbx/common/core/inc",
                 "Middlewares/ST/usbx/ports/generic/inc",
+                "Drivers/User/Inc",
                 "Drivers/CMSIS/Device/ST/STM32H7xx/Include",
-                "USBX/App",
+                "Core/Inc",
                 "Threads/Inc",
-                "Drivers/User/Inc"
+                "USBX/App",
             ],
             "defines": [
                 "_DEBUG",

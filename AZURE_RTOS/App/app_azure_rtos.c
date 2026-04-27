@@ -29,7 +29,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "is42s32200.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

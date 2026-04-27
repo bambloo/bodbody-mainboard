@@ -47,22 +47,17 @@ file(GLOB_RECURSE ALL_SOURCES
     Drivers/User/Src/*.c
 )
 
-foreach(DIR ${USER_SRC_DIRS})
-    file(GLOB DIR_SOURCES "${DIR}/Src/*.c")
-    list(APPEND ALL_USER_SOURCES ${DIR_SOURCES})
-
-endforeach()
-
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
-    ${ALL_USER_SOURCES}
+    ${ALL_SOURCES}
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
-    ${USER_SRC_DIRS}/Inc
+    Drivers/User/Inc
+    Threads/Inc
 )
 
 # Add project symbols (macros)

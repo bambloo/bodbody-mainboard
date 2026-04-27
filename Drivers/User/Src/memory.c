@@ -17,7 +17,6 @@ void memory_pool_init() {
 
 void *malloc(size_t size) {
   void *ptr = NULL;
-
   if (tx_byte_allocate(&glb_d1_byte_pool, &ptr, size, TX_NO_WAIT)) {
     do {
     } while (1);

@@ -17,7 +17,8 @@
  ******************************************************************************
  */
 #include "app_usbx.h"
-// __ALIGN_BEGIN static UCHAR dma_pool_buffer[0x48000] __ALIGN_END __attribute__((section(".data_ram_d2")));
+__ALIGN_BEGIN static UCHAR dma_pool_buffer[0x48000] __ALIGN_END
+    __attribute__((section(".d2ram")));
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -49,9 +50,12 @@ UINT MX_USBX_Init(VOID *memory_ptr)
   }
 
   /* Initialize USBX Memory */
-  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, UX_NULL, 0) != UX_SUCCESS)
+  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, dma_pool_buffer, sizeof(dma_pool_buffer)) != UX_SUCCESS)
   {
     /* USER CODE BEGIN USBX_SYSTEM_INITIALIZE_ERROR */
+#if CODE_GENERATED
+#error "Attention new code, please change the cache free memory."
+#endif
     // dma_pool_buffer, sizeof(dma_pool_buffer)
     return UX_ERROR;
     /* USER CODE END USBX_SYSTEM_INITIALIZE_ERROR */
@@ -65,9 +69,6 @@ UINT MX_USBX_Init(VOID *memory_ptr)
   }
 
   /* USER CODE BEGIN MX_USBX_Init1 */
-#if NEW_CODE
-#error "Attention new code, please change the cache free memory."
-#endif
 
   /* USER CODE END MX_USBX_Init1 */
 

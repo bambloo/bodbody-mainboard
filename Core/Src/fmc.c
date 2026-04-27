@@ -58,7 +58,7 @@ void MX_FMC_Init(void)
   SdramTiming.LoadToActiveDelay = 3;
   SdramTiming.ExitSelfRefreshDelay = 2;
   SdramTiming.SelfRefreshTime = 3;
-  SdramTiming.RowCycleDelay = 7;
+  SdramTiming.RowCycleDelay = 5;
   SdramTiming.WriteRecoveryTime = 2;
   SdramTiming.RPDelay = 4;
   SdramTiming.RCDDelay = 3;

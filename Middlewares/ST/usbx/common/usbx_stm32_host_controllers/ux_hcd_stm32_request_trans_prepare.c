@@ -9,7 +9,6 @@
 /*                                                                        */
 /**************************************************************************/
 
-
 /**************************************************************************/
 /**************************************************************************/
 /**                                                                       */
@@ -20,7 +19,6 @@
 /**************************************************************************/
 /**************************************************************************/
 
-
 /* Include necessary system files.  */
 
 #define UX_SOURCE_CODE
@@ -29,8 +27,6 @@
 #include "ux_api.h"
 #include "ux_hcd_stm32.h"
 #include "ux_host_stack.h"
-
-
 
 /**************************************************************************/
 /*                                                                        */
@@ -72,56 +68,57 @@
 /*  07-29-2022     Chaoqiong Xiao           Initial Version 6.1.12        */
 /*                                                                        */
 /**************************************************************************/
-UINT  _ux_hcd_stm32_request_trans_prepare(UX_HCD_STM32 *hcd_stm32, UX_HCD_STM32_ED *ed, UX_TRANSFER *transfer)
-{
+UINT _ux_hcd_stm32_request_trans_prepare(UX_HCD_STM32 *hcd_stm32,
+                                         UX_HCD_STM32_ED *ed,
+                                         UX_TRANSFER *transfer) {
 
-    if ((ed -> ux_stm32_ed_data != UX_NULL) && (ed -> ux_stm32_ed_type != EP_TYPE_ISOC) &&
-        (ed ->ux_stm32_ed_data_free == UX_HCD_STM32_ED_STATUS_ALIGNED_BUFFER_PENDING_FREE))
-    {
-      _ux_utility_memory_free(ed -> ux_stm32_ed_data);
-      ed -> ux_stm32_ed_data = UX_NULL;
-      ed ->ux_stm32_ed_data_free = UX_HCD_STM32_ED_STATUS_ALIGNED_BUFFER_FREE_DONE;
-    }
+  if ((ed->ux_stm32_ed_data != UX_NULL) &&
+      (ed->ux_stm32_ed_type != EP_TYPE_ISOC) &&
+      (ed->ux_stm32_ed_data_free ==
+       UX_HCD_STM32_ED_STATUS_ALIGNED_BUFFER_PENDING_FREE) &&
+      ed->ux_stm32_ed_data != transfer->ux_transfer_request_data_pointer) {
+    _ux_utility_memory_free(ed->ux_stm32_ed_data);
+    ed->ux_stm32_ed_data = UX_NULL;
+    ed->ux_stm32_ed_data_free = UX_HCD_STM32_ED_STATUS_ALIGNED_BUFFER_FREE_DONE;
+  }
 
-    /* Save transfer data pointer.  */
-    ed -> ux_stm32_ed_data = transfer -> ux_transfer_request_data_pointer;
+  /* Save transfer data pointer.  */
+  ed->ux_stm32_ed_data = transfer->ux_transfer_request_data_pointer;
 
-    /* If DMA not enabled, nothing to do.  */
-    if (!hcd_stm32 -> hcd_handle -> Init.dma_enable)
-        return(UX_SUCCESS);
+  /* If DMA not enabled, nothing to do.  */
+  if (!hcd_stm32->hcd_handle->Init.dma_enable)
+    return (UX_SUCCESS);
 
-    /* If there is no data, nothing to do.  */
-    if (transfer -> ux_transfer_request_requested_length == 0)
-        return(UX_SUCCESS);
+  /* If there is no data, nothing to do.  */
+  if (transfer->ux_transfer_request_requested_length == 0)
+    return (UX_SUCCESS);
 
-    /* If transfer buffer aligned, nothing to do.  */
-    if (((ALIGN_TYPE)ed -> ux_stm32_ed_data & 0x3UL) == 0)
-        return(UX_SUCCESS);
+  /* If transfer buffer aligned, nothing to do.  */
+  if (((ALIGN_TYPE)ed->ux_stm32_ed_data & 0x3UL) == 0)
+    return (UX_SUCCESS);
 
-    if (ed -> ux_stm32_ed_type == EP_TYPE_ISOC)
-    {
-      ed -> ux_stm32_ed_data = ed -> ux_stm32_ed_aligned_data;
-    }
-    else
-    {
-      /* Allocate aligned data buffer for transfer.  */
-      ed -> ux_stm32_ed_data = _ux_utility_memory_allocate(UX_NO_ALIGN,
-                                                           UX_CACHE_SAFE_MEMORY,
-                                                           transfer -> ux_transfer_request_requested_length);
+  if (ed->ux_stm32_ed_type == EP_TYPE_ISOC) {
+    ed->ux_stm32_ed_data = ed->ux_stm32_ed_aligned_data;
+  } else {
+    /* Allocate aligned data buffer for transfer.  */
+    ed->ux_stm32_ed_data = _ux_utility_memory_allocate(
+        UX_NO_ALIGN, UX_CACHE_SAFE_MEMORY,
+        transfer->ux_transfer_request_requested_length);
 
-      if (ed -> ux_stm32_ed_data == UX_NULL)
-        return(UX_MEMORY_INSUFFICIENT);
-    }
+    if (ed->ux_stm32_ed_data == UX_NULL)
+      return (UX_MEMORY_INSUFFICIENT);
+  }
 
-    /* For data IN it's done.  */
-    if (ed -> ux_stm32_ed_dir)
-        return(UX_SUCCESS);
+  /* For data IN it's done.  */
+  if (ed->ux_stm32_ed_dir)
+    return (UX_SUCCESS);
 
-    /* For data OUT, copy buffer.  */
-    _ux_utility_memory_copy(ed -> ux_stm32_ed_data,
-                            transfer -> ux_transfer_request_data_pointer,
-                            transfer -> ux_transfer_request_requested_length); /* Use case of memcpy is verified.  */
+  /* For data OUT, copy buffer.  */
+  _ux_utility_memory_copy(
+      ed->ux_stm32_ed_data, transfer->ux_transfer_request_data_pointer,
+      transfer->ux_transfer_request_requested_length); /* Use case of memcpy is
+                                                          verified.  */
 
-    /* Done.  */
-    return(UX_SUCCESS);
+  /* Done.  */
+  return (UX_SUCCESS);
 }

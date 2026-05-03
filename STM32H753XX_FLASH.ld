@@ -192,6 +192,15 @@ SECTIONS
     _sd2ram = .;
     *(.d2ram)
     *(.d2ram*)
+
+    . = ABSOLUTE(0x30040000);
+    *(.RxDescripSection)
+
+    . = ABSOLUTE(0x30040060);
+    *(.TxDescripSection)
+    
+    . = ABSOLUTE(0x30040200);
+    *(.NetXPoolSection)
     _ed2ram = .;
     . = ALIGN(4);
   } > RAM_D2

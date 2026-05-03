@@ -20,9 +20,15 @@
 #include "app_threadx.h"
 #include "main.h"
 #include "dma2d.h"
+#include "eth.h"
 #include "i2c.h"
+#include "i2s.h"
 #include "ltdc.h"
+#include "quadspi.h"
 #include "rng.h"
+#include "sdmmc.h"
+#include "spi.h"
+#include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"
 #include "fmc.h"
@@ -111,6 +117,14 @@ int main(void)
   MX_DMA2D_Init();
   MX_LTDC_Init();
   MX_I2C1_Init();
+  MX_ETH_Init();
+  MX_I2S1_Init();
+  MX_QUADSPI_Init();
+  MX_SDMMC1_SD_Init();
+  MX_SPI4_Init();
+  MX_UART4_Init();
+  MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -187,6 +201,8 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  __HAL_RCC_PLLCLKOUT_ENABLE(RCC_PLL1_DIVQ);
+  HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_PLL1QCLK, RCC_MCODIV_2);
 }
 
 /* USER CODE BEGIN 4 */

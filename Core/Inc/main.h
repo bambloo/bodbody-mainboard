@@ -60,14 +60,28 @@ void Error_Handler(void);
 #define DEFAULT_MEMORY_POOL_SIZE 0x2000
 #define DEFAULT_APP_STACK_SIZE 0x1000
 #define CODE_GENERATED 0
-#define EN_OSC_12M_Pin GPIO_PIN_4
-#define EN_OSC_12M_GPIO_Port GPIOE
+#define ETH_RST_Pin GPIO_PIN_15
+#define ETH_RST_GPIO_Port GPIOA
 #define CH132_RESET_Pin GPIO_PIN_3
 #define CH132_RESET_GPIO_Port GPIOE
+#define ESP_EN_Pin GPIO_PIN_13
+#define ESP_EN_GPIO_Port GPIOC
+#define LCD_UD_Pin GPIO_PIN_7
+#define LCD_UD_GPIO_Port GPIOC
+#define LCD_LR_Pin GPIO_PIN_6
+#define LCD_LR_GPIO_Port GPIOC
+#define RK628_INT_Pin GPIO_PIN_3
+#define RK628_INT_GPIO_Port GPIOG
+#define RK628_PWR_EN_Pin GPIO_PIN_2
+#define RK628_PWR_EN_GPIO_Port GPIOG
 #define LED_EN_Pin GPIO_PIN_0
 #define LED_EN_GPIO_Port GPIOA
+#define TP_RESET_Pin GPIO_PIN_6
+#define TP_RESET_GPIO_Port GPIOH
 #define LCD_RESET_Pin GPIO_PIN_1
 #define LCD_RESET_GPIO_Port GPIOG
+#define TP_INT_Pin GPIO_PIN_7
+#define TP_INT_GPIO_Port GPIOH
 
 /* USER CODE BEGIN Private defines */
 

@@ -36,6 +36,8 @@ extern "C" {
 
 #include "app_filex.h"
 
+#include "app_netxduo.h"
+
 #include "app_usbx.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */

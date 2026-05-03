@@ -51,6 +51,8 @@ extern "C" {
 
 #define FX_APP_MEM_POOL_SIZE                     DEFAULT_MEMORY_POOL_SIZE
 
+#define NX_APP_MEM_POOL_SIZE                     30*1024
+
 #define UX_APP_MEM_POOL_SIZE                     (DEFAULT_MEMORY_POOL_SIZE * 4)
 
 /* USER CODE BEGIN EC */

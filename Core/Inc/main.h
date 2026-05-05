@@ -57,8 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define DEFAULT_MEMORY_POOL_SIZE 0x2000
 #define DEFAULT_APP_STACK_SIZE 0x1000
+#define DEFAULT_MEMORY_POOL_SIZE 0x1000
 #define CODE_GENERATED 1
 #define ETH_RST_Pin GPIO_PIN_15
 #define ETH_RST_GPIO_Port GPIOA

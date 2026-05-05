@@ -129,11 +129,11 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 #endif
   nx_system_initialize();
 
-  if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_dma(), (VOID **)&pointer,
-                       NX_APP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
-    return TX_POOL_ERROR;
-  }
-
+  // if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_cache_free(), (VOID **)&pointer,
+  //                      NX_APP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
+  //   return TX_POOL_ERROR;
+  // }
+  pointer = malloc(NX_APP_PACKET_POOL_SIZE);
   ret = nx_packet_pool_create(&NxAppPool, "NetXDuo App Pool", DEFAULT_PAYLOAD_SIZE, pointer,
                               NX_APP_PACKET_POOL_SIZE);
 
@@ -238,11 +238,11 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
   tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0);
 
   /* USER CODE BEGIN MX_NetXDuo_Init */
-  if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_dma(), (VOID **)&pointer,
-                       NX_DHCP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
-    return TX_POOL_ERROR;
-  }
-
+  // if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_cache_free(), (VOID **)&pointer,
+  //                      NX_DHCP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
+  //   return TX_POOL_ERROR;
+  // }
+  pointer = malloc(NX_DHCP_PACKET_POOL_SIZE);
   ret = nx_packet_pool_create(&DHCPPacketPool, "DHCP Packet Pool", NX_DHCP_PACKET_PAYLOAD, pointer,
                               NX_DHCP_PACKET_POOL_SIZE);
   if (ret != NX_SUCCESS) {

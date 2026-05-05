@@ -58,7 +58,7 @@ UINT MX_USBX_Init(VOID *memory_ptr)
 #endif
     return UX_ERROR;
   }
-  TX_BYTE_POOL *dma_pool = (TX_BYTE_POOL *)memory_pool_dma();
+  TX_BYTE_POOL *dma_pool = (TX_BYTE_POOL *)memory_pool_cache_free();
   UCHAR *dma_pointer;
   if (tx_byte_allocate(dma_pool, (VOID **)&dma_pointer, 32 * 1024, TX_NO_WAIT) != TX_SUCCESS) {
     /* USER CODE BEGIN USBX_ALLOCATE_DMA_ERROR */

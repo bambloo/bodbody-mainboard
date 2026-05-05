@@ -36,7 +36,7 @@ extern "C" {
 #include "nx_stm32_eth_driver.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "main.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -78,9 +78,9 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr);
 
 #define NX_APP_PACKET_POOL_SIZE              ((DEFAULT_PAYLOAD_SIZE + sizeof(NX_PACKET)) * 32)
 
-#define NX_APP_THREAD_STACK_SIZE             2*1024
+#define NX_APP_THREAD_STACK_SIZE             DEFAULT_APP_STACK_SIZE
 
-#define Nx_IP_INSTANCE_THREAD_SIZE           2*1024
+#define Nx_IP_INSTANCE_THREAD_SIZE           DEFAULT_APP_STACK_SIZE
 
 #define NX_APP_THREAD_PRIORITY               10
 

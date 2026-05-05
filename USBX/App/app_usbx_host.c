@@ -234,8 +234,7 @@ UINT ux_host_event_callback(ULONG event, UX_HOST_CLASS *current_class, VOID *cur
       UX_HOST_CLASS_PRINTER *printer = (UX_HOST_CLASS_PRINTER *)current_instance;
       // app_printer_plugin(printer);
     }
-    if (current_class->ux_host_class_entry_function ==
-        ux_host_class_hub_entry) {
+    if (current_class->ux_host_class_entry_function == ux_host_class_hub_entry) {
       if (hub_instance == NULL) {
         hub_instance = current_instance;
       }

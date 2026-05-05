@@ -370,9 +370,7 @@
 
 /* Define the amount of time to sleep in nx_ip_(interface_)status_check.
    The default value is 1. */
-/*
-#define NX_IP_STATUS_CHECK_WAIT_TIME          1
-*/
+#define NX_IP_STATUS_CHECK_WAIT_TIME          100
 
 /* Defined, IP packet filter is enabled.  */
 /*

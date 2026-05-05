@@ -41,7 +41,7 @@ extern "C" {
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
-#define USBX_MEMORY_STACK_SIZE       (DEFAULT_MEMORY_POOL_SIZE * 2)
+#define USBX_MEMORY_STACK_SIZE       (DEFAULT_MEMORY_POOL_SIZE * 3)
 
 /* USER CODE BEGIN EC */
 

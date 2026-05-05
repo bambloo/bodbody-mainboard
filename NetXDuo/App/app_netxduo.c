@@ -48,31 +48,30 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TX_THREAD      NxAppThread;
+TX_THREAD NxAppThread;
 NX_PACKET_POOL NxAppPool;
-NX_IP          NetXDuoEthIpInstance;
-TX_SEMAPHORE   DHCPSemaphore;
-NX_DHCP        DHCPClient;
+NX_IP NetXDuoEthIpInstance;
+TX_SEMAPHORE DHCPSemaphore;
+NX_DHCP DHCPClient;
 /* USER CODE BEGIN PV */
 NX_PACKET_POOL DHCPPacketPool;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-static VOID nx_app_thread_entry (ULONG thread_input);
+static VOID nx_app_thread_entry(ULONG thread_input);
 static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /**
-  * @brief  Application NetXDuo Initialization.
-  * @param memory_ptr: memory pointer
-  * @retval int
-  */
-UINT MX_NetXDuo_Init(VOID *memory_ptr)
-{
+ * @brief  Application NetXDuo Initialization.
+ * @param memory_ptr: memory pointer
+ * @retval int
+ */
+UINT MX_NetXDuo_Init(VOID *memory_ptr) {
   UINT ret = NX_SUCCESS;
-  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
+  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL *)memory_ptr;
   CHAR *pointer;
 
   /* USER CODE BEGIN MX_NetXDuo_MEM_POOL */
@@ -162,8 +161,7 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   ret = nx_arp_enable(&NetXDuoEthIpInstance, (VOID *)pointer, DEFAULT_ARP_CACHE_SIZE);
 
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -175,8 +173,7 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   ret = nx_icmp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -188,8 +185,7 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   ret = nx_tcp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -201,23 +197,22 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   ret = nx_udp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     return NX_NOT_SUCCESSFUL;
   }
 
-   /* Allocate the memory for main thread   */
-  if (tx_byte_allocate(byte_pool, (VOID **) &pointer, NX_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
-  {
+  /* Allocate the memory for main thread   */
+  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, NX_APP_THREAD_STACK_SIZE, TX_NO_WAIT) !=
+      TX_SUCCESS) {
     return TX_POOL_ERROR;
   }
 
   /* Create the main thread */
-  ret = tx_thread_create(&NxAppThread, "NetXDuo App thread", nx_app_thread_entry , 0, pointer, NX_APP_THREAD_STACK_SIZE,
-                         NX_APP_THREAD_PRIORITY, NX_APP_THREAD_PRIORITY, TX_NO_TIME_SLICE, TX_AUTO_START);
+  ret = tx_thread_create(&NxAppThread, "NetXDuo App thread", nx_app_thread_entry, 0, pointer,
+                         NX_APP_THREAD_STACK_SIZE, NX_APP_THREAD_PRIORITY, NX_APP_THREAD_PRIORITY,
+                         TX_NO_TIME_SLICE, TX_AUTO_START);
 
-  if (ret != TX_SUCCESS)
-  {
+  if (ret != TX_SUCCESS) {
     return TX_THREAD_ERROR;
   }
 
@@ -229,8 +224,7 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 
   ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
 
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     return NX_DHCP_ERROR;
   }
 
@@ -259,25 +253,23 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr)
 }
 
 /**
-* @brief  ip address change callback.
-* @param ip_instance: NX_IP instance
-* @param ptr: user data
-* @retval none
-*/
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
-{
+ * @brief  ip address change callback.
+ * @param ip_instance: NX_IP instance
+ * @param ptr: user data
+ * @retval none
+ */
+static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr) {
   /* USER CODE BEGIN ip_address_change_notify_callback */
   tx_semaphore_put(&DHCPSemaphore);
   /* USER CODE END ip_address_change_notify_callback */
 }
 
 /**
-* @brief  Main thread entry.
-* @param thread_input: ULONG user argument used by the thread entry
-* @retval none
-*/
-static VOID nx_app_thread_entry (ULONG thread_input)
-{
+ * @brief  Main thread entry.
+ * @param thread_input: ULONG user argument used by the thread entry
+ * @retval none
+ */
+static VOID nx_app_thread_entry(ULONG thread_input) {
   /* USER CODE BEGIN Nx_App_Thread_Entry 0 */
 
   /* USER CODE END Nx_App_Thread_Entry 0 */
@@ -290,8 +282,7 @@ static VOID nx_app_thread_entry (ULONG thread_input)
 
   /* register the IP address change callback */
   ret = nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     /* USER CODE BEGIN IP address change callback error */
 
     /* USER CODE END IP address change callback error */
@@ -299,16 +290,14 @@ static VOID nx_app_thread_entry (ULONG thread_input)
 
   /* start the DHCP client */
   ret = nx_dhcp_start(&DHCPClient);
-  if (ret != NX_SUCCESS)
-  {
+  if (ret != NX_SUCCESS) {
     /* USER CODE BEGIN DHCP client start error */
 
     /* USER CODE END DHCP client start error */
   }
   printf("Looking for DHCP server ..\n");
   /* wait until an IP address is ready */
-  if(tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS)
-  {
+  if (tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS) {
     /* USER CODE BEGIN DHCPSemaphore get error */
 
     /* USER CODE END DHCPSemaphore get error */
@@ -339,7 +328,11 @@ static VOID nx_app_thread_entry (ULONG thread_input)
       continue;
     }
 
-    UCHAR message[] = "Hello from NetX Duo serhjgpsoehrgpsiouerhgpioseruhgsiopuerhgosiperughsopierughspoierughspeirughspieruhgspieruhgspierughsioepruhgsoiperughsioperughspeiorughsioperuhgspierughspieurhgpsieurhgpseiurhgpseurhgpsieruhgpsieurhgpsierughspieruhgpsieruhgspeurgh!";
+    UCHAR message[] =
+        "Hello from NetX Duo "
+        "serhjgpsoehrgpsiouerhgpioseruhgsiopuerhgosiperughsopierughspoierughspeirughspieruhgspieruh"
+        "gspierughsioepruhgsoiperughsioperughspeiorughsioperuhgspierughspieurhgpsieurhgpseiurhgpseu"
+        "rhgpsieruhgpsieurhgpsierughspieruhgpsieruhgspeurgh!";
     status =
         nx_packet_data_append(packet_ptr, message, sizeof(message), &NxAppPool, NX_WAIT_FOREVER);
     if (status) {
@@ -355,7 +348,6 @@ static VOID nx_app_thread_entry (ULONG thread_input)
     }
   }
   /* USER CODE END Nx_App_Thread_Entry 2 */
-
 }
 /* USER CODE BEGIN 2 */
 

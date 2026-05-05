@@ -17,7 +17,8 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
-                "STM32H753xx"
+                "STM32H753xx",
+                "NX_INCLUDE_USER_DEFINE_FILE"
             ],
             "windowsSdkVersion": "10.0.26100.0",
             "cStandard": "c17",

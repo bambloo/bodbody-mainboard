@@ -190,18 +190,12 @@ SECTIONS
   .d2ram (NOLOAD): {
     . = ALIGN(4);
     _sd2ram = .;
+    *(.RxDescripSection)
+    *(.TxDescripSection)
+    _sdmaram = .;
     *(.d2ram)
     *(.d2ram*)
-
-    . = ABSOLUTE(0x30040000);
-    *(.RxDescripSection)
-
-    . = ABSOLUTE(0x30040060);
-    *(.TxDescripSection)
-    
-    . = ABSOLUTE(0x30040200);
-    *(.NetXPoolSection)
-    _ed2ram = .;
+    _edmaram = .;
     . = ALIGN(4);
   } > RAM_D2
 

@@ -936,9 +936,7 @@
 /* If set, the DHCP Client will not create its own packet pool. The host
    application must use the nx_dhcp_packet_pool_set service to set the DHCP
    Client packet pool. The default value is disabled. */
-/*
 #define NX_DHCP_CLIENT_USER_CREATE_PACKET_POOL
-*/
 
 /* Defined, this enables the DHCP Client to send an ARP probe after IP
    address assignment to verify the assigned DHCP address is not owned by

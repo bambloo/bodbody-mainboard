@@ -24,30 +24,32 @@
 #include "app_usbx.h"
 
 /**
- * @brief  Application USBX Initialization.
- * @param  memory_ptr: memory pointer
- * @retval status
- */
-UINT MX_USBX_Init(VOID *memory_ptr) {
+  * @brief  Application USBX Initialization.
+  * @param  memory_ptr: memory pointer
+  * @retval status
+  */
+UINT MX_USBX_Init(VOID *memory_ptr)
+{
   UINT ret = UX_SUCCESS;
 
   UCHAR *pointer;
-  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL *)memory_ptr;
+  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
 
   /* USER CODE BEGIN MX_USBX_Init0 */
   /* USER CODE END MX_USBX_Init0 */
 
   /* Allocate the stack for USBX Memory */
-  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, USBX_MEMORY_STACK_SIZE, TX_NO_WAIT) !=
-      TX_SUCCESS) {
-#if 0
+  if (tx_byte_allocate(byte_pool, (VOID **) &pointer,
+                       USBX_MEMORY_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN USBX_ALLOCATE_STACK_ERROR */
+#if 0
     return TX_POOL_ERROR;
     /* USER CODE END USBX_ALLOCATE_STACK_ERROR */
   }
 
   /* Initialize USBX Memory */
-  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, dma_pool_buffer, sizeof(dma_pool_buffer)) != UX_SUCCESS)
+  if (ux_system_initialize(pointer, USBX_MEMORY_STACK_SIZE, UX_NULL, 0) != UX_SUCCESS)
   {
     /* USER CODE BEGIN USBX_SYSTEM_INITIALIZE_ERROR */
 #if CODE_GENERATED
@@ -69,10 +71,11 @@ UINT MX_USBX_Init(VOID *memory_ptr) {
     /* USER CODE END USBX_SYSTEM_INITIALIZE_ERROR */
   }
 
-  if (MX_USBX_Host_Init(byte_pool) != UX_SUCCESS) {
-    /* USER CODE BEGIN MX_USBX_Host_Init_Error */
+  if(MX_USBX_Host_Init(byte_pool) != UX_SUCCESS)
+  {
+  /* USER CODE BEGIN MX_USBX_Host_Init_Error */
     return UX_ERROR;
-    /* USER CODE END MX_USBX_Host_Init_Error */
+  /* USER CODE END MX_USBX_Host_Init_Error */
   }
 
   /* USER CODE BEGIN MX_USBX_Init1 */

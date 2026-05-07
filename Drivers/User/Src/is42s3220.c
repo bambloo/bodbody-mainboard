@@ -33,7 +33,7 @@ HAL_StatusTypeDef is42s32200_init(SDRAM_HandleTypeDef *hsdram) {
   sdram_cmd.ModeRegisterDefinition = mode_register;
   HAL_SDRAM_SendCommand(hsdram, &sdram_cmd, IS32S32200_DEFAULT_TIMEOUT);
   
-  HAL_SDRAM_ProgramRefreshRate(hsdram, 2078);
+  HAL_SDRAM_ProgramRefreshRate(hsdram, 3750);
   
   return HAL_OK;
 }

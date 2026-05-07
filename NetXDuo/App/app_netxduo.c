@@ -48,30 +48,35 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-TX_THREAD NxAppThread;
+TX_THREAD      NxAppThread;
 NX_PACKET_POOL NxAppPool;
-NX_IP NetXDuoEthIpInstance;
-TX_SEMAPHORE DHCPSemaphore;
-NX_DHCP DHCPClient;
+NX_IP          NetXDuoEthIpInstance;
+TX_SEMAPHORE   DHCPSemaphore;
+NX_DHCP        DHCPClient;
 /* USER CODE BEGIN PV */
 NX_PACKET_POOL DHCPPacketPool;
+UINT link_state = 0;
+void *nx_app_stack = NULL;
+void *arp_cache = NULL;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-static VOID nx_app_thread_entry(ULONG thread_input);
+static VOID nx_app_thread_entry (ULONG thread_input);
 static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr);
 /* USER CODE BEGIN PFP */
-
+UINT nx_components_init();
+UINT nx_components_deinit();
 /* USER CODE END PFP */
 
 /**
- * @brief  Application NetXDuo Initialization.
- * @param memory_ptr: memory pointer
- * @retval int
- */
-UINT MX_NetXDuo_Init(VOID *memory_ptr) {
+  * @brief  Application NetXDuo Initialization.
+  * @param memory_ptr: memory pointer
+  * @retval int
+  */
+UINT MX_NetXDuo_Init(VOID *memory_ptr)
+{
   UINT ret = NX_SUCCESS;
-  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL *)memory_ptr;
+  TX_BYTE_POOL *byte_pool = (TX_BYTE_POOL*)memory_ptr;
   CHAR *pointer;
 
   /* USER CODE BEGIN MX_NetXDuo_MEM_POOL */
@@ -125,43 +130,13 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
   /* Enable the ARP protocol and provide the ARP cache size for the IP instance */
 
   /* USER CODE BEGIN ARP_Protocol_Initialization */
-#endif
-  nx_system_initialize();
 
-  // if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_cache_free(), (VOID **)&pointer,
-  //                      NX_APP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
-  //   return TX_POOL_ERROR;
-  // }
-  pointer = malloc(NX_APP_PACKET_POOL_SIZE);
-  ret = nx_packet_pool_create(&NxAppPool, "NetXDuo App Pool", DEFAULT_PAYLOAD_SIZE, pointer,
-                              NX_APP_PACKET_POOL_SIZE);
-
-  if (ret != NX_SUCCESS) {
-    return NX_POOL_ERROR;
-  }
-
-  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, Nx_IP_INSTANCE_THREAD_SIZE, TX_NO_WAIT) !=
-      TX_SUCCESS) {
-    return TX_POOL_ERROR;
-  }
-
-  ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", NX_APP_DEFAULT_IP_ADDRESS,
-                     NX_APP_DEFAULT_NET_MASK, &NxAppPool, nx_stm32_eth_driver, pointer,
-                     Nx_IP_INSTANCE_THREAD_SIZE, NX_APP_INSTANCE_PRIORITY);
-
-  if (ret != NX_SUCCESS) {
-    return NX_NOT_SUCCESSFUL;
-  }
-
-  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, DEFAULT_ARP_CACHE_SIZE, TX_NO_WAIT) !=
-      TX_SUCCESS) {
-    return TX_POOL_ERROR;
-  }
   /* USER CODE END ARP_Protocol_Initialization */
 
   ret = nx_arp_enable(&NetXDuoEthIpInstance, (VOID *)pointer, DEFAULT_ARP_CACHE_SIZE);
 
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -173,7 +148,8 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
 
   ret = nx_icmp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -185,7 +161,8 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
 
   ret = nx_tcp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     return NX_NOT_SUCCESSFUL;
   }
 
@@ -197,22 +174,23 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
 
   ret = nx_udp_enable(&NetXDuoEthIpInstance);
 
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     return NX_NOT_SUCCESSFUL;
   }
 
-  /* Allocate the memory for main thread   */
-  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, NX_APP_THREAD_STACK_SIZE, TX_NO_WAIT) !=
-      TX_SUCCESS) {
+   /* Allocate the memory for main thread   */
+  if (tx_byte_allocate(byte_pool, (VOID **) &pointer, NX_APP_THREAD_STACK_SIZE, TX_NO_WAIT) != TX_SUCCESS)
+  {
     return TX_POOL_ERROR;
   }
 
   /* Create the main thread */
-  ret = tx_thread_create(&NxAppThread, "NetXDuo App thread", nx_app_thread_entry, 0, pointer,
-                         NX_APP_THREAD_STACK_SIZE, NX_APP_THREAD_PRIORITY, NX_APP_THREAD_PRIORITY,
-                         TX_NO_TIME_SLICE, TX_AUTO_START);
+  ret = tx_thread_create(&NxAppThread, "NetXDuo App thread", nx_app_thread_entry , 0, pointer, NX_APP_THREAD_STACK_SIZE,
+                         NX_APP_THREAD_PRIORITY, NX_APP_THREAD_PRIORITY, TX_NO_TIME_SLICE, TX_AUTO_START);
 
-  if (ret != TX_SUCCESS) {
+  if (ret != TX_SUCCESS)
+  {
     return TX_THREAD_ERROR;
   }
 
@@ -224,7 +202,8 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
 
   ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
 
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     return NX_DHCP_ERROR;
   }
 
@@ -232,10 +211,29 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
   tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0);
 
   /* USER CODE BEGIN MX_NetXDuo_Init */
-  // if (tx_byte_allocate((TX_BYTE_POOL *)memory_pool_cache_free(), (VOID **)&pointer,
-  //                      NX_DHCP_PACKET_POOL_SIZE, TX_NO_WAIT) != TX_SUCCESS) {
-  //   return TX_POOL_ERROR;
-  // }
+#endif
+  nx_system_initialize();
+
+  pointer = malloc(NX_APP_PACKET_POOL_SIZE);
+  if (pointer == NULL) {
+    return NX_POOL_ERROR;
+  }
+  ret = nx_packet_pool_create(&NxAppPool, "NetXDuo App Pool", DEFAULT_PAYLOAD_SIZE, pointer,
+                              NX_APP_PACKET_POOL_SIZE);
+  if (ret != NX_SUCCESS) {
+    return NX_POOL_ERROR;
+  }
+
+  if (tx_byte_allocate(byte_pool, (VOID **)&nx_app_stack, Nx_IP_INSTANCE_THREAD_SIZE, TX_NO_WAIT) !=
+      TX_SUCCESS) {
+    return TX_POOL_ERROR;
+  }
+
+  if (tx_byte_allocate(byte_pool, (VOID **)&arp_cache, DEFAULT_ARP_CACHE_SIZE, TX_NO_WAIT) !=
+      TX_SUCCESS) {
+    return TX_POOL_ERROR;
+  }
+
   pointer = malloc(NX_DHCP_PACKET_POOL_SIZE);
   ret = nx_packet_pool_create(&DHCPPacketPool, "DHCP Packet Pool", NX_DHCP_PACKET_PAYLOAD, pointer,
                               NX_DHCP_PACKET_POOL_SIZE);
@@ -243,35 +241,63 @@ UINT MX_NetXDuo_Init(VOID *memory_ptr) {
     return NX_DHCP_ERROR;
   }
 
-  ret = nx_dhcp_packet_pool_set(&DHCPClient, &DHCPPacketPool);
-  if (ret != NX_SUCCESS) {
-    return NX_DHCP_ERROR;
+  if (tx_byte_allocate(byte_pool, (VOID **)&pointer, NX_APP_THREAD_STACK_SIZE, TX_NO_WAIT) !=
+      TX_SUCCESS) {
+    return TX_POOL_ERROR;
   }
+  ret = tx_thread_create(&NxAppThread, "NetXDuo App thread", nx_app_thread_entry, 0, pointer,
+                         NX_APP_THREAD_STACK_SIZE, NX_APP_THREAD_PRIORITY, NX_APP_THREAD_PRIORITY,
+                         TX_NO_TIME_SLICE, TX_AUTO_START);
+
+  if (ret != TX_SUCCESS) {
+    return TX_THREAD_ERROR;
+  }
+
+  if (tx_semaphore_create(&DHCPSemaphore, "DHCP Semaphore", 0)) {
+    return TX_THREAD_ERROR;
+  }
+
+  // /* Create the DHCP client */
+
+  // /* USER CODE BEGIN DHCP_Protocol_Initialization */
+
+  // /* USER CODE END DHCP_Protocol_Initialization */
+
+  //
+
+  // if (ret != NX_SUCCESS) {
+  //   return NX_DHCP_ERROR;
+  // }
+
+  // /* set DHCP notification callback  */
+
   /* USER CODE END MX_NetXDuo_Init */
 
   return ret;
 }
 
 /**
- * @brief  ip address change callback.
- * @param ip_instance: NX_IP instance
- * @param ptr: user data
- * @retval none
- */
-static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr) {
+* @brief  ip address change callback.
+* @param ip_instance: NX_IP instance
+* @param ptr: user data
+* @retval none
+*/
+static VOID ip_address_change_notify_callback(NX_IP *ip_instance, VOID *ptr)
+{
   /* USER CODE BEGIN ip_address_change_notify_callback */
   tx_semaphore_put(&DHCPSemaphore);
   /* USER CODE END ip_address_change_notify_callback */
 }
 
 /**
- * @brief  Main thread entry.
- * @param thread_input: ULONG user argument used by the thread entry
- * @retval none
- */
-static VOID nx_app_thread_entry(ULONG thread_input) {
+* @brief  Main thread entry.
+* @param thread_input: ULONG user argument used by the thread entry
+* @retval none
+*/
+static VOID nx_app_thread_entry (ULONG thread_input)
+{
   /* USER CODE BEGIN Nx_App_Thread_Entry 0 */
-
+#if 0
   /* USER CODE END Nx_App_Thread_Entry 0 */
 
   UINT ret = NX_SUCCESS;
@@ -282,73 +308,164 @@ static VOID nx_app_thread_entry(ULONG thread_input) {
 
   /* register the IP address change callback */
   ret = nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     /* USER CODE BEGIN IP address change callback error */
-
     /* USER CODE END IP address change callback error */
   }
 
   /* start the DHCP client */
   ret = nx_dhcp_start(&DHCPClient);
-  if (ret != NX_SUCCESS) {
+  if (ret != NX_SUCCESS)
+  {
     /* USER CODE BEGIN DHCP client start error */
 
     /* USER CODE END DHCP client start error */
   }
   printf("Looking for DHCP server ..\n");
   /* wait until an IP address is ready */
-  if (tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS) {
+  if(tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN DHCPSemaphore get error */
 
     /* USER CODE END DHCPSemaphore get error */
   }
 
   /* USER CODE BEGIN Nx_App_Thread_Entry 2 */
-  NX_UDP_SOCKET udp_socket;
-  UINT status = nx_udp_socket_create(&NetXDuoEthIpInstance, &udp_socket, "Test udp_socket",
-                                     NX_IP_NORMAL, NX_DONT_FRAGMENT, NX_IP_TIME_TO_LIVE, 0x200);
-  if (status != NX_SUCCESS) {
-    printf("Error creating socket: %d\n", status);
+#endif
+  if (TX_SUCCESS != nx_components_init()) {
     return;
   }
-  status = nx_udp_socket_bind(&udp_socket, 6000, NX_WAIT_FOREVER);
-  if (status != NX_SUCCESS) {
-    printf("Error binding socket: %d\n", status);
-    return;
-  }
+
   while (1) {
-    tx_thread_relinquish();
-    ULONG target_ip = IP_ADDRESS(192, 168, 1, 8);
-    USHORT target_port = 7782;
+    ULONG temp_link_state = 0;
+    UINT status = nx_ip_status_check(&NetXDuoEthIpInstance, NX_IP_LINK_ENABLED, &temp_link_state,
+                                     NX_WAIT_FOREVER);
+    if (status == NX_SUCCESS && temp_link_state != link_state) {
+      link_state = temp_link_state;
 
-    NX_PACKET *packet_ptr;
-    status = nx_packet_allocate(&NxAppPool, &packet_ptr, NX_UDP_PACKET, NX_WAIT_FOREVER);
-    if (status) {
-      printf("allocate packet error: %d\n", status);
-      continue;
-    }
+      if (link_state & NX_IP_LINK_ENABLED) {
+        nx_components_deinit();
+        nx_components_init();
 
-    UCHAR message[] =
-        "Hello from NetX Duo "
-        "serhjgpsoehrgpsiouerhgpioseruhgsiopuerhgosiperughsopierughspoierughspeirughspieruhgspieruh"
-        "gspierughsioepruhgsoiperughsioperughspeiorughsioperuhgspierughspieurhgpsieurhgpseiurhgpseu"
-        "rhgpsieruhgpsieurhgpsierughspieruhgpsieruhgspeurgh!";
-    status =
-        nx_packet_data_append(packet_ptr, message, sizeof(message), &NxAppPool, NX_WAIT_FOREVER);
-    if (status) {
-      printf("Error appending data to packet: %d\n", status);
-      nx_packet_release(packet_ptr);
-      continue;
-    }
-    status = nx_udp_socket_send(&udp_socket, packet_ptr, target_ip, target_port);
-    if (status) {
-      printf("Error sending packet: %d\n", status);
-      nx_packet_release(packet_ptr);
-      continue;
+        if (tx_semaphore_get(&DHCPSemaphore, TX_WAIT_FOREVER) != TX_SUCCESS) {
+          continue;
+        }
+        NX_UDP_SOCKET udp_socket;
+        UINT status =
+            nx_udp_socket_create(&NetXDuoEthIpInstance, &udp_socket, "Test udp_socket",
+                                 NX_IP_NORMAL, NX_DONT_FRAGMENT, NX_IP_TIME_TO_LIVE, 0x200);
+        if (status != NX_SUCCESS) {
+          printf("Error creating socket: %d\n", status);
+          return;
+        }
+
+        status = nx_udp_socket_bind(&udp_socket, 6000, NX_WAIT_FOREVER);
+        if (status != NX_SUCCESS) {
+          printf("Error binding socket: %d\n", status);
+          return;
+        }
+        while (1) {
+          // tx_thread_relinquish();
+          tx_thread_sleep(1000);
+
+          ULONG target_ip = IP_ADDRESS(192, 168, 1, 8);
+          USHORT target_port = 7782;
+
+          NX_PACKET *packet_ptr;
+          status = nx_packet_allocate(&NxAppPool, &packet_ptr, NX_UDP_PACKET, NX_WAIT_FOREVER);
+          if (status) {
+            printf("allocate packet error: %d\n", status);
+            continue;
+          }
+
+          UCHAR message[] = "Hello from NetX Duo "
+                            "serhjgpsoehrgpsiouerhgpioseruhgsiopuerhgosiperughsopierughspoierughs"
+                            "peirughspieruhgspieruh"
+                            "gspierughsioepruhgsoiperughsioperughspeiorughsioperuhgspierughspieur"
+                            "hgpsieurhgpseiurhgpseu"
+                            "rhgpsieruhgpsieurhgpsierughspieruhgpsieruhgspeurgh!";
+          status = nx_packet_data_append(packet_ptr, message, sizeof(message), &NxAppPool,
+                                         NX_WAIT_FOREVER);
+          if (status) {
+            printf("Error appending data to packet: %d\n", status);
+            nx_packet_release(packet_ptr);
+            continue;
+          }
+          status = nx_udp_socket_send(&udp_socket, packet_ptr, target_ip, target_port);
+          if (status) {
+            printf("Error sending packet: %d\n", status);
+            nx_packet_release(packet_ptr);
+            continue;
+          }
+        }
+      }
     }
   }
   /* USER CODE END Nx_App_Thread_Entry 2 */
+
 }
 /* USER CODE BEGIN 2 */
+UINT nx_components_init() {
+  UINT ret = nx_ip_create(&NetXDuoEthIpInstance, "NetX Ip instance", NX_APP_DEFAULT_IP_ADDRESS,
+                          NX_APP_DEFAULT_NET_MASK, &NxAppPool, nx_stm32_eth_driver, nx_app_stack,
+                          Nx_IP_INSTANCE_THREAD_SIZE, NX_APP_INSTANCE_PRIORITY);
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
 
+  nx_ip_address_change_notify(&NetXDuoEthIpInstance, ip_address_change_notify_callback, NULL);
+
+  ret = nx_arp_enable(&NetXDuoEthIpInstance, arp_cache, DEFAULT_ARP_CACHE_SIZE);
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  ret = nx_icmp_enable(&NetXDuoEthIpInstance);
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  ret = nx_tcp_enable(&NetXDuoEthIpInstance);
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  ret = nx_udp_enable(&NetXDuoEthIpInstance);
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  ret = nx_dhcp_create(&DHCPClient, &NetXDuoEthIpInstance, "DHCP Client");
+  if (ret != NX_SUCCESS) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  ret = nx_dhcp_packet_pool_set(&DHCPClient, &DHCPPacketPool);
+  if (ret != NX_SUCCESS) {
+    return NX_DHCP_ERROR;
+  }
+
+  ULONG init_state;
+  if (NX_SUCCESS != nx_ip_status_check(&NetXDuoEthIpInstance, NX_IP_INITIALIZE_DONE, &init_state,
+                                       NX_WAIT_FOREVER)) {
+    return NX_NOT_SUCCESSFUL;
+  }
+
+  if (ret != nx_dhcp_start(&DHCPClient)) {
+    return NX_DHCP_ERROR;
+  }
+
+  return NX_SUCCESS;
+}
+
+UINT nx_components_deinit() {
+  nx_dhcp_stop(&DHCPClient);
+  UINT ret = nx_dhcp_delete(&DHCPClient);
+  if (ret != NX_SUCCESS) {
+    ret += 1;
+  }
+  ret = nx_ip_delete(&NetXDuoEthIpInstance);
+  return NX_SUCCESS;
+}
 /* USER CODE END 2 */

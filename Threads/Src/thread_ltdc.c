@@ -19,9 +19,8 @@ uint8_t thread_ltdc_create(void) {
   if (!stack) {
     return TX_NO_MEMORY;
   }
-  ret = tx_thread_create(&ltdc_thread, "LTDC", thread_ltdc_entry, 0, stack,
-                         DEFAULT_APP_STACK_SIZE, 10, 10, TX_NO_TIME_SLICE,
-                         TX_AUTO_START);
+  ret = tx_thread_create(&ltdc_thread, "LTDC", thread_ltdc_entry, 0, stack, DEFAULT_APP_STACK_SIZE,
+                         10, 10, TX_NO_TIME_SLICE, TX_AUTO_START);
 
   return ret;
 }
@@ -31,7 +30,7 @@ void HAL_LTDC_LineEventCallback(LTDC_HandleTypeDef *ltdc) {
 }
 
 static void draw_pixel(int16_t x, int16_t y, uint32_t color) {
-  if (y < 0 || x < 0 || x > 800 || y > 600) {
+  if (y < 0 || x < 0 || x >= 800 || y >= 600) {
     return;
   }
   ltdc_canvas[(y * 800 + x) * 3 + 0] = color >> 0x00;
@@ -39,8 +38,7 @@ static void draw_pixel(int16_t x, int16_t y, uint32_t color) {
   ltdc_canvas[(y * 800 + x) * 3 + 2] = color >> 0x10;
 }
 
-static void draw_circle(uint16_t x0, uint16_t y0, uint16_t radius,
-                        uint16_t color) {
+static void draw_circle(uint16_t x0, uint16_t y0, uint16_t radius, uint32_t color) {
   int x = radius;
   int y = 0;
   int err = 0;
@@ -66,8 +64,8 @@ static void draw_circle(uint16_t x0, uint16_t y0, uint16_t radius,
   }
 }
 
-void draw_line(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color) {
-  uint16_t i;
+void draw_line(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint32_t color) {
+  int16_t i;
 
   // ??x1 <= x2
   if (x1 > x2) {
@@ -82,16 +80,15 @@ void draw_line(int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color) {
   }
 }
 
-static void fill_circle(int16_t x0, int16_t y0, int16_t radius,
-                        uint16_t color) {
+static void fill_circle(int16_t x0, int16_t y0, int16_t radius, uint32_t color) {
   draw_line(x0 - radius + 1, y0, x0 + radius - 1, y0, color);
   int t = radius;
   for (int i = 0; i < radius; i++) {
     while (t > 0 && i * i + t * t > radius * radius) {
       t--;
     }
-    draw_line(x0 - t, y0 + i, x0 + t, y0 + i, 0xFF);
-    draw_line(x0 - t, y0 - i, x0 + t, y0 - i, 0xFF);
+    draw_line(x0 - t, y0 + i, x0 + t, y0 + i, color);
+    draw_line(x0 - t, y0 - i, x0 + t, y0 - i, color);
   }
 }
 
@@ -136,19 +133,19 @@ static void fill_circle(int16_t x0, int16_t y0, int16_t radius,
 //   }
 // }
 
-void thread_ltdc_draw_circle(uint16_t x, uint16_t y, uint16_t r, uint16_t color) {
+void thread_ltdc_draw_circle(uint16_t x, uint16_t y, uint16_t r, uint32_t color) {
   draw_circle(x, y, r, color);
   HAL_LTDC_ProgramLineEvent(&hltdc, 500);
 }
 
-void thread_ltdc_fill_circle(int x, int y, int r, int color) {
+void thread_ltdc_fill_circle(int x, int y, int r, uint32_t color) {
   fill_circle(x, y, r, color);
   HAL_LTDC_ProgramLineEvent(&hltdc, 500);
 }
 
 void thread_ltdc_entry(ULONG thread_input) {
   memset(ltdc_canvas, 0x3F, LTDC_SIZE);
-  memset(ltdc_memory, 0, LTDC_SIZE);
+  memset(ltdc_memory, 0xFF, LTDC_SIZE);
   tx_event_flags_create(&ltdc_efg, 0);
 
   __HAL_LTDC_ENABLE_IT(&hltdc, LTDC_IT_LI);
@@ -166,8 +163,7 @@ void thread_ltdc_entry(ULONG thread_input) {
     HAL_RNG_GenerateRandomNumber(&hrng, &seed);
     tx_event_flags_get(&ltdc_efg, 1, TX_AND_CLEAR, &flags, TX_WAIT_FOREVER);
 
-    HAL_DMA2D_Start(&hdma2d, (uint32_t)ltdc_canvas, (uint32_t)ltdc_memory, 800,
-                    600);
+    HAL_DMA2D_Start(&hdma2d, (uint32_t)ltdc_canvas, (uint32_t)ltdc_memory, 800, 600);
     HAL_DMA2D_PollForTransfer(&hdma2d, 1000);
   }
 }

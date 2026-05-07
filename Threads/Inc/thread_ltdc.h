@@ -9,5 +9,6 @@
 #define LTDC_SIZE (LTDC_COLS * LTDC_ROWS * LTDC_BYTES_PER_PIXEL)
 
 uint8_t thread_ltdc_create(void);
+void thread_ltdc_fill_circle(int x, int y, int r, uint32_t color);
 
 #endif

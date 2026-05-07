@@ -3,6 +3,7 @@
 #include "is42s32200.h"
 #include "thread_ltdc.h"
 #include "thread_main.h"
+#include "thread_touchpad.h"
 
 #include "fmc.h"
 #include "main.h"
@@ -15,6 +16,8 @@ uint8_t thread_main_create(void) {
   is42s32200_init(&hsdram1);
   is42s32200_test();
   memory_pool_init();
+  thread_ltdc_create();
+  thread_touchpad_create();
 
   void *stack = malloc(DEFAULT_APP_STACK_SIZE);
   if (!stack) {

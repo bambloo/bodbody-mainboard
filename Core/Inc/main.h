@@ -82,6 +82,7 @@ void Error_Handler(void);
 #define LCD_RESET_GPIO_Port GPIOG
 #define TP_INT_Pin GPIO_PIN_7
 #define TP_INT_GPIO_Port GPIOH
+#define TP_INT_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 

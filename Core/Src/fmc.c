@@ -22,7 +22,7 @@
 #include "fmc.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "is42s32200.h"
 /* USER CODE END 0 */
 
 SDRAM_HandleTypeDef hsdram1;
@@ -55,12 +55,12 @@ void MX_FMC_Init(void)
   hsdram1.Init.ReadBurst = FMC_SDRAM_RBURST_ENABLE;
   hsdram1.Init.ReadPipeDelay = FMC_SDRAM_RPIPE_DELAY_2;
   /* SdramTiming */
-  SdramTiming.LoadToActiveDelay = 3;
+  SdramTiming.LoadToActiveDelay = 2;
   SdramTiming.ExitSelfRefreshDelay = 2;
-  SdramTiming.SelfRefreshTime = 3;
-  SdramTiming.RowCycleDelay = 5;
-  SdramTiming.WriteRecoveryTime = 2;
-  SdramTiming.RPDelay = 4;
+  SdramTiming.SelfRefreshTime = 6;
+  SdramTiming.RowCycleDelay = 9;
+  SdramTiming.WriteRecoveryTime = 3;
+  SdramTiming.RPDelay = 3;
   SdramTiming.RCDDelay = 3;
 
   if (HAL_SDRAM_Init(&hsdram1, &SdramTiming) != HAL_OK)
@@ -69,7 +69,8 @@ void MX_FMC_Init(void)
   }
 
   /* USER CODE BEGIN FMC_Init 2 */
-
+  is42s32200_init(&hsdram1);
+  // is42s32200_test();
   /* USER CODE END FMC_Init 2 */
 }
 

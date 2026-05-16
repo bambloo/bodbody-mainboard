@@ -14,7 +14,7 @@
             "runToEntryPoint": "main",
             "configFiles": [
                 "interface/stlink.cfg",
-                "target/stm32h7x.cfg "
+                "target/stm32h7x.cfg"
             ],
             "showDevDebugOutput": "raw",
             "servertype": "openocd",

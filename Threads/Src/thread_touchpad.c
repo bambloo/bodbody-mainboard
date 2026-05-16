@@ -381,6 +381,6 @@ reinit:
     //   app_ltdc_draw_line(n_x, n_y, x, y, 0xFFFF);
     // }
 
-    thread_ltdc_fill_circle(n_x, n_y, 8, 0x00FFFF);
+    // thread_ltdc_fill_circle(n_x, n_y, 8, 0x00FFFF);
   }
 }

@@ -31,5 +31,7 @@
 #define LAN8742
 #define THREADX_ENABLED
 #define NETXDUO_ENABLED
+/* STMicroelectronics.X-CUBE-TOUCHGFX.4.26.1 */
+#define TOUCHGFX_APP
 
 #endif /* __RTE_COMPONENTS_H__ */

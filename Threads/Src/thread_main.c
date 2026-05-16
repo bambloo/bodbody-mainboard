@@ -13,8 +13,7 @@ TX_THREAD main_thread;
 void thread_main_entry(ULONG thread_input);
 
 uint8_t thread_main_create(void) {
-  is42s32200_init(&hsdram1);
-  is42s32200_test();
+  // is42s32200_test();
   memory_pool_init();
   thread_ltdc_create();
   thread_touchpad_create();
@@ -29,7 +28,7 @@ uint8_t thread_main_create(void) {
 
 void thread_main_entry(ULONG thread_input) {
 
-  thread_ltdc_create();
+  // thread_ltdc_create();
   while (1) {
     tx_thread_sleep(1000);
     tx_thread_relinquish();

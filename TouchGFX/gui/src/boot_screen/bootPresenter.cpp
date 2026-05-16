@@ -1,18 +1,18 @@
-#include <gui/boot_screen/bootView.hpp>
-#include <gui/boot_screen/bootPresenter.hpp>
+#include <gui/boot_screen/BootView.hpp>
+#include <gui/boot_screen/BootPresenter.hpp>
 
-bootPresenter::bootPresenter(bootView& v)
+BootPresenter::BootPresenter(BootView& v)
     : view(v)
 {
 
 }
 
-void bootPresenter::activate()
+void BootPresenter::activate()
 {
 
 }
 
-void bootPresenter::deactivate()
+void BootPresenter::deactivate()
 {
 
 }

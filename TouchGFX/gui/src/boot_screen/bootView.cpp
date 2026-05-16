@@ -1,16 +1,16 @@
 #include <gui/boot_screen/bootView.hpp>
 
-bootView::bootView()
-{
+BootView::BootView() : clickCallback(this, &BootView::clickHandler) {}
 
+void BootView::setupScreen() {
+  BootViewBase::setupScreen();
+  icon.setClickAction(clickCallback);
 }
 
-void bootView::setupScreen()
-{
-    bootViewBase::setupScreen();
-}
+void BootView::tearDownScreen() { BootViewBase::tearDownScreen(); }
 
-void bootView::tearDownScreen()
-{
-    bootViewBase::tearDownScreen();
+void BootView::clickHandler(const Image &img, const touchgfx::ClickEvent &evt) {
+    if (evt.getType() == touchgfx::ClickEvent::RELEASED) {
+        application().gotoMainScreenNoTransition();
+    }
 }

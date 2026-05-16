@@ -2,14 +2,44 @@
   "Application": {
     "Screens": [
       {
-        "Name": "boot",
+        "Name": "Boot",
         "Components": [
           {
             "Type": "Image",
             "Name": "icon",
             "Width": 800,
             "Height": 600,
-            "RelativeFilename": "boot-page.png"
+            "RelativeFilename": "boot-page.png",
+            "Clickable": true
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "Main",
+        "Components": [
+          {
+            "Type": "Button",
+            "Name": "button1",
+            "X": 280,
+            "Y": 275,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
           }
         ],
         "Interactions": []
@@ -22,7 +52,7 @@
       "Height": 600
     },
     "SelectedColorDepth": 24,
-    "StartupScreenName": "boot",
+    "StartupScreenName": "Boot",
     "SelectedStartupLanguage": "GB",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",

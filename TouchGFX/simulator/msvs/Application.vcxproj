@@ -21,9 +21,12 @@
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
-    <ClCompile Include="..\..\gui\src\boot_screen\bootPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\boot_screen\bootView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\boot_screen\bootViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\boot_screen\BootPresenter.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\boot_screen\BootViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -174,9 +177,12 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\boot_screen\bootPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\boot_screen\bootView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\boot_screen\bootViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\boot_screen\BootPresenter.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\boot_screen\BootViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

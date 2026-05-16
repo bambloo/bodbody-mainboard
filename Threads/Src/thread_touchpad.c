@@ -272,6 +272,7 @@ static gt911_config_t gt911_config = {
     .chksum = 0x00,
     .fresh = 0x01,
 };
+
 static TX_THREAD touchpad_thread;
 static TX_EVENT_FLAGS_GROUP touchpad_efg;
 
@@ -295,6 +296,16 @@ uint8_t thread_touchpad_create(void) {
                          TX_AUTO_START);
 
   return ret;
+}
+
+uint8_t gt911_d = 0;
+uint32_t gt911_x = 0;
+uint32_t gt911_y = 0;
+
+uint8_t thread_touchpad_sample(int32_t *x, int32_t *y) {
+ *x = gt911_x;
+ *y = gt911_y;
+ return gt911_d;
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
@@ -346,6 +357,7 @@ reinit:
         Bambloo_I2C_Mem_Read(gt911_address, 0x814E, &status_register, 0x01, 2);
 
     if (status != HAL_OK) {
+      gt911_d = 0;
       if (++count > 10) {
         count = 0;
         goto reinit;
@@ -361,21 +373,27 @@ reinit:
     }
     status = Bambloo_I2C_Mem_Write(gt911_address, 0x814E, &temp_register, 0x01, 2);
     if (status != HAL_OK) {
+      gt911_d = 0;
       continue;
     }
 
     if ((status_register & 0x8F) == 0x80) {
+      gt911_d = 0;
       continue;
     }
 
     status = Bambloo_I2C_Mem_Read(gt911_address, 0x8150, coors, sizeof(coors), 2);
 
     if (status != HAL_OK) {
+      gt911_d = 0;
       continue;
     }
 
-    uint32_t n_y = coors[0] | coors[1] << 8;
-    uint32_t n_x = coors[2] | coors[3] << 8;
+    
+    gt911_d = 1;
+
+    gt911_y = coors[0] | coors[1] << 8;
+    gt911_x = coors[2] | coors[3] << 8;
 
     // if (draw) {
     //   app_ltdc_draw_line(n_x, n_y, x, y, 0xFFFF);

@@ -12,8 +12,10 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
-#include <gui/boot_screen/bootView.hpp>
-#include <gui/boot_screen/bootPresenter.hpp>
+#include <gui/boot_screen/BootView.hpp>
+#include <gui/boot_screen/BootPresenter.hpp>
+#include <gui/main_screen/MainView.hpp>
+#include <gui/main_screen/MainPresenter.hpp>
 
 
 /**
@@ -36,8 +38,9 @@ public:
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< bootView,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< BootView,
+            touchgfx::meta::TypeList< MainView,
+            touchgfx::meta::Nil >
             > GeneratedViewTypes;
 
     /**
@@ -49,8 +52,9 @@ public:
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< bootPresenter,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< BootPresenter,
+            touchgfx::meta::TypeList< MainPresenter,
+            touchgfx::meta::Nil >
             > GeneratedPresenterTypes;
 
     /**
@@ -73,7 +77,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotobootScreenNoTransition();
+        app.gotoBootScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

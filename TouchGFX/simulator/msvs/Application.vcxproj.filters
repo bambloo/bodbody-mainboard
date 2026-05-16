@@ -184,6 +184,18 @@
     <Filter Include="Source Files\generated\gui_generated\boot_screen">
       <UniqueIdentifier>18AD1E62-C67A-D0D3-E4A1-6E6BF7B4A6B3</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\main_screen">
+      <UniqueIdentifier>337A6335-3A5D-2CB4-DBFE-4B51E1237725</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\main_screen">
+      <UniqueIdentifier>302302BB-5E1E-6FD3-860D-8F7B56BF2271</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\main_screen">
+      <UniqueIdentifier>D4B54E1B-C226-044B-8061-45FB485C33CB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\main_screen">
+      <UniqueIdentifier>B9C47DE8-508A-4B4C-D507-9AA25FB842B2</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -216,14 +228,23 @@
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp">
       <Filter>Source Files\generated\simulator\video</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\boot_screen\bootPresenter.cpp">
-      <Filter>Source Files\gui\boot_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\boot_screen\bootView.cpp">
       <Filter>Source Files\gui\boot_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\boot_screen\bootViewBase.cpp">
+    <ClCompile Include="..\..\gui\src\boot_screen\BootPresenter.cpp">
+      <Filter>Source Files\gui\boot_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\boot_screen\BootViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\boot_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
+      <Filter>Source Files\gui\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
+      <Filter>Source Files\gui\main_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -667,14 +688,23 @@
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp">
       <Filter>Header Files\generated\simulator\include\simulator\video</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\boot_screen\bootPresenter.hpp">
-      <Filter>Header Files\gui\boot_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\boot_screen\bootView.hpp">
       <Filter>Header Files\gui\boot_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\boot_screen\bootViewBase.hpp">
+    <ClInclude Include="..\..\gui\include\gui\boot_screen\BootPresenter.hpp">
+      <Filter>Header Files\gui\boot_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\boot_screen\BootViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\boot_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
+      <Filter>Header Files\gui\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
+      <Filter>Header Files\gui\main_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

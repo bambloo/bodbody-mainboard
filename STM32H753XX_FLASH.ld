@@ -174,6 +174,7 @@ SECTIONS
     _ssdram = .;
     *(.sdram)
     *(.sdram*)
+    _TouchGFX_FrameBuffer_Beg = .;
     *(TouchGFX_Framebuffer*)
     _esdram = .;
     . = ALIGN(4);

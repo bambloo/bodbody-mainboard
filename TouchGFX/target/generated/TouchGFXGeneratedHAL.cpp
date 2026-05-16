@@ -19,6 +19,7 @@
 #include <TouchGFXGeneratedHAL.hpp>
 #include <touchgfx/hal/OSWrappers.hpp>
 #include <gui/common/FrontendHeap.hpp>
+#include <touchgfx/hal/GPIO.hpp>
 
 #include "stm32h7xx.h"
 #include "stm32h7xx_hal_ltdc.h"
@@ -27,6 +28,9 @@ using namespace touchgfx;
 
 namespace
 {
+// Use the section "TouchGFX_Framebuffer" in the linker script to specify the placement of the buffer
+LOCATION_PRAGMA_NOLOAD("TouchGFX_Framebuffer")
+uint32_t frameBuf[(800 * 600 * 3 + 3) / 4] LOCATION_ATTRIBUTE_NOLOAD("TouchGFX_Framebuffer");
 static uint16_t lcd_int_active_line;
 static uint16_t lcd_int_porch_line;
 }
@@ -40,7 +44,7 @@ void TouchGFXGeneratedHAL::initialize()
     {
         while (1);
     }
-    setFrameBufferStartAddresses((void*)0xC0000000, (void*)0, (void*)0);
+    setFrameBufferStartAddresses((void*)frameBuf, (void*)0, (void*)0);
 }
 
 void TouchGFXGeneratedHAL::configureInterrupts()
@@ -145,4 +149,37 @@ void TouchGFXGeneratedHAL::FlushCache()
     }
 }
 
+extern "C"
+{
+    void HAL_LTDC_LineEventCallback(LTDC_HandleTypeDef* hltdc)
+    {
+        if (!HAL::getInstance())
+        {
+            return;
+        }
+
+        if (LTDC->LIPCR == lcd_int_active_line)
+        {
+            //entering active area
+            HAL_LTDC_ProgramLineEvent(hltdc, lcd_int_porch_line);
+            HAL::getInstance()->vSync();
+            OSWrappers::signalVSync();
+
+            // Swap frame buffers immediately instead of waiting for the task to be scheduled in.
+            // Note: task will also swap when it wakes up, but that operation is guarded and will not have
+            // any effect if already swapped.
+            HAL::getInstance()->swapFrameBuffers();
+            GPIO::set(GPIO::VSYNC_FREQ);
+        }
+        else
+        {
+            //exiting active area
+            HAL_LTDC_ProgramLineEvent(hltdc, lcd_int_active_line);
+
+            // Signal to the framework that display update has finished.
+            HAL::getInstance()->frontPorchEntered();
+            GPIO::clear(GPIO::VSYNC_FREQ);
+        }
+    }
+}
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

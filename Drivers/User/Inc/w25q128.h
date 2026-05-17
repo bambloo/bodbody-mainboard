@@ -7,7 +7,7 @@
 
 HAL_StatusTypeDef w25_load_sr(uint8_t index, uint8_t *sr);
 HAL_StatusTypeDef w25_read_unique_id(uint64_t *id);
-HAL_StatusTypeDef w25_read_jedec_id(uint64_t *id);
+HAL_StatusTypeDef w25_read_jedec_id(uint32_t *id);
 HAL_StatusTypeDef w25_write(uint32_t addr, uint8_t *buf, int len);
 HAL_StatusTypeDef w25_read(uint32_t addr, uint8_t *buf, int len);
 HAL_StatusTypeDef w25_map();

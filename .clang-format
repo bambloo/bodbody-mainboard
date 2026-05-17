@@ -1,1 +1,15 @@
+BasedOnStyle: LLVM
+
 ColumnLimit: 100
+AllowAllArgumentsOnNextLine: true
+AllowAllConstructorInitializersOnNextLine: true
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine : false
+AlignArrayOfStructures: Right
+MaxEmptyLinesToKeep: 1
+InsertNewlineAtEOF : true
+BreakBeforeBraces: Linux
+AlignAfterOpenBracket: AlwaysBreak
+BreakBeforeCloseBracketBracedList: true

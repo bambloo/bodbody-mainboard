@@ -149,18 +149,8 @@ void thread_ltdc_entry(ULONG thread_input) {
   HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_RESET);
   tx_thread_sleep(100);
   HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_SET);
+  tx_thread_sleep(300);
   HAL_GPIO_WritePin(LED_EN_GPIO_Port, LED_EN_Pin, GPIO_PIN_SET);
 
-  // tx_event_flags_set(&ltdc_efg, 0x00, TX_AND);
-  // uint32_t seed;
-
-  while (1) {
-    tx_thread_sleep(1000);
-    // ULONG flags;
-    // HAL_RNG_GenerateRandomNumber(&hrng, &seed);
-    // tx_event_flags_get(&ltdc_efg, 1, TX_AND_CLEAR, &flags, TX_WAIT_FOREVER);
-
-    // HAL_DMA2D_Start(&hdma2d, (uint32_t)ltdc_canvas, (uint32_t)ltdc_memory, 800, 600);
-    // HAL_DMA2D_PollForTransfer(&hdma2d, 1000);
-  }
+  tx_thread_delete(&ltdc_thread);
 }

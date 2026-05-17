@@ -8,11 +8,14 @@
 #include "fmc.h"
 #include "main.h"
 #include "tx_api.h"
+#include "w25q128.h"
 
 TX_THREAD main_thread;
 void thread_main_entry(ULONG thread_input);
 
 uint8_t thread_main_create(void) {
+  uint32_t jedec_id;
+  w25_read_jedec_id(&jedec_id);
   // is42s32200_test();
   memory_pool_init();
   thread_ltdc_create();

@@ -76,7 +76,29 @@
     "FrameworkFeatures": {
       "LCD24bpp": {
         "Id": "LCD24bpp",
-        "IsEnabled": true
+        "Features": [
+          {
+            "Id": "TextureMapperImageFormats",
+            "IsEnabled": true
+          },
+          {
+            "Id": "L8Compression",
+            "Features": [
+              {
+                "Id": "L4",
+                "IsEnabled": true
+              },
+              {
+                "Id": "RLE",
+                "IsEnabled": true
+              }
+            ]
+          },
+          {
+            "Id": "RGBCompression",
+            "IsEnabled": true
+          }
+        ]
       }
     },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",

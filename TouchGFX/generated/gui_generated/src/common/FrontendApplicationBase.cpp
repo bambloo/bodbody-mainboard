@@ -8,6 +8,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include<platform/driver/lcd/LCD24bpp.hpp>
 #include <platform/driver/lcd/LCD24bpp.hpp>
 #include <gui/boot_screen/BootView.hpp>
 #include <gui/boot_screen/BootPresenter.hpp>
@@ -24,7 +25,8 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
 {
     touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
     reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
-    reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorL8_All();
+    reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorL8_L4();
+    reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorL8_RLE();
     reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorRGB();
 }
 

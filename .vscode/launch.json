@@ -13,13 +13,12 @@
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "configFiles": [
-                "interface/stlink.cfg",
-                "target/stm32h7x.cfg"
+                "board/stm32h7x_bambloo.cfg"
             ],
             "showDevDebugOutput": "raw",
             "servertype": "openocd",
-            "device": "stm32f103rct6",
-            "svdFile": "C:\\Users\\liugc\\AppData\\Local\\Arm\\Packs\\Keil\\STM32H7xx_DFP\\4.1.0\\CMSIS\\SVD\\STM32H753.svd"
+            "device": "stm32h753xih6",
+            "svdFile": "C:\\Users\\liugc\\AppData\\Local\\Arm\\Packs\\Keil\\STM32H7xx_DFP\\4.1.0\\CMSIS\\SVD\\STM32H753.svd",
         }
     ]
 }

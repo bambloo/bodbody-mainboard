@@ -74,7 +74,7 @@ HAL_StatusTypeDef w25_read_unique_id(uint64_t *id)
 
 HAL_StatusTypeDef w25_read_jedec_id(uint32_t *id)
 {
-  *id = 0;
+  *id                         = 0;
   QSPI_CommandTypeDef command = {
       .InstructionMode   = QSPI_INSTRUCTION_1_LINE,
       .AddressMode       = QSPI_ADDRESS_NONE,
@@ -172,11 +172,15 @@ HAL_StatusTypeDef w25_write(uint32_t addr, uint8_t *buf, int len)
   if (len > 256) {
     len = 256;
   }
-  //  HAL_StatusTypeDef status = w25_erase_sector(addr);
-  //  if (status != HAL_OK) {
-  //    return status;
-  //  }
   HAL_StatusTypeDef status = w25_write_enable();
+  if (status != HAL_OK) {
+    return status;
+  }
+  status = w25_erase_sector(addr);
+  if (status != HAL_OK) {
+    return status;
+  }
+  status = w25_write_enable();
   if (status != HAL_OK) {
     return status;
   }

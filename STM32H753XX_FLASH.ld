@@ -62,6 +62,7 @@ MEMORY
   ITCMRAM (xrw)      : ORIGIN = 0x00000000, LENGTH = 64K
   FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 2048K
   SDRAM (rx)    : ORIGIN = 0xC0000000, LENGTH = 8M
+  EXFLASH (rxw) : ORIGIN = 0x90000000, LENGTH = 16M
 }
 
 /* Highest address of the user mode stack */
@@ -179,6 +180,10 @@ SECTIONS
     _esdram = .;
     . = ALIGN(4);
   } > SDRAM
+
+  .ExtFlashSection :   {
+    *(ExtFlashSection)
+  } >EXFLASH
 
   .d1ram (NOLOAD): {
     . = ALIGN(4);

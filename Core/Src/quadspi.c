@@ -25,7 +25,7 @@
 static uint32_t test;
 /* USER CODE END 0 */
 
-QSPI_HandleTypeDef hqspi; 
+QSPI_HandleTypeDef hqspi;
 
 /* QUADSPI init function */
 void MX_QUADSPI_Init(void)
@@ -39,7 +39,7 @@ void MX_QUADSPI_Init(void)
 
   /* USER CODE END QUADSPI_Init 1 */
   hqspi.Instance = QUADSPI;
-  hqspi.Init.ClockPrescaler = 5;
+  hqspi.Init.ClockPrescaler = 2;
   hqspi.Init.FifoThreshold = 1;
   hqspi.Init.SampleShifting = QSPI_SAMPLE_SHIFTING_NONE;
   hqspi.Init.FlashSize = 0x18;

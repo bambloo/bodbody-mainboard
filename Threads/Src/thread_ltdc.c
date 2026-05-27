@@ -6,21 +6,30 @@
 #include "stdlib.h"
 #include "tx_api.h"
 
-TX_THREAD ltdc_thread;
+TX_THREAD            ltdc_thread;
 TX_EVENT_FLAGS_GROUP ltdc_efg;
 
-// __ALIGN_BEGIN static uint8_t ltdc_memory[LTDC_SIZE] __ALIGN_END __attribute__((section(".sdram")));
-// __ALIGN_BEGIN static uint8_t ltdc_canvas[LTDC_SIZE] __ALIGN_END __attribute__((section(".sdram")));
+// __ALIGN_BEGIN static uint8_t ltdc_memory[LTDC_SIZE] __ALIGN_END
+// __attribute__((section(".sdram")));
+// __ALIGN_BEGIN static uint8_t ltdc_canvas[LTDC_SIZE] __ALIGN_END
+// __attribute__((section(".sdram")));
 void thread_ltdc_entry(ULONG thread_input);
 
-uint8_t thread_ltdc_create(void) {
-  UINT ret = TX_SUCCESS;
-  void *stack = malloc(DEFAULT_APP_STACK_SIZE);
-  if (!stack) {
-    return TX_NO_MEMORY;
-  }
-  ret = tx_thread_create(&ltdc_thread, "LTDC", thread_ltdc_entry, 0, stack, DEFAULT_APP_STACK_SIZE,
-                         10, 10, TX_NO_TIME_SLICE, TX_AUTO_START);
+uint8_t thread_ltdc_create(void)
+{
+  HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_RESET);
+  tx_thread_sleep(100);
+  HAL_GPIO_WritePin(LCD_RESET_GPIO_Port, LCD_RESET_Pin, GPIO_PIN_SET);
+  tx_thread_sleep(300);
+  HAL_GPIO_WritePin(LED_EN_GPIO_Port, LED_EN_Pin, GPIO_PIN_SET);
+  UINT  ret   = TX_SUCCESS;
+  // void *stack = malloc(DEFAULT_APP_STACK_SIZE);
+  // if (!stack) {
+  //   return TX_NO_MEMORY;
+  // }
+  // ret = tx_thread_create(
+  //     &ltdc_thread, "LTDC", thread_ltdc_entry, 0, stack, DEFAULT_APP_STACK_SIZE, 10, 10,
+  //     TX_NO_TIME_SLICE, TX_AUTO_START);
 
   return ret;
 }
@@ -139,7 +148,8 @@ uint8_t thread_ltdc_create(void) {
 //   HAL_LTDC_ProgramLineEvent(&hltdc, 500);
 // }
 
-void thread_ltdc_entry(ULONG thread_input) {
+void thread_ltdc_entry(ULONG thread_input)
+{
   // memset(ltdc_canvas, 0x3F, LTDC_SIZE);
   // memset(ltdc_memory, 0xFF, LTDC_SIZE);
   // tx_event_flags_create(&ltdc_efg, 0);

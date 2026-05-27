@@ -66,10 +66,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(EN_OSC_12M_GPIO_Port, EN_OSC_12M_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LCD_UD_GPIO_Port, LCD_UD_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LCD_LR_GPIO_Port, LCD_LR_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOC, LCD_UD_Pin|LCD_LR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, RK628_PWR_EN_Pin|LCD_RESET_Pin, GPIO_PIN_RESET);

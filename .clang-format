@@ -1,15 +1,34 @@
 BasedOnStyle: LLVM
 
 ColumnLimit: 100
-AllowAllArgumentsOnNextLine: true
-AllowAllConstructorInitializersOnNextLine: true
+
+BraceWrapping:
+  AfterStructBlock: true
+  SplitEmptyRecord: false
+  BeforeInitializationList: false
+
+# PackInitializers: Never
+AllowShortBlocksOnASingleLine: false
+AllowAllArgumentsOnNextLine: false
+AllowAllConstructorInitializersOnNextLine: false
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
-AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine : false
-AlignArrayOfStructures: Right
 MaxEmptyLinesToKeep: 1
 InsertNewlineAtEOF : true
 BreakBeforeBraces: Linux
-AlignAfterOpenBracket: AlwaysBreak
-BreakBeforeCloseBracketBracedList: true
+
+# AlignArrayOfStructures: Left
+
+# BraceWrapping:
+#   AfterControlStatement: false
+#   AfterEnum: false
+#   AfterFunction: false
+#   AfterStruct: false
+#   AfterUnion: false
+#   AfterExternBlock: false
+#   BeforeElse: false
+#   IndentBraces: false
+
+#   AfterColon: false
+#   AfterEquality: true

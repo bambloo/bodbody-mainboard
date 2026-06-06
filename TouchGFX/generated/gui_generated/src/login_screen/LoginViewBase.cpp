@@ -6,91 +6,121 @@
 #include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-LoginViewBase::LoginViewBase()
+LoginViewBase::LoginViewBase() :
+    buttonCallback(this, &LoginViewBase::buttonCallbackHandler)
 {
     __background.setPosition(0, 0, 800, 600);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    buttonWithLabel1.setXY(352, 444);
-    buttonWithLabel1.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1.setLabelText(touchgfx::TypedText(T___SINGLEUSE_OJ5Y));
-    buttonWithLabel1.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1);
+    btnPin0.setXY(352, 444);
+    btnPin0.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin0.setLabelText(touchgfx::TypedText(T___SINGLEUSE_OJ5Y));
+    btnPin0.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin0.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin0);
 
-    buttonWithLabel1_9.setXY(472, 356);
-    buttonWithLabel1_9.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_9.setLabelText(touchgfx::TypedText(T___SINGLEUSE_YVMI));
-    buttonWithLabel1_9.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_9.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_9);
+    btnPin9.setXY(472, 356);
+    btnPin9.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin9.setLabelText(touchgfx::TypedText(T___SINGLEUSE_YVMI));
+    btnPin9.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin9.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin9);
 
-    buttonWithLabel1_8.setXY(352, 356);
-    buttonWithLabel1_8.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_8.setLabelText(touchgfx::TypedText(T___SINGLEUSE_KKKB));
-    buttonWithLabel1_8.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_8.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_8);
+    btnPwd.setXY(232, 444);
+    btnPwd.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPwd.setLabelText(touchgfx::TypedText(T___SINGLEUSE_V6FK));
+    btnPwd.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPwd.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPwd.setAction(buttonCallback);
+    add(btnPwd);
 
-    buttonWithLabel1_7.setXY(232, 356);
-    buttonWithLabel1_7.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_7.setLabelText(touchgfx::TypedText(T___SINGLEUSE_NWFD));
-    buttonWithLabel1_7.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_7.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_7);
+    btnPin8.setXY(352, 356);
+    btnPin8.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin8.setLabelText(touchgfx::TypedText(T___SINGLEUSE_KKKB));
+    btnPin8.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin8.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin8);
 
-    buttonWithLabel1_6.setXY(472, 268);
-    buttonWithLabel1_6.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_6.setLabelText(touchgfx::TypedText(T___SINGLEUSE_VVSQ));
-    buttonWithLabel1_6.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_6.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_6);
+    btnPin7.setXY(232, 356);
+    btnPin7.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin7.setLabelText(touchgfx::TypedText(T___SINGLEUSE_NWFD));
+    btnPin7.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin7.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin7);
 
-    buttonWithLabel1_5.setXY(352, 268);
-    buttonWithLabel1_5.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_5.setLabelText(touchgfx::TypedText(T___SINGLEUSE_AQKX));
-    buttonWithLabel1_5.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_5.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_5);
+    btnPin6.setXY(472, 268);
+    btnPin6.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin6.setLabelText(touchgfx::TypedText(T___SINGLEUSE_VVSQ));
+    btnPin6.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin6.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin6);
 
-    buttonWithLabel1_4.setXY(232, 268);
-    buttonWithLabel1_4.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_4.setLabelText(touchgfx::TypedText(T___SINGLEUSE_R1D1));
-    buttonWithLabel1_4.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_4.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_4);
+    btnPin5.setXY(352, 268);
+    btnPin5.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin5.setLabelText(touchgfx::TypedText(T___SINGLEUSE_AQKX));
+    btnPin5.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin5.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin5);
 
-    buttonWithLabel1_3.setXY(472, 180);
-    buttonWithLabel1_3.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_3.setLabelText(touchgfx::TypedText(T___SINGLEUSE_M4VS));
-    buttonWithLabel1_3.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_3.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_3);
+    btnPin4.setXY(232, 268);
+    btnPin4.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin4.setLabelText(touchgfx::TypedText(T___SINGLEUSE_R1D1));
+    btnPin4.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin4.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin4);
 
-    buttonWithLabel1_2.setXY(352, 180);
-    buttonWithLabel1_2.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_2.setLabelText(touchgfx::TypedText(T___SINGLEUSE_CT3G));
-    buttonWithLabel1_2.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_2.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_2);
+    btnPin3.setXY(472, 180);
+    btnPin3.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin3.setLabelText(touchgfx::TypedText(T___SINGLEUSE_M4VS));
+    btnPin3.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin3.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin3);
 
-    buttonWithLabel1_1.setXY(232, 180);
-    buttonWithLabel1_1.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
-    buttonWithLabel1_1.setLabelText(touchgfx::TypedText(T___SINGLEUSE_BOZV));
-    buttonWithLabel1_1.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    buttonWithLabel1_1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    add(buttonWithLabel1_1);
+    btnPin2.setXY(352, 180);
+    btnPin2.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin2.setLabelText(touchgfx::TypedText(T___SINGLEUSE_CT3G));
+    btnPin2.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin2.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin2);
+
+    btnPin1.setXY(232, 180);
+    btnPin1.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnPin1.setLabelText(touchgfx::TypedText(T___SINGLEUSE_BOZV));
+    btnPin1.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnPin1.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    add(btnPin1);
 
     box1.setPosition(232, 103, 336, 64);
     box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     add(box1);
 
-    LoginPromptLabel.setXY(307, 40);
+    LoginPromptLabel.setXY(310, 40);
     LoginPromptLabel.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     LoginPromptLabel.setLinespacing(0);
     LoginPromptLabel.setTypedText(touchgfx::TypedText(T_ENTERPINPROMPT));
     add(LoginPromptLabel);
+
+    pinArea.setXY(314, 115);
+    pinArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    pinArea.setLinespacing(0);
+    pinAreaBuffer[0] = 0;
+    pinArea.setWildcard(pinAreaBuffer);
+    pinArea.resizeToCurrentText();
+    pinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OMQI));
+    add(pinArea);
+
+    ChangePasswordModal.setBackground(touchgfx::BitmapId(BITMAP_BOOT_PAGE_ID), 0, 0);
+    ChangePasswordModal.setShadeColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    ChangePasswordModal.setShadeAlpha(255);
+    ChangePasswordModal.hide();
+    boxWithBorder1.setPosition(75, -90, 50, 50);
+    boxWithBorder1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    boxWithBorder1.setBorderColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    boxWithBorder1.setBorderSize(5);
+    ChangePasswordModal.add(boxWithBorder1);
+
+    add(ChangePasswordModal);
 }
 
 LoginViewBase::~LoginViewBase()
@@ -101,4 +131,16 @@ LoginViewBase::~LoginViewBase()
 void LoginViewBase::setupScreen()
 {
 
+}
+
+void LoginViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &btnPwd)
+    {
+        //Interaction1
+        //When btnPwd clicked show ChangePasswordModal
+        //Show ChangePasswordModal
+        ChangePasswordModal.setVisible(true);
+        ChangePasswordModal.invalidate();
+    }
 }

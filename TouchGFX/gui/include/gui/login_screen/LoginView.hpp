@@ -12,6 +12,10 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 protected:
+    void  centerPinArea();
+    touchgfx::Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinClickedCallback;
+    void pinClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
+    int pinLen;
 };
 
 #endif // LOGINVIEW_HPP

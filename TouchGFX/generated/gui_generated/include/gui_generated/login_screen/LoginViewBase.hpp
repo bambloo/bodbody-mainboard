@@ -9,7 +9,11 @@
 #include <gui/login_screen/LoginPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/mixins/ClickListener.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/ModalWindow.hpp>
+#include <touchgfx/widgets/BoxWithBorder.hpp>
 
 class LoginViewBase : public touchgfx::View<LoginPresenter>
 {
@@ -27,20 +31,40 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::ButtonWithLabel buttonWithLabel1;
-    touchgfx::ButtonWithLabel buttonWithLabel1_9;
-    touchgfx::ButtonWithLabel buttonWithLabel1_8;
-    touchgfx::ButtonWithLabel buttonWithLabel1_7;
-    touchgfx::ButtonWithLabel buttonWithLabel1_6;
-    touchgfx::ButtonWithLabel buttonWithLabel1_5;
-    touchgfx::ButtonWithLabel buttonWithLabel1_4;
-    touchgfx::ButtonWithLabel buttonWithLabel1_3;
-    touchgfx::ButtonWithLabel buttonWithLabel1_2;
-    touchgfx::ButtonWithLabel buttonWithLabel1_1;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin0;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin9;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPwd;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin8;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin7;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin6;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin5;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin4;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin3;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin2;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin1;
     touchgfx::Box box1;
     touchgfx::TextArea LoginPromptLabel;
+    touchgfx::TextAreaWithOneWildcard pinArea;
+    touchgfx::ModalWindow ChangePasswordModal;
+    touchgfx::BoxWithBorder boxWithBorder1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t PINAREA_SIZE = 7;
+    touchgfx::Unicode::UnicodeChar pinAreaBuffer[PINAREA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<LoginViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

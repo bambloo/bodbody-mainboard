@@ -5,11 +5,17 @@
   </Languages>
   <Texts>
     <TextGroup Id="LoginView">
-      <Text Id="EnterPinPrompt" Alignment="Left" TypographyId="Large">
+      <Text Id="EnterPinPrompt" Alignment="Center" TypographyId="Large">
         <Translation Language="GB">Enter Pin</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_V6FK" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">9</Translation>
+      </Text>
+      <Text Id="__SingleUse_OMQI" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Large">
         <Translation Language="GB">9</Translation>
       </Text>
@@ -43,8 +49,8 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
-    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="*" />
+    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
     <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

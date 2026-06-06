@@ -12,14 +12,26 @@
             "RelativeFilename": "boot-page.png"
           }
         ],
-        "Interactions": []
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Login"
+            }
+          }
+        ]
       },
       {
         "Name": "Login",
         "Components": [
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1",
+            "Name": "btnPin0",
             "X": 352,
             "Y": 444,
             "Width": 96,
@@ -37,11 +49,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_9",
+            "Name": "btnPin9",
             "X": 472,
             "Y": 356,
             "Width": 96,
@@ -59,11 +72,35 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_8",
+            "Name": "btnPwd",
+            "X": 232,
+            "Y": 444,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_V6FK",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "btnPin8",
             "X": 352,
             "Y": 356,
             "Width": 96,
@@ -81,11 +118,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_7",
+            "Name": "btnPin7",
             "X": 232,
             "Y": 356,
             "Width": 96,
@@ -103,11 +141,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_6",
+            "Name": "btnPin6",
             "X": 472,
             "Y": 268,
             "Width": 96,
@@ -125,11 +164,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_5",
+            "Name": "btnPin5",
             "X": 352,
             "Y": 268,
             "Width": 96,
@@ -147,11 +187,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_4",
+            "Name": "btnPin4",
             "X": 232,
             "Y": 268,
             "Width": 96,
@@ -169,11 +210,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_3",
+            "Name": "btnPin3",
             "X": 472,
             "Y": 180,
             "Width": 96,
@@ -191,11 +233,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_2",
+            "Name": "btnPin2",
             "X": 352,
             "Y": 180,
             "Width": 96,
@@ -213,11 +256,12 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "ButtonWithLabel",
-            "Name": "buttonWithLabel1_1",
+            "Name": "btnPin1",
             "X": 232,
             "Y": 180,
             "Width": 96,
@@ -235,7 +279,8 @@
               "Green": 255,
               "Blue": 255
             },
-            "TextRotation": "0"
+            "TextRotation": "0",
+            "Clickable": true
           },
           {
             "Type": "Box",
@@ -253,7 +298,7 @@
           {
             "Type": "TextArea",
             "Name": "LoginPromptLabel",
-            "X": 307,
+            "X": 310,
             "Y": 40,
             "Width": 181,
             "Height": 41,
@@ -265,6 +310,53 @@
               "Blue": 255
             },
             "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pinArea",
+            "X": 314,
+            "Y": 115,
+            "Width": 173,
+            "Height": 41,
+            "TextId": "__SingleUse_OMQI",
+            "TextRotation": "0",
+            "AutoSize": true,
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 7
+            }
+          },
+          {
+            "Type": "ModalWindow",
+            "Name": "ChangePasswordModal",
+            "Width": 800,
+            "Height": 600,
+            "Visible": false,
+            "FileName": "boot-page.png",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "ModalWidth": 800,
+            "ModalHeight": 600,
+            "Components": [
+              {
+                "Type": "BoxWithBorder",
+                "Name": "boxWithBorder1",
+                "X": 75,
+                "Y": -90,
+                "Width": 50,
+                "Height": 50,
+                "LockPosition": true,
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "BorderSize": 5
+              }
+            ]
           }
         ],
         "Interactions": [
@@ -277,6 +369,17 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Login"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "btnPwd"
+            },
+            "Action": {
+              "Type": "ActionShow",
+              "ActionComponent": "ChangePasswordModal"
             }
           }
         ]

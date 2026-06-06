@@ -4,7 +4,43 @@
     <Language Id="GB" />
   </Languages>
   <Texts>
-    <TextGroup Id="Group1" />
+    <TextGroup Id="LoginView">
+      <Text Id="EnterPinPrompt" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">Enter Pin</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">9</Translation>
+      </Text>
+      <Text Id="__SingleUse_KKKB" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">8</Translation>
+      </Text>
+      <Text Id="__SingleUse_NWFD" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">7</Translation>
+      </Text>
+      <Text Id="__SingleUse_VVSQ" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">6</Translation>
+      </Text>
+      <Text Id="__SingleUse_AQKX" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">5</Translation>
+      </Text>
+      <Text Id="__SingleUse_R1D1" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">4</Translation>
+      </Text>
+      <Text Id="__SingleUse_M4VS" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">3</Translation>
+      </Text>
+      <Text Id="__SingleUse_CT3G" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">2</Translation>
+      </Text>
+      <Text Id="__SingleUse_BOZV" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">1</Translation>
+      </Text>
+      <Text Id="__SingleUse_OJ5Y" Alignment="Center" TypographyId="Large">
+        <Translation Language="GB">0</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />

@@ -9,40 +9,277 @@
             "Name": "icon",
             "Width": 800,
             "Height": 600,
-            "RelativeFilename": "boot-page.png",
-            "Clickable": true
+            "RelativeFilename": "boot-page.png"
+          }
+        ],
+        "Interactions": []
+      },
+      {
+        "Name": "Login",
+        "Components": [
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1",
+            "X": 352,
+            "Y": 444,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_OJ5Y",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_9",
+            "X": 472,
+            "Y": 356,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_YVMI",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_8",
+            "X": 352,
+            "Y": 356,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_KKKB",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_7",
+            "X": 232,
+            "Y": 356,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_NWFD",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_6",
+            "X": 472,
+            "Y": 268,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_VVSQ",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_5",
+            "X": 352,
+            "Y": 268,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_AQKX",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_4",
+            "X": 232,
+            "Y": 268,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_R1D1",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_3",
+            "X": 472,
+            "Y": 180,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_M4VS",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_2",
+            "X": 352,
+            "Y": 180,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_CT3G",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "ButtonWithLabel",
+            "Name": "buttonWithLabel1_1",
+            "X": 232,
+            "Y": 180,
+            "Width": 96,
+            "Height": 64,
+            "Pressed": "pin-key-pressed.png",
+            "Released": "pin-key-normal.png",
+            "TextId": "__SingleUse_BOZV",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0"
+          },
+          {
+            "Type": "Box",
+            "Name": "box1",
+            "X": 232,
+            "Y": 103,
+            "Width": 336,
+            "Height": 64,
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "LoginPromptLabel",
+            "X": 307,
+            "Y": 40,
+            "Width": 181,
+            "Height": 41,
+            "TextId": "EnterPinPrompt",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
           }
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "gotoLogin",
             "Trigger": {
               "Type": "TriggerNone"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Main"
+              "ActionComponent": "Login"
             }
           }
         ]
-      },
-      {
-        "Name": "Main",
-        "Components": [
-          {
-            "Type": "Button",
-            "Name": "button1",
-            "X": 280,
-            "Y": 275,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          }
-        ],
-        "Interactions": []
       }
     ],
     "CustomContainerDefinitions": [],
@@ -76,29 +313,7 @@
     "FrameworkFeatures": {
       "LCD24bpp": {
         "Id": "LCD24bpp",
-        "Features": [
-          {
-            "Id": "TextureMapperImageFormats",
-            "IsEnabled": true
-          },
-          {
-            "Id": "L8Compression",
-            "Features": [
-              {
-                "Id": "L4",
-                "IsEnabled": true
-              },
-              {
-                "Id": "RLE",
-                "IsEnabled": true
-              }
-            ]
-          },
-          {
-            "Id": "RGBCompression",
-            "IsEnabled": true
-          }
-        ]
+        "IsEnabled": true
       }
     },
     "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",

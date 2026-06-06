@@ -1,16 +1,21 @@
+#include "tx_api.h"
 #include <gui/boot_screen/bootView.hpp>
 
-BootView::BootView() : clickCallback(this, &BootView::clickHandler) {}
 
+
+BootView::BootView() {}
+
+void boot_timeout (ULONG id) {
+    BootView* view = (BootView*)id;
+    view->gotoLoginView();
+}
 void BootView::setupScreen() {
   BootViewBase::setupScreen();
-  icon.setClickAction(clickCallback);
+  tx_timer_create(&timer, (CHAR*)"boot timer", boot_timeout, (ULONG)this, 3000, 0, TX_AUTO_ACTIVATE);
 }
 
 void BootView::tearDownScreen() { BootViewBase::tearDownScreen(); }
 
-void BootView::clickHandler(const Image &img, const touchgfx::ClickEvent &evt) {
-    if (evt.getType() == touchgfx::ClickEvent::RELEASED) {
-        application().gotoMainScreenNoTransition();
-    }
+void BootView::gotoLoginView() {
+    application().gotoLoginScreenNoTransition();
 }

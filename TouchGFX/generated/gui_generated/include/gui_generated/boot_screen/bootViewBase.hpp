@@ -9,7 +9,6 @@
 #include <gui/boot_screen/BootPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/mixins/ClickListener.hpp>
 
 class BootViewBase : public touchgfx::View<BootPresenter>
 {
@@ -27,7 +26,7 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::ClickListener< touchgfx::Image > icon;
+    touchgfx::Image icon;
 
 private:
 

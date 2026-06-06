@@ -184,17 +184,17 @@
     <Filter Include="Source Files\generated\gui_generated\boot_screen">
       <UniqueIdentifier>18AD1E62-C67A-D0D3-E4A1-6E6BF7B4A6B3</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\main_screen">
-      <UniqueIdentifier>337A6335-3A5D-2CB4-DBFE-4B51E1237725</UniqueIdentifier>
+    <Filter Include="Header Files\gui\login_screen">
+      <UniqueIdentifier>CA6773F5-CF7D-345F-C9AF-BA2FB85B325B</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\main_screen">
-      <UniqueIdentifier>302302BB-5E1E-6FD3-860D-8F7B56BF2271</UniqueIdentifier>
+    <Filter Include="Source Files\gui\login_screen">
+      <UniqueIdentifier>4F74DE58-0C7A-34AD-F1C8-BA3F4C3DE804</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>D4B54E1B-C226-044B-8061-45FB485C33CB</UniqueIdentifier>
+    <Filter Include="Header Files\generated\gui_generated\login_screen">
+      <UniqueIdentifier>A8F084EE-1E15-879A-121C-87FE314DD098</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\generated\gui_generated\main_screen">
-      <UniqueIdentifier>B9C47DE8-508A-4B4C-D507-9AA25FB842B2</UniqueIdentifier>
+    <Filter Include="Source Files\generated\gui_generated\login_screen">
+      <UniqueIdentifier>0F9F2E80-6CBE-E4F2-2E5D-AF47C4893031</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -237,14 +237,14 @@
     <ClCompile Include="..\..\generated\gui_generated\src\boot_screen\BootViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\boot_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainPresenter.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
+    <ClCompile Include="..\..\gui\src\login_screen\LoginPresenter.cpp">
+      <Filter>Source Files\gui\login_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp">
-      <Filter>Source Files\gui\main_screen</Filter>
+    <ClCompile Include="..\..\gui\src\login_screen\LoginView.cpp">
+      <Filter>Source Files\gui\login_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\main_screen</Filter>
+    <ClCompile Include="..\..\generated\gui_generated\src\login_screen\LoginViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\login_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -697,14 +697,14 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\boot_screen\BootViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\boot_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainPresenter.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\login_screen\LoginPresenter.hpp">
+      <Filter>Header Files\gui\login_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp">
-      <Filter>Header Files\gui\main_screen</Filter>
+    <ClInclude Include="..\..\gui\include\gui\login_screen\LoginView.hpp">
+      <Filter>Header Files\gui\login_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\main_screen</Filter>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\login_screen\LoginViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\login_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

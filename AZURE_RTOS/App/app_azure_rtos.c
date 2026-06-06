@@ -53,40 +53,40 @@
 #if (USE_STATIC_ALLOCATION == 1)
 /* USER CODE BEGIN TX_Pool_Buffer */
 /* USER CODE END TX_Pool_Buffer */
-#if defined(__ICCARM__)
-#pragma data_alignment = 4
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
 #endif
 __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END;
-static TX_BYTE_POOL        tx_app_byte_pool;
+static TX_BYTE_POOL tx_app_byte_pool;
 
 /* USER CODE BEGIN FX_Pool_Buffer */
 /* USER CODE END FX_Pool_Buffer */
-#if defined(__ICCARM__)
-#pragma data_alignment = 4
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
 #endif
 __ALIGN_BEGIN static UCHAR fx_byte_pool_buffer[FX_APP_MEM_POOL_SIZE] __ALIGN_END;
-static TX_BYTE_POOL        fx_app_byte_pool;
+static TX_BYTE_POOL fx_app_byte_pool;
 
 /* USER CODE BEGIN NX_Pool_Buffer */
 /* USER CODE END NX_Pool_Buffer */
-#if defined(__ICCARM__)
-#pragma data_alignment = 4
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
 #endif
 __ALIGN_BEGIN static UCHAR nx_byte_pool_buffer[NX_APP_MEM_POOL_SIZE] __ALIGN_END;
-static TX_BYTE_POOL        nx_app_byte_pool;
+static TX_BYTE_POOL nx_app_byte_pool;
 
 /* USER CODE BEGIN UX_Pool_Buffer */
 /* USER CODE END UX_Pool_Buffer */
-#if defined(__ICCARM__)
-#pragma data_alignment = 4
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
 #endif
 __ALIGN_BEGIN static UCHAR ux_byte_pool_buffer[UX_APP_MEM_POOL_SIZE] __ALIGN_END;
-static TX_BYTE_POOL        ux_app_byte_pool;
+static TX_BYTE_POOL ux_app_byte_pool;
 /* USER CODE BEGIN TouchGFX_Pool_Buffer */
 #if 0
 /* USER CODE END TouchGFX_Pool_Buffer */
-#if defined(__ICCARM__)
-#pragma data_alignment = 4
+#if defined ( __ICCARM__ )
+#pragma data_alignment=4
 #endif
 __ALIGN_BEGIN static UCHAR touchgfx_byte_pool_buffer[TOUCHGFX_APP_MEM_POOL_SIZE] __ALIGN_END;
 static TX_BYTE_POOL touchgfx_app_byte_pool;
@@ -104,32 +104,35 @@ static TX_BYTE_POOL touchgfx_app_byte_pool;
 /* USER CODE END PFP */
 
 /**
- * @brief  Define the initial system.
- * @param  first_unused_memory : Pointer to the first unused memory
- * @retval None
- */
+  * @brief  Define the initial system.
+  * @param  first_unused_memory : Pointer to the first unused memory
+  * @retval None
+  */
 VOID tx_application_define(VOID *first_unused_memory)
 {
   /* USER CODE BEGIN  tx_application_define_1*/
 
   /* USER CODE END  tx_application_define_1 */
 #if (USE_STATIC_ALLOCATION == 1)
-  UINT  status = TX_SUCCESS;
+  UINT status = TX_SUCCESS;
   VOID *memory_ptr;
 
-  if (tx_byte_pool_create(&tx_app_byte_pool, "Tx App memory pool", tx_byte_pool_buffer,
-                          TX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
+  if (tx_byte_pool_create(&tx_app_byte_pool, "Tx App memory pool", tx_byte_pool_buffer, TX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN TX_Byte_Pool_Error */
 
     /* USER CODE END TX_Byte_Pool_Error */
-  } else {
+  }
+  else
+  {
     /* USER CODE BEGIN TX_Byte_Pool_Success */
 
     /* USER CODE END TX_Byte_Pool_Success */
 
     memory_ptr = (VOID *)&tx_app_byte_pool;
-    status     = App_ThreadX_Init(memory_ptr);
-    if (status != TX_SUCCESS) {
+    status = App_ThreadX_Init(memory_ptr);
+    if (status != TX_SUCCESS)
+    {
       /* USER CODE BEGIN  App_ThreadX_Init_Error */
       while (1) {
       }
@@ -139,21 +142,25 @@ VOID tx_application_define(VOID *first_unused_memory)
     /* USER CODE BEGIN  App_ThreadX_Init_Success */
 
     /* USER CODE END  App_ThreadX_Init_Success */
+
   }
 
-  if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", fx_byte_pool_buffer,
-                          FX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
+  if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", fx_byte_pool_buffer, FX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN FX_Byte_Pool_Error */
 
     /* USER CODE END FX_Byte_Pool_Error */
-  } else {
+  }
+  else
+  {
     /* USER CODE BEGIN FX_Byte_Pool_Success */
 
     /* USER CODE END FX_Byte_Pool_Success */
 
     memory_ptr = (VOID *)&fx_app_byte_pool;
-    status     = MX_FileX_Init(memory_ptr);
-    if (status != FX_SUCCESS) {
+    status = MX_FileX_Init(memory_ptr);
+    if (status != FX_SUCCESS)
+    {
       /* USER CODE BEGIN  MX_FileX_Init_Error */
       while (1) {
       }
@@ -165,19 +172,22 @@ VOID tx_application_define(VOID *first_unused_memory)
     /* USER CODE END MX_FileX_Init_Success */
   }
 
-  if (tx_byte_pool_create(&nx_app_byte_pool, "Nx App memory pool", nx_byte_pool_buffer,
-                          NX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
+  if (tx_byte_pool_create(&nx_app_byte_pool, "Nx App memory pool", nx_byte_pool_buffer, NX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN NX_Byte_Pool_Error */
 
     /* USER CODE END NX_Byte_Pool_Error */
-  } else {
+  }
+  else
+  {
     /* USER CODE BEGIN NX_Byte_Pool_Success */
 
     /* USER CODE END NX_Byte_Pool_Success */
 
     memory_ptr = (VOID *)&nx_app_byte_pool;
-    status     = MX_NetXDuo_Init(memory_ptr);
-    if (status != NX_SUCCESS) {
+    status = MX_NetXDuo_Init(memory_ptr);
+    if (status != NX_SUCCESS)
+    {
       /* USER CODE BEGIN  MX_NetXDuo_Init_Error */
       while (1) {
       }
@@ -187,21 +197,25 @@ VOID tx_application_define(VOID *first_unused_memory)
     /* USER CODE BEGIN MX_NetXDuo_Init_Success */
 
     /* USER CODE END MX_NetXDuo_Init_Success */
+
   }
 
-  if (tx_byte_pool_create(&ux_app_byte_pool, "Ux App memory pool", ux_byte_pool_buffer,
-                          UX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
+  if (tx_byte_pool_create(&ux_app_byte_pool, "Ux App memory pool", ux_byte_pool_buffer, UX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
+  {
     /* USER CODE BEGIN UX_Byte_Pool_Error */
 
     /* USER CODE END UX_Byte_Pool_Error */
-  } else {
+  }
+  else
+  {
     /* USER CODE BEGIN UX_Byte_Pool_Success */
 
     /* USER CODE END UX_Byte_Pool_Success */
 
     memory_ptr = (VOID *)&ux_app_byte_pool;
-    status     = MX_USBX_Init(memory_ptr);
-    if (status != UX_SUCCESS) {
+    status = MX_USBX_Init(memory_ptr);
+    if (status != UX_SUCCESS)
+    {
       /* USER CODE BEGIN  MX_USBX_Init_Error */
       while (1) {
       }
@@ -213,24 +227,25 @@ VOID tx_application_define(VOID *first_unused_memory)
     /* USER CODE END MX_USBX_Init_Success */
   }
 
-  if (tx_byte_pool_create(
-          &touchgfx_app_byte_pool, "TouchGFX App memory pool", touchgfx_byte_pool_buffer,
-          TOUCHGFX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
-    /* USER CODE BEGIN TouchGFX_Byte_Pool_Error */
+    if (tx_byte_pool_create(&touchgfx_app_byte_pool, "TouchGFX App memory pool", touchgfx_byte_pool_buffer, TOUCHGFX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
+    {
+        /* USER CODE BEGIN TouchGFX_Byte_Pool_Error */
+        /* USER CODE END TouchGFX_Byte_Pool_Error */
+    }
+    else
+    {
+        /* USER CODE BEGIN TouchGFX_Byte_Pool_Success */
 #endif
   }
-
-  /* USER CODE END TouchGFX_Byte_Pool_Error */
   memory_ptr = malloc(TOUCHGFX_APP_MEM_POOL_SIZE);
   if (tx_byte_pool_create(&touchgfx_app_byte_pool, "TouchGFX App memory pool", memory_ptr,
                           TOUCHGFX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
   } else {
-    /* USER CODE BEGIN TouchGFX_Byte_Pool_Success */
+        /* USER CODE END TouchGFX_Byte_Pool_Success */
 
-    /* USER CODE END TouchGFX_Byte_Pool_Success */
-
-    memory_ptr = (VOID *)&touchgfx_app_byte_pool;
-    if (MX_TouchGFX_Init(memory_ptr) != TX_SUCCESS) {
+        memory_ptr = (VOID*)&touchgfx_app_byte_pool;
+    if (MX_TouchGFX_Init(memory_ptr) != TX_SUCCESS)
+    {
       /* USER CODE BEGIN  MX_X-CUBE-TOUCHGFX_Init_Error */
 
       /* USER CODE END  MX_X-CUBE-TOUCHGFX_Init_Error */
@@ -243,16 +258,15 @@ VOID tx_application_define(VOID *first_unused_memory)
 #else
   /*
    * Using dynamic memory allocation requires to apply some changes to the linker file.
-   * ThreadX needs to pass a pointer to the first free memory location in RAM to the
-   tx_application_define() function,
+   * ThreadX needs to pass a pointer to the first free memory location in RAM to the tx_application_define() function,
    * using the "first_unused_memory" argument.
    * This require changes in the linker files to expose this memory location.
    * For EWARM add the following section into the .icf file:
        place in RAM_region    { last section FREE_MEM };
    * For MDK-ARM
        - either define the RW_IRAM1 region in the ".sct" file
-       - or modify the line below in "tx_initialize_low_level.S to match the memory region being
-   used LDR r1, =|Image$$RW_IRAM1$$ZI$$Limit|
+       - or modify the line below in "tx_initialize_low_level.S to match the memory region being used
+          LDR r1, =|Image$$RW_IRAM1$$ZI$$Limit|
 
    * For STM32CubeIDE add the following section into the .ld file:
        ._threadx_heap :
@@ -262,23 +276,20 @@ VOID tx_application_define(VOID *first_unused_memory)
             . = . + 64K;
             . = ALIGN(8);
           } >RAM_D1 AT> RAM_D1
-      * The simplest way to provide memory for ThreadX is to define a new section, see
-   ._threadx_heap above.
+      * The simplest way to provide memory for ThreadX is to define a new section, see ._threadx_heap above.
       * In the example above the ThreadX heap size is set to 64KBytes.
-      * The ._threadx_heap must be located between the .bss and the ._user_heap_stack sections in
-   the linker script.
-      * Caution: Make sure that ThreadX does not need more than the provided heap memory (64KBytes
-   in this example).
+      * The ._threadx_heap must be located between the .bss and the ._user_heap_stack sections in the linker script.
+      * Caution: Make sure that ThreadX does not need more than the provided heap memory (64KBytes in this example).
       * Read more in STM32CubeIDE User Guide, chapter: "Linker script".
 
-   * The "tx_initialize_low_level.S" should be also modified to enable the
-   "USE_DYNAMIC_MEMORY_ALLOCATION" flag.
+   * The "tx_initialize_low_level.S" should be also modified to enable the "USE_DYNAMIC_MEMORY_ALLOCATION" flag.
    */
 
   /* USER CODE BEGIN DYNAMIC_MEM_ALLOC */
   (void)first_unused_memory;
   /* USER CODE END DYNAMIC_MEM_ALLOC */
 #endif
+
 }
 
 /* USER CODE BEGIN 2 */

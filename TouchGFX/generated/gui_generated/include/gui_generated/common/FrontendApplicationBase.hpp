@@ -23,8 +23,8 @@ public:
     // Boot
     void gotoBootScreenNoTransition();
 
-    // Main
-    void gotoMainScreenNoTransition();
+    // Login
+    void gotoLoginScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -34,8 +34,8 @@ protected:
     // Boot
     void gotoBootScreenNoTransitionImpl();
 
-    // Main
-    void gotoMainScreenNoTransitionImpl();
+    // Login
+    void gotoLoginScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

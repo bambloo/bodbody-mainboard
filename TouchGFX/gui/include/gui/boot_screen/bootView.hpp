@@ -1,6 +1,7 @@
 #ifndef BOOTVIEW_HPP
 #define BOOTVIEW_HPP
 
+#include "tx_api.h"
 #include <gui_generated/boot_screen/bootViewBase.hpp>
 #include <gui/boot_screen/bootPresenter.hpp>
 
@@ -11,9 +12,10 @@ public:
     virtual ~BootView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-    void clickHandler(const Image &, const touchgfx::ClickEvent& evt);
+    void gotoLoginView();
 protected:
-    Callback<BootView, const Image&, const ClickEvent&> clickCallback; 
+    Callback<BootView, const Image&, const ClickEvent&> clickCallback;
+    TX_TIMER timer;
 };
 
 #endif // BOOTVIEW_HPP

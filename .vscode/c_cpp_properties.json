@@ -11,7 +11,7 @@
                 "Drivers/CMSIS/Device/ST/STM32H7xx/Include",
                 "Core/Inc",
                 "Threads/Inc",
-                "USBX/App",
+                "USBX/App"
             ],
             "defines": [
                 "_DEBUG",
@@ -35,7 +35,8 @@
                 "-O0",
                 "-g3",
                 "-std=gnu11"
-            ]
+            ],
+            "compileCommands": "${workspaceFolder}/build/Debug/compile_commands.json"
         }
     ],
     "version": 4

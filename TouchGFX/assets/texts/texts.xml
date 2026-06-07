@@ -2,55 +2,66 @@
 <TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.26.1">
   <Languages>
     <Language Id="GB" />
+    <Language Id="ZH" />
   </Languages>
   <Texts>
     <TextGroup Id="LoginView">
-      <Text Id="EnterPinPrompt" Alignment="Center" TypographyId="Large">
+      <Text Id="EnterPinPrompt" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Enter Pin</Translation>
+        <Translation Language="ZH">PIN安全验证</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_V6FK" Alignment="Center" TypographyId="Large">
-        <Translation Language="GB">9</Translation>
-      </Text>
-      <Text Id="__SingleUse_OMQI" Alignment="Left" TypographyId="Large">
+      <Text Id="__SingleUse_JE1K" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">New Text&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">9</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_KKKB" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_KKKB" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">8</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_NWFD" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_NWFD" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">7</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_VVSQ" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_VVSQ" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">6</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_AQKX" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_AQKX" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">5</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_R1D1" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_R1D1" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">4</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_M4VS" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_M4VS" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">3</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_CT3G" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_CT3G" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">2</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_BOZV" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_BOZV" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">1</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
-      <Text Id="__SingleUse_OJ5Y" Alignment="Center" TypographyId="Large">
+      <Text Id="__SingleUse_OJ5Y" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">0</Translation>
+        <Translation Language="ZH"></Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="verdana.ttf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="*" />
-    <Typography Id="Large" Font="verdana.ttf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
-    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
+    <Typography Id="Default" Font="SourceHanSansSC-Bold.otf" Size="32" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" WildcardCharacters="*" />
+    <Typography Id="Large" Font="SourceHanSansSC-Bold.otf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
+    <Typography Id="Small" Font="SourceHanSansSC-Bold.otf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
+    <Typography Id="Typography1" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
   </Typographies>
 </TextDatabase>

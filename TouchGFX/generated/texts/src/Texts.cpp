@@ -60,22 +60,26 @@ extern const touchgfx::TypedText::TypedTextData* const typedTextDatabaseArray[];
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::Unicode::UnicodeChar texts_all_languages[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    0x45, 0x6e, 0x74, 0x65, 0x72, 0x20, 0x50, 0x69, 0x6e, 0x0, // @0 "Enter Pin"
-    0x2, 0x0, // @10 "<>"
-    0x30, 0x0, // @12 "0"
-    0x31, 0x0, // @14 "1"
-    0x32, 0x0, // @16 "2"
-    0x33, 0x0, // @18 "3"
-    0x34, 0x0, // @20 "4"
-    0x35, 0x0, // @22 "5"
-    0x36, 0x0, // @24 "6"
-    0x37, 0x0, // @26 "7"
-    0x38, 0x0, // @28 "8"
-    0x39, 0x0 // @30 "9"
+    0x4e, 0x65, 0x77, 0x20, 0x54, 0x65, 0x78, 0x74, 0x2, 0x0, // @0 "New Text<>"
+    0x45, 0x6e, 0x74, 0x65, 0x72, 0x20, 0x50, 0x69, 0x6e, 0x0, // @10 "Enter Pin"
+    0x50, 0x49, 0x4e, 0x5b89, 0x5168, 0x9a8c, 0x8bc1, 0x0, // @20 "PIN????"
+    0x30, 0x0, // @28 "0"
+    0x31, 0x0, // @30 "1"
+    0x32, 0x0, // @32 "2"
+    0x33, 0x0, // @34 "3"
+    0x34, 0x0, // @36 "4"
+    0x35, 0x0, // @38 "5"
+    0x36, 0x0, // @40 "6"
+    0x37, 0x0, // @42 "7"
+    0x38, 0x0, // @44 "8"
+    0x39, 0x0 // @46 "9"
 };
 
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
+
+TEXT_LOCATION_FLASH_PRAGMA
+KEEP extern const uint32_t indicesZh[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 
 // Array holding dynamically installed languages
 struct TranslationHeader
@@ -84,11 +88,12 @@ struct TranslationHeader
     uint32_t offset_to_indices;
     uint32_t offset_to_typedtext;
 };
-static const TranslationHeader* languagesArray[1] = { 0 };
+static const TranslationHeader* languagesArray[2] = { 0 };
 
 // Compiled and linked in languages
 static const uint32_t* const staticLanguageIndices[] = {
-    indicesGb
+    indicesGb,
+    indicesZh
 };
 
 touchgfx::LanguageId touchgfx::Texts::currentLanguage = static_cast<touchgfx::LanguageId>(0);
@@ -98,7 +103,7 @@ static const uint32_t* currentLanguageIndices = 0;
 void touchgfx::Texts::setLanguage(touchgfx::LanguageId id)
 {
     const touchgfx::TypedText::TypedTextData* currentLanguageTypedText = 0;
-    if (id < 1)
+    if (id < 2)
     {
         if (languagesArray[id] != 0)
         {

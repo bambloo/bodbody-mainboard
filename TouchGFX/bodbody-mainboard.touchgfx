@@ -30,331 +30,341 @@
         "Name": "Login",
         "Components": [
           {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin0",
-            "X": 352,
-            "Y": 444,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_OJ5Y",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin9",
-            "X": 472,
-            "Y": 356,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_YVMI",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPwd",
-            "X": 232,
-            "Y": 444,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_V6FK",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin8",
-            "X": 352,
-            "Y": 356,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_KKKB",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin7",
-            "X": 232,
-            "Y": 356,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_NWFD",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin6",
-            "X": 472,
-            "Y": 268,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_VVSQ",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin5",
-            "X": 352,
-            "Y": 268,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_AQKX",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin4",
-            "X": 232,
-            "Y": 268,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_R1D1",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin3",
-            "X": 472,
-            "Y": 180,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_M4VS",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin2",
-            "X": 352,
-            "Y": 180,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_CT3G",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "ButtonWithLabel",
-            "Name": "btnPin1",
-            "X": 232,
-            "Y": 180,
-            "Width": 96,
-            "Height": 64,
-            "Pressed": "pin-key-pressed.png",
-            "Released": "pin-key-normal.png",
-            "TextId": "__SingleUse_BOZV",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Clickable": true
-          },
-          {
-            "Type": "Box",
-            "Name": "box1",
-            "X": 232,
-            "Y": 103,
-            "Width": 336,
-            "Height": 64,
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "LoginPromptLabel",
-            "X": 310,
-            "Y": 40,
-            "Width": 181,
-            "Height": 41,
-            "TextId": "EnterPinPrompt",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "pinArea",
-            "X": 314,
-            "Y": 115,
-            "Width": 173,
-            "Height": 41,
-            "TextId": "__SingleUse_OMQI",
-            "TextRotation": "0",
-            "AutoSize": true,
-            "Wildcard1": {
-              "UseBuffer": true,
-              "BufferSize": 7
-            }
-          },
-          {
-            "Type": "ModalWindow",
-            "Name": "ChangePasswordModal",
+            "Type": "Container",
+            "Name": "BackgroundContainer",
             "Width": 800,
             "Height": 600,
-            "Visible": false,
-            "FileName": "boot-page.png",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "ModalWidth": 800,
-            "ModalHeight": 600,
             "Components": [
               {
-                "Type": "BoxWithBorder",
-                "Name": "boxWithBorder1",
-                "X": 75,
-                "Y": -90,
-                "Width": 50,
-                "Height": 50,
-                "LockPosition": true,
+                "Type": "ButtonWithIcon",
+                "Name": "btnBack",
+                "X": 463,
+                "Y": 415,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "IconPressed": "__generated\\icon_theme_images_content_backspace_32_32_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_content_backspace_32_32_E8F6FB.svg.png",
+                "IconX": 27,
+                "IconY": 9,
+                "IconHeight": 32,
+                "IconWidth": 32,
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "btnPwd",
+                "X": 241,
+                "Y": 415,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "IconPressed": "__generated\\icon_theme_images_communication_vpn_key_32_32_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_communication_vpn_key_32_32_E8F6FB.svg.png",
+                "IconX": 27,
+                "IconY": 10,
+                "IconHeight": 32,
+                "IconWidth": 32
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin9",
+                "X": 463,
+                "Y": 345,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_YVMI",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin8",
+                "X": 352,
+                "Y": 345,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_KKKB",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin7",
+                "X": 241,
+                "Y": 345,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_NWFD",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin6",
+                "X": 463,
+                "Y": 275,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_VVSQ",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin5",
+                "X": 352,
+                "Y": 275,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_AQKX",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin4",
+                "X": 241,
+                "Y": 275,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_R1D1",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin3",
+                "X": 463,
+                "Y": 205,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_M4VS",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin2",
+                "X": 352,
+                "Y": 205,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_CT3G",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin1",
+                "X": 241,
+                "Y": 205,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_BOZV",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnPin0",
+                "X": 352,
+                "Y": 415,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "__SingleUse_OJ5Y",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
+                "Clickable": true
+              },
+              {
+                "Type": "Image",
+                "Name": "image2",
+                "X": 241,
+                "Y": 135,
+                "Width": 309,
+                "Height": 51,
+                "RelativeFilename": "pin-input-bkgrd.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "LoginPromptLabel",
+                "X": 323,
+                "Y": 84,
+                "Width": 145,
+                "Height": 36,
+                "TextId": "EnterPinPrompt",
+                "TextRotation": "0",
                 "Color": {
                   "Red": 255,
                   "Green": 255,
                   "Blue": 255
                 },
-                "BorderSize": 5
+                "AutoSize": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "pinArea",
+                "X": 241,
+                "Y": 142,
+                "Width": 309,
+                "Height": 36,
+                "TextId": "__SingleUse_JE1K",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 7
+                }
+              }
+            ]
+          },
+          {
+            "Type": "ModalWindow",
+            "Name": "ChangePwdModal",
+            "Width": 800,
+            "Height": 600,
+            "Visible": false,
+            "FileName": "__generated\\alternate_theme_images_containers_large_wide_outlined_light.png",
+            "ModalX": 160,
+            "ModalY": 165,
+            "ModalWidth": 480,
+            "ModalHeight": 270,
+            "Alpha": 244,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "X": 150,
+                "Y": 22,
+                "Width": 240,
+                "Height": 50,
+                "RelativeFilename": "__generated\\light_theme_images_widgets_button_regular_height_50_medium_round_inactive.png"
               }
             ]
           }
@@ -379,7 +389,7 @@
             },
             "Action": {
               "Type": "ActionShow",
-              "ActionComponent": "ChangePasswordModal"
+              "ActionComponent": "ChangePwdModal"
             }
           }
         ]

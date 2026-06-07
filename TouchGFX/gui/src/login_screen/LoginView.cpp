@@ -1,10 +1,13 @@
 #include "touchgfx/Callback.hpp"
+#include "touchgfx/Unicode.hpp"
 #include "touchgfx/widgets/ButtonWithLabel.hpp"
 #include <gui/login_screen/LoginView.hpp>
 
 LoginView::LoginView() :
     pinClickedCallback(this, &LoginView::pinClicked),
-    pinLen(0)
+    funClickedCallback(this, &LoginView::funClicked),
+    pinLen(0),
+    pinVal(0)
 {
 
 }
@@ -21,7 +24,9 @@ void LoginView::setupScreen()
     btnPin6.setClickAction(pinClickedCallback);
     btnPin7.setClickAction(pinClickedCallback);
     btnPin8.setClickAction(pinClickedCallback);
-    btnPin9.setClickAction(pinClickedCallback);}
+    btnPin9.setClickAction(pinClickedCallback);
+    btnBack.setClickAction(funClickedCallback);
+}
 
 void LoginView::tearDownScreen()
 {
@@ -37,29 +42,21 @@ void LoginView::pinClicked(const touchgfx::ButtonWithLabel& source, const touchg
     if (pinLen >= PINAREA_SIZE - 1) {
         return;
     }
-    pinAreaBuffer[pinLen++] = source.getLabelText().getText()[0];
+
+    pinAreaBuffer[pinLen++] = 0x00B7;
     pinAreaBuffer[pinLen] = 0;
-    centerPinArea();
     pinArea.invalidate();
+    // pinArea.resizeToCurrentTextWithAlignment();
 }
 
-void LoginView::centerPinArea()
+void LoginView::funClicked(const touchgfx::ButtonWithIcon& source, const touchgfx::ClickEvent& evt)
 {
-    pinArea.resizeToCurrentText();
-    // Get the parent container's dimensions (usually the screen or a group)
-    int16_t parentWidth = getScreenWidth();
-    // int16_t parentHeight = getScreenHeight();
-
-    // // Get the current dimensions of pinArea
-    int16_t areaWidth = pinArea.getWidth();
-    int16_t areaHeight = pinArea.getHeight();
-
-    // // Calculate centered position
-    int16_t x = (parentWidth - areaWidth) / 2;
-    int16_t y = pinArea.getY(); // Keep the current Y position, or calculate if needed
-    // int16_t y = (parentHeight - areaHeight) / 2;
-
-    // Set the new position
-    pinArea.resizeToCurrentTextWithAlignment();
-    pinArea.setPosition(x, y, areaWidth, areaHeight);
+    if (evt.getType() != evt.PRESSED) {
+        return;
+    }
+    if (pinLen) {
+        pinAreaBuffer[--pinLen] = 0;
+        pinArea.invalidate();
+        // pinArea.resizeToCurrentTextWithAlignment();
+    }
 }

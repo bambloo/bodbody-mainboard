@@ -8,12 +8,14 @@
 #include <mvp/View.hpp>
 #include <gui/login_screen/LoginPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
-#include <touchgfx/widgets/BoxWithBorder.hpp>
 
 class LoginViewBase : public touchgfx::View<LoginPresenter>
 {
@@ -31,9 +33,10 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin0;
+    touchgfx::Container BackgroundContainer;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > btnBack;
+    touchgfx::ButtonWithIcon btnPwd;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin9;
-    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPwd;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin8;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin7;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin6;
@@ -42,11 +45,12 @@ protected:
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin3;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin2;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin1;
-    touchgfx::Box box1;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin0;
+    touchgfx::Image image2;
     touchgfx::TextArea LoginPromptLabel;
     touchgfx::TextAreaWithOneWildcard pinArea;
-    touchgfx::ModalWindow ChangePasswordModal;
-    touchgfx::BoxWithBorder boxWithBorder1;
+    touchgfx::ModalWindow ChangePwdModal;
+    touchgfx::Image image1;
 
     /*
      * Wildcard Buffers

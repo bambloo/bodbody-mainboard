@@ -1,6 +1,7 @@
 #ifndef LOGINVIEW_HPP
 #define LOGINVIEW_HPP
 
+#include "touchgfx/widgets/ButtonWithIcon.hpp"
 #include <gui_generated/login_screen/LoginViewBase.hpp>
 #include <gui/login_screen/LoginPresenter.hpp>
 
@@ -12,10 +13,12 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 protected:
-    void  centerPinArea();
     touchgfx::Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinClickedCallback;
+    touchgfx::Callback<LoginView, const touchgfx::ButtonWithIcon&, const touchgfx::ClickEvent&> funClickedCallback;
     void pinClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
+    void funClicked(const touchgfx::ButtonWithIcon& source, const touchgfx::ClickEvent& evt);
     int pinLen;
+    uint32_t pinVal;
 };
 
 #endif // LOGINVIEW_HPP

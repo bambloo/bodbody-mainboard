@@ -55,7 +55,7 @@ extern "C" {
 
 #define UX_APP_MEM_POOL_SIZE                     (DEFAULT_MEMORY_POOL_SIZE * 4)
 
-#define TOUCHGFX_APP_MEM_POOL_SIZE               (1024 * 64)
+#define TOUCHGFX_APP_MEM_POOL_SIZE               (1024 * 32)
 
 /* USER CODE BEGIN EC */
 

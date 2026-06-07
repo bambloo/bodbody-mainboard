@@ -1,0 +1,7 @@
+#include <touchgfx/hal/Types.hpp>
+
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_20_4bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE = {
+    // Unicode: [0x00B7]
+    0x80, 0xFF, 0x08, 0xF5, 0xFF, 0x5F, 0xF8, 0xFF, 0x8F, 0xF4, 0xFF, 0x4F, 0x70, 0xEE, 0x07
+};

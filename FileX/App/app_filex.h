@@ -32,6 +32,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "fx_api.h"
+#include "fx_stm32_sd_driver.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -80,8 +81,13 @@ UINT MX_FileX_Init(VOID *memory_ptr);
   #define FX_APP_PREEMPTION_THRESHOLD FX_APP_THREAD_PRIO
 #endif
 
-/* USER CODE BEGIN PD */
+/* fx sd volume name */
+#ifndef FX_SD_VOLUME_NAME
+  #define FX_SD_VOLUME_NAME "STM32_SDIO_DISK"
+#endif
 
+/* USER CODE BEGIN PD */
+extern FX_MEDIA sdio_disk;
 /* USER CODE END PD */
 
 /* USER CODE BEGIN 2 */

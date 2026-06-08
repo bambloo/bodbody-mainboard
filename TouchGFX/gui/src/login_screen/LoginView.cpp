@@ -43,8 +43,15 @@ void LoginView::pinClicked(const touchgfx::ButtonWithLabel& source, const touchg
         return;
     }
 
+    pinVal = pinVal * 10 + (source.getLabelText().getText()[0] - '0');
     pinAreaBuffer[pinLen++] = 0x00B7;
     pinAreaBuffer[pinLen] = 0;
+
+    if (pinLen == PINAREA_SIZE - 1) {
+        presenter->checkPin(pinVal);
+        pinLen = 0;
+        pinVal = 0;
+    }
     pinArea.invalidate();
     // pinArea.resizeToCurrentTextWithAlignment();
 }
@@ -56,6 +63,7 @@ void LoginView::funClicked(const touchgfx::ButtonWithIcon& source, const touchgf
     }
     if (pinLen) {
         pinAreaBuffer[--pinLen] = 0;
+        pinVal /= 10;
         pinArea.invalidate();
         // pinArea.resizeToCurrentTextWithAlignment();
     }

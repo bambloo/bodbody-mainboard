@@ -1,6 +1,7 @@
 #include "memory.h"
 
 #include "is42s32200.h"
+#include "stm32h7xx_hal_sd.h"
 #include "thread_ltdc.h"
 #include "thread_main.h"
 #include "thread_touchpad.h"
@@ -9,6 +10,8 @@
 #include "main.h"
 #include "tx_api.h"
 #include "w25q128.h"
+#include "sdmmc.h"
+
 
 TX_THREAD main_thread;
 void thread_main_entry(ULONG thread_input);

@@ -27,6 +27,8 @@ public:
 
     virtual ~LoginPresenter() {}
 
+    bool checkPin(uint32_t pin);
+
 private:
     LoginPresenter();
 

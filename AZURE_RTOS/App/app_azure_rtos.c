@@ -32,6 +32,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "is42s32200.h"
+#include "tx_api.h"
+#include "memory.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +62,7 @@ __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END
 static TX_BYTE_POOL tx_app_byte_pool;
 
 /* USER CODE BEGIN FX_Pool_Buffer */
+#if 0
 /* USER CODE END FX_Pool_Buffer */
 #if defined ( __ICCARM__ )
 #pragma data_alignment=4
@@ -68,6 +71,8 @@ __ALIGN_BEGIN static UCHAR fx_byte_pool_buffer[FX_APP_MEM_POOL_SIZE] __ALIGN_END
 static TX_BYTE_POOL fx_app_byte_pool;
 
 /* USER CODE BEGIN NX_Pool_Buffer */
+#endif
+static TX_BYTE_POOL fx_app_byte_pool;
 /* USER CODE END NX_Pool_Buffer */
 #if defined ( __ICCARM__ )
 #pragma data_alignment=4
@@ -140,7 +145,8 @@ VOID tx_application_define(VOID *first_unused_memory)
     }
 
     /* USER CODE BEGIN  App_ThreadX_Init_Success */
-
+  }
+#if 0
     /* USER CODE END  App_ThreadX_Init_Success */
 
   }
@@ -148,7 +154,9 @@ VOID tx_application_define(VOID *first_unused_memory)
   if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", fx_byte_pool_buffer, FX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
   {
     /* USER CODE BEGIN FX_Byte_Pool_Error */
-
+#endif
+  if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", malloc(FX_APP_MEM_POOL_SIZE), FX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
+    return;
     /* USER CODE END FX_Byte_Pool_Error */
   }
   else

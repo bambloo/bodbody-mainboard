@@ -63,6 +63,13 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Threads/Inc
 )
 
+target_include_directories(stm32cubemx INTERFACE
+    # Add user defined include paths
+    Drivers/User/Inc
+    Threads/Inc
+)
+
+
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols

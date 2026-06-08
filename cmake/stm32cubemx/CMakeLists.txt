@@ -19,6 +19,7 @@ set(MX_Include_Dirs
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/../../AZURE_RTOS/App
     ${CMAKE_CURRENT_SOURCE_DIR}/../../FileX/App
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../FileX/Target
     ${CMAKE_CURRENT_SOURCE_DIR}/../../USBX/App
     ${CMAKE_CURRENT_SOURCE_DIR}/../../USBX/Target
     ${CMAKE_CURRENT_SOURCE_DIR}/../../NetXDuo/App
@@ -55,8 +56,9 @@ set(MX_Include_Dirs
 # STM32CubeMX generated application sources
 set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../NetXDuo/App/app_netxduo.c
-    ${CMAKE_CURRENT_SOURCE_DIR}/../../FileX/App/app_filex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../AZURE_RTOS/App/app_azure_rtos.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../FileX/App/app_filex.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../FileX/Target/fx_stm32_sd_driver_glue.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../TouchGFX/App/app_touchgfx.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../TouchGFX/target/generated/TouchGFXConfiguration.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/../../TouchGFX/target/generated/TouchGFXGeneratedHAL.cpp
@@ -75,6 +77,7 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma2d.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/eth.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/fmc.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/hash.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2c.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/i2s.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/ltdc.c
@@ -123,6 +126,8 @@ set(STM32_Drivers_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sram.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_nand.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_sdram.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hash.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_hash_ex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2s.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_i2s_ex.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_ltdc.c
@@ -150,6 +155,7 @@ set(STM32_Drivers_Src
 
 set(Interfaces_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Middlewares/ST/netxduo/common/drivers/ethernet/lan8742/nx_stm32_phy_driver.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Middlewares/ST/filex/common/drivers/fx_stm32_sd_driver.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Middlewares/ST/netxduo/common/drivers/ethernet/nx_stm32_eth_driver.c
 )
 set(USBX_Src

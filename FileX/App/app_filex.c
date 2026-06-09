@@ -30,6 +30,7 @@
 /* USER CODE BEGIN Includes */
 #include "fx_media.h"
 #include "main.h"
+#include "parameters.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,7 +40,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* Main thread stack size */
-#define FX_APP_THREAD_STACK_SIZE DEFAULT_APP_STACK_SIZE
+#define FX_APP_THREAD_STACK_SIZE (DEFAULT_APP_STACK_SIZE * 2)
 /* Main thread priority */
 #define FX_APP_THREAD_PRIO 10
 
@@ -141,7 +142,7 @@ void filex_thread_entry(ULONG thread_input) {
   /* USER CODE END filex_thread_entry 0 */
 
   /* Open the SD disk driver */
-  sd_status =  fx_media_open(&sdio_disk, FX_SD_VOLUME_NAME, fx_stm32_sd_driver, (VOID *)FX_NULL, (VOID *) fx_sd_media_memory, FX_STM32_SD_DEFAULT_SECTOR_SIZE);
+  sd_status =  fx_media_open(&sdio_disk, FX_SD_VOLUME_NAME, fx_stm32_sd_driver, (VOID *)FX_NULL, (VOID *) fx_sd_media_memory, sizeof(fx_sd_media_memory));
 
   /* Check the media open sd_status */
   if (sd_status != FX_SUCCESS)
@@ -158,11 +159,30 @@ void filex_thread_entry(ULONG thread_input) {
                             (VOID *)FX_NULL, (VOID *)fx_sd_media_memory,
                             FX_STM32_SD_DEFAULT_SECTOR_SIZE);
   if (sd_status != FX_SUCCESS) {
+    return;
+  }
+  UINT status = fx_file_create(&sdio_disk, "parameters.bin");
+  if (status != FX_SUCCESS && status != FX_ALREADY_CREATED) {
+    // Handle error (e.g., SD card not ready or media full)
   }
 
+  parameters_init();
   /* USER CODE END filex_thread_entry 1 */
 }
 
 /* USER CODE BEGIN 2 */
 
+UINT fx_read_buffer(FX_FILE *file, void *buffer, UINT size) {
+  UINT cursor = 0;
+  while (cursor < size) {
+    ULONG bytes_read = 0;
+    UINT status =
+        fx_file_read(file, buffer + cursor, size - cursor, &bytes_read);
+    if (status != FX_SUCCESS) {
+      return status;
+    }
+    cursor += bytes_read;
+  }
+  return FX_SUCCESS;
+}
 /* USER CODE END 2 */

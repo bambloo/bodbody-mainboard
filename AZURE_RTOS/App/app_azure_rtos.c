@@ -32,8 +32,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "is42s32200.h"
-#include "tx_api.h"
 #include "memory.h"
+#include "tx_api.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,6 +55,7 @@
 /* Private variables ---------------------------------------------------------*/
 #if (USE_STATIC_ALLOCATION == 1)
 /* USER CODE BEGIN TX_Pool_Buffer */
+#if 0
 /* USER CODE END TX_Pool_Buffer */
 #if defined ( __ICCARM__ )
 #pragma data_alignment=4
@@ -62,7 +64,7 @@ __ALIGN_BEGIN static UCHAR tx_byte_pool_buffer[TX_APP_MEM_POOL_SIZE] __ALIGN_END
 static TX_BYTE_POOL tx_app_byte_pool;
 
 /* USER CODE BEGIN FX_Pool_Buffer */
-#if 0
+
 /* USER CODE END FX_Pool_Buffer */
 #if defined ( __ICCARM__ )
 #pragma data_alignment=4
@@ -71,7 +73,7 @@ __ALIGN_BEGIN static UCHAR fx_byte_pool_buffer[FX_APP_MEM_POOL_SIZE] __ALIGN_END
 static TX_BYTE_POOL fx_app_byte_pool;
 
 /* USER CODE BEGIN NX_Pool_Buffer */
-#endif
+
 static TX_BYTE_POOL fx_app_byte_pool;
 /* USER CODE END NX_Pool_Buffer */
 #if defined ( __ICCARM__ )
@@ -101,6 +103,7 @@ static TX_BYTE_POOL touchgfx_app_byte_pool;
 /* USER CODE BEGIN PV */
 static TX_BYTE_POOL touchgfx_app_byte_pool;
 #endif
+#endif
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -116,7 +119,37 @@ static TX_BYTE_POOL touchgfx_app_byte_pool;
 VOID tx_application_define(VOID *first_unused_memory)
 {
   /* USER CODE BEGIN  tx_application_define_1*/
+  UINT status = TX_SUCCESS;
 
+  status = App_ThreadX_Init(memory_pool_d1());
+  if (status != TX_SUCCESS) {
+    while (1) {
+    }
+  }
+
+  status = MX_FileX_Init(memory_pool_d1());
+  if (status != TX_SUCCESS) {
+    while (1) {
+    }
+  }
+
+  status = MX_NetXDuo_Init(memory_pool_d1());
+  if (status != NX_SUCCESS) {
+    while (1) {
+    }
+  }
+  status = MX_USBX_Init(memory_pool_d1() );
+  if (status != UX_SUCCESS) {
+    while (1) {
+    }
+  }
+
+  status = MX_TouchGFX_Init(memory_pool_d1());
+  if (status != UX_SUCCESS) {
+    while (1) {
+    }
+  }
+#if 0
   /* USER CODE END  tx_application_define_1 */
 #if (USE_STATIC_ALLOCATION == 1)
   UINT status = TX_SUCCESS;
@@ -139,14 +172,14 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != TX_SUCCESS)
     {
       /* USER CODE BEGIN  App_ThreadX_Init_Error */
-      while (1) {
+      while(1)
+      {
       }
       /* USER CODE END  App_ThreadX_Init_Error */
     }
 
     /* USER CODE BEGIN  App_ThreadX_Init_Success */
-  }
-#if 0
+
     /* USER CODE END  App_ThreadX_Init_Success */
 
   }
@@ -154,9 +187,7 @@ VOID tx_application_define(VOID *first_unused_memory)
   if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", fx_byte_pool_buffer, FX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
   {
     /* USER CODE BEGIN FX_Byte_Pool_Error */
-#endif
-  if (tx_byte_pool_create(&fx_app_byte_pool, "Fx App memory pool", malloc(FX_APP_MEM_POOL_SIZE), FX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
-    return;
+
     /* USER CODE END FX_Byte_Pool_Error */
   }
   else
@@ -170,7 +201,8 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != FX_SUCCESS)
     {
       /* USER CODE BEGIN  MX_FileX_Init_Error */
-      while (1) {
+      while(1)
+      {
       }
       /* USER CODE END  MX_FileX_Init_Error */
     }
@@ -197,7 +229,8 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != NX_SUCCESS)
     {
       /* USER CODE BEGIN  MX_NetXDuo_Init_Error */
-      while (1) {
+      while(1)
+      {
       }
       /* USER CODE END  MX_NetXDuo_Init_Error */
     }
@@ -225,30 +258,27 @@ VOID tx_application_define(VOID *first_unused_memory)
     if (status != UX_SUCCESS)
     {
       /* USER CODE BEGIN  MX_USBX_Init_Error */
-      while (1) {
+      while(1)
+      {
       }
       /* USER CODE END  MX_USBX_Init_Error */
     }
 
     /* USER CODE BEGIN MX_USBX_Init_Success */
-#if 0
+
     /* USER CODE END MX_USBX_Init_Success */
   }
 
     if (tx_byte_pool_create(&touchgfx_app_byte_pool, "TouchGFX App memory pool", touchgfx_byte_pool_buffer, TOUCHGFX_APP_MEM_POOL_SIZE) != TX_SUCCESS)
     {
         /* USER CODE BEGIN TouchGFX_Byte_Pool_Error */
+
         /* USER CODE END TouchGFX_Byte_Pool_Error */
     }
     else
     {
         /* USER CODE BEGIN TouchGFX_Byte_Pool_Success */
-#endif
-  }
-  memory_ptr = malloc(TOUCHGFX_APP_MEM_POOL_SIZE);
-  if (tx_byte_pool_create(&touchgfx_app_byte_pool, "TouchGFX App memory pool", memory_ptr,
-                          TOUCHGFX_APP_MEM_POOL_SIZE) != TX_SUCCESS) {
-  } else {
+
         /* USER CODE END TouchGFX_Byte_Pool_Success */
 
         memory_ptr = (VOID*)&touchgfx_app_byte_pool;
@@ -295,6 +325,7 @@ VOID tx_application_define(VOID *first_unused_memory)
 
   /* USER CODE BEGIN DYNAMIC_MEM_ALLOC */
   (void)first_unused_memory;
+#endif
   /* USER CODE END DYNAMIC_MEM_ALLOC */
 #endif
 

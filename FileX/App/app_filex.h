@@ -91,7 +91,7 @@ extern FX_MEDIA sdio_disk;
 /* USER CODE END PD */
 
 /* USER CODE BEGIN 2 */
-
+UINT fx_read_buffer(FX_FILE *file, void *buffer, UINT size);
 /* USER CODE END 2 */
 #ifdef __cplusplus
 }

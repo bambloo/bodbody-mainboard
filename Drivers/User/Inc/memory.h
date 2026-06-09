@@ -5,5 +5,6 @@
 
 void memory_pool_init();
 void *memory_pool_cache_free();
+void *memory_pool_d1();
 
 #endif

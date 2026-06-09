@@ -25,6 +25,9 @@ void memory_pool_init() {
 }
 
 void *memory_pool_cache_free() { return &glb_dma_byte_pool; }
+void *memory_pool_d1() { return &glb_d1_byte_pool; }
+
+
 
 void *malloc(size_t size) {
   void *ptr = NULL;

@@ -26,12 +26,7 @@ public:
     virtual void deactivate();
 
     virtual ~LoginPresenter() {}
-
-    bool checkPin(uint32_t pin);
-
 private:
-    LoginPresenter();
-
     LoginView& view;
 };
 

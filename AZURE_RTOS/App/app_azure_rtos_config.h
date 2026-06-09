@@ -49,7 +49,7 @@ extern "C" {
 
 #define TX_APP_MEM_POOL_SIZE                     DEFAULT_MEMORY_POOL_SIZE
 
-#define FX_APP_MEM_POOL_SIZE                     DEFAULT_MEMORY_POOL_SIZE
+#define FX_APP_MEM_POOL_SIZE                     (DEFAULT_MEMORY_POOL_SIZE * 2)
 
 #define NX_APP_MEM_POOL_SIZE                     (DEFAULT_MEMORY_POOL_SIZE * 2)
 

@@ -3,6 +3,8 @@
 #include "touchgfx/widgets/ButtonWithLabel.hpp"
 #include <gui/login_screen/LoginView.hpp>
 
+#include "parameters.h"
+
 LoginView::LoginView() :
     pinClickedCallback(this, &LoginView::pinClicked),
     funClickedCallback(this, &LoginView::funClicked),
@@ -48,9 +50,12 @@ void LoginView::pinClicked(const touchgfx::ButtonWithLabel& source, const touchg
     pinAreaBuffer[pinLen] = 0;
 
     if (pinLen == PINAREA_SIZE - 1) {
-        presenter->checkPin(pinVal);
+        if (parameters_check_pin(pinVal)) {
+
+        }
         pinLen = 0;
         pinVal = 0;
+        pinAreaBuffer[0] = 0;
     }
     pinArea.invalidate();
     // pinArea.resizeToCurrentTextWithAlignment();

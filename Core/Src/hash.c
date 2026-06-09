@@ -37,7 +37,7 @@ void MX_HASH_Init(void)
   /* USER CODE BEGIN HASH_Init 1 */
 
   /* USER CODE END HASH_Init 1 */
-  hhash.Init.DataType = HASH_DATATYPE_32B;
+  hhash.Init.DataType = HASH_DATATYPE_8B;
   if (HAL_HASH_Init(&hhash) != HAL_OK)
   {
     Error_Handler();

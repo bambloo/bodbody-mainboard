@@ -5,6 +5,12 @@
     <Language Id="ZH" />
   </Languages>
   <Texts>
+    <TextGroup Id="Keyboard">
+      <Text Id="EnteredText" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;placeholder&gt;</Translation>
+        <Translation Language="ZH">&lt;placeholder&gt;</Translation>
+      </Text>
+    </TextGroup>
     <TextGroup Id="MainView">
       <Text Id="menu_advanced_setting" Alignment="Center" TypographyId="Large">
         <Translation Language="GB">Configuration</Translation>
@@ -20,66 +26,78 @@
       </Text>
     </TextGroup>
     <TextGroup Id="LoginView">
+      <Text Id="PinValue" Alignment="Center" TypographyId="Keyboard">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="EnterPinPrompt" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">Enter Pin</Translation>
         <Translation Language="ZH">PIN安全验证</Translation>
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_H1SH" Alignment="Right" TypographyId="Typography1">
+      <Text Id="__SingleUse_F1QR" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">New Text&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_JE1K" Alignment="Center" TypographyId="Default">
+      <Text Id="__SingleUse_9D0V" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">New Text&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_EHXO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">New Text&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_H1SH" Alignment="Right" TypographyId="Keyboard">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">9</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">9</Translation>
       </Text>
       <Text Id="__SingleUse_KKKB" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">8</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">8</Translation>
       </Text>
       <Text Id="__SingleUse_NWFD" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">7</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">7</Translation>
       </Text>
       <Text Id="__SingleUse_VVSQ" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">6</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">6</Translation>
       </Text>
       <Text Id="__SingleUse_AQKX" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">5</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">5</Translation>
       </Text>
       <Text Id="__SingleUse_R1D1" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">4</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">4</Translation>
       </Text>
       <Text Id="__SingleUse_M4VS" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">3</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">3</Translation>
       </Text>
       <Text Id="__SingleUse_CT3G" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">2</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">2</Translation>
       </Text>
       <Text Id="__SingleUse_BOZV" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">1</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">1</Translation>
       </Text>
       <Text Id="__SingleUse_OJ5Y" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">0</Translation>
-        <Translation Language="ZH"></Translation>
+        <Translation Language="ZH">0</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="SourceHanSansSC-Bold.otf" Size="32" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" WildcardCharacters="*" />
+    <Typography Id="Default" Font="SourceHanSansSC-Bold.otf" Size="32" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
     <Typography Id="Large" Font="SourceHanSansSC-Bold.otf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
     <Typography Id="Small" Font="SourceHanSansSC-Bold.otf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
-    <Typography Id="Typography1" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
+    <Typography Id="Keyboard" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
   </Typographies>
 </TextDatabase>

@@ -99,7 +99,7 @@ LoginViewBase::LoginViewBase() :
     image2.setBitmap(touchgfx::Bitmap(BITMAP_PIN_INPUT_BKGRD_ID));
     BackgroundContainer.add(image2);
 
-    LoginPromptLabel.setXY(323, 84);
+    LoginPromptLabel.setPosition(241, 77, 309, 43);
     LoginPromptLabel.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     LoginPromptLabel.setLinespacing(0);
     LoginPromptLabel.setTypedText(touchgfx::TypedText(T_ENTERPINPROMPT));
@@ -110,20 +110,42 @@ LoginViewBase::LoginViewBase() :
     pinArea.setLinespacing(0);
     pinAreaBuffer[0] = 0;
     pinArea.setWildcard(pinAreaBuffer);
-    pinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JE1K));
+    pinArea.setTypedText(touchgfx::TypedText(T_PINVALUE));
     BackgroundContainer.add(pinArea);
 
     add(BackgroundContainer);
 
-    ChangePwdModal.setBackground(touchgfx::BitmapId(BITMAP_ALTERNATE_THEME_IMAGES_CONTAINERS_LARGE_WIDE_OUTLINED_LIGHT_ID), 160, 165);
+    ChangePwdModal.setBackground(touchgfx::BitmapId(BITMAP_DARK_THEME_IMAGES_CONTAINERS_LARGE_WIDE_DARK_ID), 160, 165);
     ChangePwdModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     ChangePwdModal.setShadeAlpha(244);
     ChangePwdModal.hide();
-    image1.setXY(150, 22);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_LIGHT_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUND_INACTIVE_ID));
+    image1.setXY(149, 21);
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_PIN_INPUT_BKGRD_ID));
     ChangePwdModal.add(image1);
 
+    originalPinArea.setPosition(159, 27, 289, 38);
+    originalPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    originalPinArea.setLinespacing(0);
+    originalPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EHXO));
+    ChangePwdModal.add(originalPinArea);
+
+    NewPinArea.setPosition(159, 123, 289, 38);
+    NewPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    NewPinArea.setLinespacing(0);
+    NewPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9D0V));
+    ChangePwdModal.add(NewPinArea);
+
+    RetypeNewPinArea.setPosition(159, 173, 289, 38);
+    RetypeNewPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    RetypeNewPinArea.setLinespacing(0);
+    RetypeNewPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_F1QR));
+    ChangePwdModal.add(RetypeNewPinArea);
+
     add(ChangePwdModal);
+
+    bamblooKeyboard1.setXY(0, 280);
+    bamblooKeyboard1.setVisible(false);
+    add(bamblooKeyboard1);
 }
 
 LoginViewBase::~LoginViewBase()
@@ -133,7 +155,7 @@ LoginViewBase::~LoginViewBase()
 
 void LoginViewBase::setupScreen()
 {
-
+    bamblooKeyboard1.initialize();
 }
 
 void LoginViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)

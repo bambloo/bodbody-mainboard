@@ -310,18 +310,17 @@
               {
                 "Type": "TextArea",
                 "Name": "LoginPromptLabel",
-                "X": 323,
-                "Y": 84,
-                "Width": 145,
-                "Height": 36,
+                "X": 241,
+                "Y": 77,
+                "Width": 309,
+                "Height": 43,
                 "TextId": "EnterPinPrompt",
                 "TextRotation": "0",
                 "Color": {
                   "Red": 255,
                   "Green": 255,
                   "Blue": 255
-                },
-                "AutoSize": true
+                }
               },
               {
                 "Type": "TextArea",
@@ -330,7 +329,7 @@
                 "Y": 142,
                 "Width": 309,
                 "Height": 36,
-                "TextId": "__SingleUse_JE1K",
+                "TextId": "PinValue",
                 "TextRotation": "0",
                 "Color": {
                   "Red": 255,
@@ -350,7 +349,7 @@
             "Width": 800,
             "Height": 600,
             "Visible": false,
-            "FileName": "__generated\\alternate_theme_images_containers_large_wide_outlined_light.png",
+            "FileName": "__generated\\dark_theme_images_containers_large_wide_dark.png",
             "ModalX": 160,
             "ModalY": 165,
             "ModalWidth": 480,
@@ -360,13 +359,74 @@
               {
                 "Type": "Image",
                 "Name": "image1",
-                "X": 150,
-                "Y": 22,
-                "Width": 240,
-                "Height": 50,
-                "RelativeFilename": "__generated\\light_theme_images_widgets_button_regular_height_50_medium_round_inactive.png"
+                "X": 149,
+                "Y": 21,
+                "Width": 309,
+                "Height": 51,
+                "RelativeFilename": "pin-input-bkgrd.png",
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "originalPinArea",
+                "X": 159,
+                "Y": 27,
+                "Width": 289,
+                "Height": 38,
+                "TextId": "__SingleUse_EHXO",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {},
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "NewPinArea",
+                "X": 159,
+                "Y": 123,
+                "Width": 289,
+                "Height": 38,
+                "TextId": "__SingleUse_9D0V",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {},
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "RetypeNewPinArea",
+                "X": 159,
+                "Y": 173,
+                "Width": 289,
+                "Height": 38,
+                "TextId": "__SingleUse_F1QR",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {},
+                "Clickable": true
               }
             ]
+          },
+          {
+            "Type": "CustomContainerInstance",
+            "Name": "bamblooKeyboard1",
+            "Y": 280,
+            "Width": 800,
+            "Height": 320,
+            "Visible": false,
+            "CustomContainerDefinitionName": "BamblooKeyboard"
           }
         ],
         "Interactions": [
@@ -542,7 +602,23 @@
         ]
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "BamblooKeyboard",
+        "Y": 280,
+        "Width": 800,
+        "Height": 320,
+        "Components": [],
+        "Interactions": []
+      },
+      {
+        "Name": "BamblooKeyboard2",
+        "Width": 250,
+        "Height": 250,
+        "Components": [],
+        "Interactions": []
+      }
+    ],
     "Name": "bodbody-mainboard",
     "Resolution": {
       "Width": 800,

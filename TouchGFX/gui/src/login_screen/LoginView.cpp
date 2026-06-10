@@ -7,7 +7,9 @@
 
 LoginView::LoginView()
     : pinClickedCallback(this, &LoginView::pinClicked),
-      funClickedCallback(this, &LoginView::funClicked), pinLen(0), pinVal(0) {}
+      funClickedCallback(this, &LoginView::funClicked),
+      changePinClickedCallback(this, &LoginView::changePinClicked), pinLen(0),
+      pinVal(0) {}
 
 void LoginView::setupScreen() {
   LoginViewBase::setupScreen();
@@ -22,6 +24,8 @@ void LoginView::setupScreen() {
   btnPin8.setClickAction(pinClickedCallback);
   btnPin9.setClickAction(pinClickedCallback);
   btnBack.setClickAction(funClickedCallback);
+
+  originalPinArea.setClickAction(changePinClickedCallback);
 }
 
 void LoginView::tearDownScreen() { LoginViewBase::tearDownScreen(); }
@@ -47,9 +51,9 @@ void LoginView::pinClicked(const touchgfx::ButtonWithLabel &source,
     pinLen = 0;
     pinVal = 0;
     pinAreaBuffer[0] = 0;
-  } else {
-    pinArea.invalidate();
+
   }
+  pinArea.invalidate();
   // pinArea.resizeToCurrentTextWithAlignment();
 }
 
@@ -64,4 +68,15 @@ void LoginView::funClicked(const touchgfx::ButtonWithIcon &source,
     pinArea.invalidate();
     // pinArea.resizeToCurrentTextWithAlignment();
   }
+}
+
+void LoginView::changePinClicked(
+    const touchgfx::TextAreaWithOneWildcard &source,
+    const touchgfx::ClickEvent &evt) {
+  if (evt.getType() != evt.PRESSED) {
+    return;
+  }
+
+  bamblooKeyboard1.setVisible(true);
+  bamblooKeyboard1.invalidate();
 }

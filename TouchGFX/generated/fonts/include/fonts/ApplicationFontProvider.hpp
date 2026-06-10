@@ -16,15 +16,15 @@ struct Typography
     static const touchgfx::FontId DEFAULT = 0;
     static const touchgfx::FontId LARGE = 1;
     static const touchgfx::FontId SMALL = 2;
-    static const touchgfx::FontId TYPOGRAPHY1 = 3;
+    static const touchgfx::FontId KEYBOARD = 3;
 };
 
 struct TypographyFontIndex
 {
-    static const touchgfx::FontId DEFAULT = 0;     // SourceHanSansSC_Bold_otf_32_4bpp
-    static const touchgfx::FontId LARGE = 1;       // SourceHanSansSC_Bold_otf_40_4bpp
-    static const touchgfx::FontId SMALL = 2;       // SourceHanSansSC_Bold_otf_10_4bpp
-    static const touchgfx::FontId TYPOGRAPHY1 = 3; // SourceHanSansSC_Bold_otf_20_4bpp
+    static const touchgfx::FontId DEFAULT = 0;  // SourceHanSansSC_Bold_otf_32_4bpp
+    static const touchgfx::FontId LARGE = 1;    // SourceHanSansSC_Bold_otf_40_4bpp
+    static const touchgfx::FontId SMALL = 2;    // SourceHanSansSC_Bold_otf_10_4bpp
+    static const touchgfx::FontId KEYBOARD = 3; // SourceHanSansSC_Bold_otf_20_4bpp
     static const uint16_t NUMBER_OF_FONTS = 4;
 };
 

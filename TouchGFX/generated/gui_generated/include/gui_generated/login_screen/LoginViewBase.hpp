@@ -16,6 +16,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
+#include <gui/containers/BamblooKeyboard.hpp>
 
 class LoginViewBase : public touchgfx::View<LoginPresenter>
 {
@@ -50,7 +51,11 @@ protected:
     touchgfx::TextArea LoginPromptLabel;
     touchgfx::TextAreaWithOneWildcard pinArea;
     touchgfx::ModalWindow ChangePwdModal;
-    touchgfx::Image image1;
+    touchgfx::ClickListener< touchgfx::Image > image1;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > originalPinArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > NewPinArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > RetypeNewPinArea;
+    BamblooKeyboard bamblooKeyboard1;
 
     /*
      * Wildcard Buffers

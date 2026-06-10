@@ -22,6 +22,8 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/boot_screen/BootPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/boot_screen/bootView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/common/FrontendApplication.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboard.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboard2.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainPresenter.cpp
@@ -34,11 +36,13 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/FontCache.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_10_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_20_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_20_4bpp_4.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_10.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_11.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_17.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_19.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_32_4bpp_4.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_0.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_10.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_13.cpp
@@ -58,22 +62,30 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/boot_screen/BootViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/BamblooKeyboard2Base.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/BamblooKeyboardBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/login_screen/LoginViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/BitmapDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_alternate_theme_images_containers_large_wide_outlined_light.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_dark_theme_images_containers_large_wide_dark.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_list_100_100_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_settings_100_100_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_communication_vpn_key_32_32_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_content_backspace_32_32_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_image_mic_external_on_100_100_E8F6FB.svg.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_light_theme_images_widgets_button_regular_height_50_medium_round_inactive.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_advance-setting-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_advance-setting.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_basic-setting-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_basic-setting.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_boot-page.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-backspace.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-letter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-mode.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-return.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-shift.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-pressed-space.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_keyboard.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_main-weighing.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_measure-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_measure.cpp

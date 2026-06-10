@@ -18,7 +18,7 @@ touchgfx::Font* ApplicationFontProvider::getFont(touchgfx::FontId typography)
     case Typography::SMALL:
         // SourceHanSansSC_Bold_otf_10_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[2]);
-    case Typography::TYPOGRAPHY1:
+    case Typography::KEYBOARD:
         // SourceHanSansSC_Bold_otf_20_4bpp
         return const_cast<touchgfx::Font*>(TypedTextDatabase::getFonts()[3]);
     default:

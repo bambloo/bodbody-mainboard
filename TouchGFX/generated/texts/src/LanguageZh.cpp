@@ -10,7 +10,11 @@ KEEP extern const uint32_t indicesZh[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 // Remap all strings
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesZh[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
-    20, // T_ENTERPINPROMPT: "PIN????"
+    61, // T_MENU_ADVANCED_SETTING: "????"
+    66, // T_MENU_TEST: "??"
+    56, // T_MENU_BASIC_SETTING: "????"
+    43, // T_ENTERPINPROMPT: "PIN????"
+    0,  // T___SINGLEUSE_H1SH: "New Text<>"
     0,  // T___SINGLEUSE_JE1K: "New Text<>"
     9,  // T___SINGLEUSE_YVMI: ""
     9,  // T___SINGLEUSE_KKKB: ""

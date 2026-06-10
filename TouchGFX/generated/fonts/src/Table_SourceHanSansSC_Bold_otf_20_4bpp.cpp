@@ -4,7 +4,14 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_SourceHanSansSC_Bold_otf_20_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x00B7,   6,   5,  10,   7,  20,   0,   0, 0x00 }
+    {     0, 0x0020,   0,   0,   0,   0,   5,   0,   0, 0x00 },
+    {     0, 0x004E,  13,  15,  15,   1,  15,   0,   0, 0x00 },
+    {   105, 0x0054,  12,  15,  15,   0,  13,   0,   3, 0x00 },
+    {   195, 0x0065,  11,  11,  11,   0,  12,   3,   2, 0x00 },
+    {   261, 0x0074,   8,  15,  15,   0,   8,   5,   1, 0x00 },
+    {   321, 0x0077,  17,  11,  11,   0,  17,   6,   1, 0x00 },
+    {   420, 0x0078,  11,  11,  11,   0,  11,   7,   1, 0x00 },
+    {   486, 0x00B7,   6,   5,  10,   7,  20,   0,   0, 0x00 }
 };
 
 // SourceHanSansSC_Bold_otf_20_4bpp
@@ -22,6 +29,6 @@ touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_20_4bpp();
 
 touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_20_4bpp()
 {
-    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_20_4bpp(glyphs_SourceHanSansSC_Bold_otf_20_4bpp, 1, 20, 20, 0, 0, 4, 1, 0, 0, unicodes_SourceHanSansSC_Bold_otf_20_4bpp, kerning_SourceHanSansSC_Bold_otf_20_4bpp, 183, 0, 0, 0);
+    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_20_4bpp(glyphs_SourceHanSansSC_Bold_otf_20_4bpp, 8, 20, 20, 0, 0, 4, 1, 0, 0, unicodes_SourceHanSansSC_Bold_otf_20_4bpp, kerning_SourceHanSansSC_Bold_otf_20_4bpp, 183, 0, 0, 0);
     return SourceHanSansSC_Bold_otf_20_4bpp;
 }

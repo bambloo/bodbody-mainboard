@@ -393,6 +393,153 @@
             }
           }
         ]
+      },
+      {
+        "Name": "Main",
+        "Components": [
+          {
+            "Type": "Container",
+            "Name": "MenuContainer",
+            "Width": 800,
+            "Height": 600,
+            "Components": [
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "buttonWithIcon3",
+                "X": 340,
+                "Y": 400,
+                "Width": 460,
+                "Height": 150,
+                "Pressed": "advance-setting-pressed.png",
+                "Released": "advance-setting.png",
+                "IconPressed": "__generated\\icon_theme_images_action_list_100_100_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_action_list_100_100_E8F6FB.svg.png",
+                "IconX": 60,
+                "IconY": 25,
+                "IconHeight": 100,
+                "IconWidth": 100
+              },
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "buttonWithIcon2",
+                "X": 320,
+                "Y": 225,
+                "Width": 480,
+                "Height": 150,
+                "Pressed": "basic-setting-pressed.png",
+                "Released": "basic-setting.png",
+                "IconPressed": "__generated\\icon_theme_images_action_settings_100_100_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_action_settings_100_100_E8F6FB.svg.png",
+                "IconX": 60,
+                "IconY": 25,
+                "IconHeight": 100,
+                "IconWidth": 100
+              },
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "buttonWithIcon1",
+                "X": 290,
+                "Y": 50,
+                "Width": 510,
+                "Height": 150,
+                "Pressed": "measure-pressed.png",
+                "Released": "measure.png",
+                "IconPressed": "__generated\\icon_theme_images_image_mic_external_on_100_100_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_image_mic_external_on_100_100_E8F6FB.svg.png",
+                "IconX": 60,
+                "IconY": 25,
+                "IconHeight": 100,
+                "IconWidth": 100
+              },
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "X": 63,
+                "Y": 50,
+                "Width": 189,
+                "Height": 500,
+                "RelativeFilename": "main-weighing.png"
+              },
+              {
+                "Type": "TextArea",
+                "Name": "ConfigureLabel",
+                "X": 489,
+                "Y": 449,
+                "Width": 311,
+                "Height": 53,
+                "TextId": "menu_advanced_setting",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "SettingsLabel",
+                "X": 489,
+                "Y": 274,
+                "Width": 311,
+                "Height": 53,
+                "TextId": "menu_basic_setting",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "TestLabel",
+                "X": 489,
+                "Y": 99,
+                "Width": 311,
+                "Height": 53,
+                "TextId": "menu_test",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TimeLabel",
+            "X": 489,
+            "Y": 12,
+            "Width": 295,
+            "Height": 27,
+            "TextId": "__SingleUse_H1SH",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 32
+            }
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "GotoMainView",
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main"
+            }
+          }
+        ]
       }
     ],
     "CustomContainerDefinitions": [],

@@ -13,6 +13,8 @@
 #include <gui/boot_screen/BootPresenter.hpp>
 #include <gui/login_screen/LoginView.hpp>
 #include <gui/login_screen/LoginPresenter.hpp>
+#include <gui/main_screen/MainView.hpp>
+#include <gui/main_screen/MainPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -57,4 +59,17 @@ void FrontendApplicationBase::gotoLoginScreenNoTransition()
 void FrontendApplicationBase::gotoLoginScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<LoginView, LoginPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Main
+
+void FrontendApplicationBase::gotoMainScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoMainScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

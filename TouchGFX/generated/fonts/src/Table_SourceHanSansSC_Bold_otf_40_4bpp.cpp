@@ -4,7 +4,30 @@
 
 FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_SourceHanSansSC_Bold_otf_40_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE = {
-    {     0, 0x00B7,  12,  11,  21,  14,  40,   0,   0, 0x00 }
+    {     0, 0x0043,  23,  32,  31,   2,  26,   0,   2, 0x00 },
+    {   384, 0x0053,  23,  32,  31,   1,  25,   2,   4, 0x00 },
+    {   768, 0x0054,  23,  30,  30,   1,  25,   6,  11, 0x00 },
+    {  1128, 0x0061,  19,  24,  23,   2,  24,  17,   7, 0x00 },
+    {  1368, 0x0065,  21,  24,  23,   1,  23,  24,   3, 0x00 },
+    {  1632, 0x0066,  17,  32,  32,   0,  15,  27,   1, 0x00 },
+    {  1920, 0x0067,  23,  33,  23,   1,  24,  28,   3, 0x00 },
+    {  2316, 0x0069,   8,  32,  32,   2,  12,   0,   0, 0x00 },
+    {  2444, 0x006E,  20,  23,  23,   3,  26,  31,   1, 0x00 },
+    {  2674, 0x006F,  23,  24,  23,   1,  25,  32,   3, 0x00 },
+    {  2962, 0x0072,  15,  23,  23,   3,  17,  35,   1, 0x00 },
+    {  3146, 0x0073,  18,  24,  23,   1,  20,  36,   1, 0x00 },
+    {  3362, 0x0074,  16,  30,  29,   0,  17,  37,   7, 0x00 },
+    {  3602, 0x0075,  21,  23,  22,   2,  25,  44,   1, 0x00 },
+    {  3855, 0x00B7,  12,  11,  21,  14,  40,   0,   0, 0x00 },
+    {     0, 0x57FA,  38,  38,  35,   1,  40,   0,   0, 0x00 },
+    {     0, 0x6D4B,  37,  39,  34,   1,  40,   0,   0, 0x00 },
+    {     0, 0x7840,  38,  40,  35,   0,  40,   0,   0, 0x00 },
+    {   760, 0x7CFB,  37,  39,  35,   1,  40,   0,   0, 0x00 },
+    {  1501, 0x7EDF,  39,  40,  35,   0,  40,   0,   0, 0x00 },
+    {  2301, 0x7F6E,  37,  36,  33,   2,  40,   0,   0, 0x00 },
+    {     0, 0x8BBE,  38,  39,  34,   1,  40,   0,   0, 0x00 },
+    {   741, 0x8BD5,  39,  38,  34,   1,  40,   0,   0, 0x00 },
+    {     0, 0x914D,  38,  38,  33,   1,  40,   0,   0, 0x00 }
 };
 
 // SourceHanSansSC_Bold_otf_40_4bpp
@@ -12,9 +35,37 @@ FONT_TABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::GlyphNode glyphs_SourceHanSansSC_Bold_otf_40_4bpp[] FONT_TABLE_LOCATION_FLASH_ATTRIBUTE;
 FONT_GLYPH_LOCATION_FLASH_PRAGMA
 KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_0[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_10[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_13[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_15[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_17[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
+FONT_GLYPH_LOCATION_FLASH_PRAGMA
+KEEP extern const uint8_t unicodes_SourceHanSansSC_Bold_otf_40_4bpp_18[] FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE;
 FONT_SEARCHTABLE_LOCATION_FLASH_PRAGMA
 KEEP extern const uint8_t* const unicodes_SourceHanSansSC_Bold_otf_40_4bpp[] FONT_SEARCHTABLE_LOCATION_FLASH_ATTRIBUTE = {
-    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_0
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_10,
+    0,
+    0,
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_13,
+    0,
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_15,
+    0,
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_17,
+    unicodes_SourceHanSansSC_Bold_otf_40_4bpp_18
 };
 FONT_KERNING_LOCATION_FLASH_PRAGMA
 KEEP extern const touchgfx::KerningNode kerning_SourceHanSansSC_Bold_otf_40_4bpp[] FONT_KERNING_LOCATION_FLASH_ATTRIBUTE;
@@ -22,6 +73,6 @@ touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_40_4bpp();
 
 touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_40_4bpp()
 {
-    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_40_4bpp(glyphs_SourceHanSansSC_Bold_otf_40_4bpp, 1, 40, 40, 0, 0, 4, 1, 0, 0, unicodes_SourceHanSansSC_Bold_otf_40_4bpp, kerning_SourceHanSansSC_Bold_otf_40_4bpp, 183, 0, 0, 0);
+    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_40_4bpp(glyphs_SourceHanSansSC_Bold_otf_40_4bpp, 24, 50, 40, 0, 0, 4, 1, 0, 2, unicodes_SourceHanSansSC_Bold_otf_40_4bpp, kerning_SourceHanSansSC_Bold_otf_40_4bpp, 183, 0, 0, 0);
     return SourceHanSansSC_Bold_otf_40_4bpp;
 }

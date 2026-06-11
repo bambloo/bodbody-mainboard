@@ -1,12 +1,13 @@
 #ifndef BAMBLOOKEYBOARD_HPP
 #define BAMBLOOKEYBOARD_HPP
 
+#include "gui/containers/BamblooKeyboard2.hpp"
 #include "touchgfx/Unicode.hpp"
 #include "touchgfx/containers/Container.hpp"
 #include <gui_generated/containers/BamblooKeyboardBase.hpp>
 #include <touchgfx/widgets/Keyboard.hpp>
 
-class BamblooKeyboard : public Container {
+class BamblooKeyboard : public BamblooKeyboard2 {
 public:
   BamblooKeyboard();
   virtual ~BamblooKeyboard() {}

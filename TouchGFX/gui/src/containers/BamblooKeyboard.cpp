@@ -1,4 +1,5 @@
 #include "BitmapDatabase.hpp"
+#include "gui/containers/BamblooKeyboard2.hpp"
 #include "images/BitmapDatabase.hpp"
 #include <fonts/ApplicationFontProvider.hpp>
 #include <gui/containers/BamblooKeyboard.hpp>
@@ -7,7 +8,7 @@
 
 #include <cstring>
 
-static const Keyboard::Key keyArray[30] = {
+static const BamblooKeyboard2::Key keyArray[30] = {
     {1, Rect(4 + 72 * 0, 64, 72, 63), BITMAP_KEY_PRESSED_LETTER_ID},
     {2, Rect(4 + 72 * 1, 64, 72, 63), BITMAP_KEY_PRESSED_LETTER_ID},
     {3, Rect(4 + 72 * 2, 64, 72, 63), BITMAP_KEY_PRESSED_LETTER_ID},
@@ -45,14 +46,14 @@ static const Keyboard::Key keyArray[30] = {
 /**
  * Callback areas for the special buttons on the CustomKeyboard.
  */
-static Keyboard::CallbackArea callbackAreas[4] = {
+static BamblooKeyboard2::CallbackArea callbackAreas[4] = {
     {Rect(4, 190, 144, 63), 0, BITMAP_KEY_PRESSED_SHIFT_ID},       // caps-lock
     {Rect(652, 190, 144, 63), 0, BITMAP_KEY_PRESSED_BACKSPACE_ID}, // backspace
     {Rect(4, 253, 144, 63), 0, BITMAP_KEY_PRESSED_MODE_ID},        // mode
     {Rect(652, 253, 144, 63), 0, BITMAP_KEY_PRESSED_RETURN_ID},    // backspace
 };
 
-static const Keyboard::Layout layout = {
+static const BamblooKeyboard2::Layout layout = {
     BITMAP_KEYBOARD_ID,  // bitmap
     keyArray,            // keyArray
     30,                  // numberOfKeys
@@ -64,7 +65,7 @@ static const Keyboard::Layout layout = {
     Typography::KEYBOARD,
 };
 
-static const Keyboard::KeyMapping keyMappingsAlphaLower[30] = {
+static const BamblooKeyboard2::KeyMapping keyMappingsAlphaLower[30] = {
     {1, 113},  // q
     {2, 119},  // w
     {3, 101},  // e
@@ -97,10 +98,10 @@ static const Keyboard::KeyMapping keyMappingsAlphaLower[30] = {
     {30, 32},  // space
 };
 
-static const Keyboard::KeyMappingList keyMappingListAlphaLower = {
+static const BamblooKeyboard2::KeyMappingList keyMappingListAlphaLower = {
     keyMappingsAlphaLower, 1};
 
-static const Keyboard::KeyMapping keyMappingsAlphaUpper[30] = {
+static const BamblooKeyboard2::KeyMapping keyMappingsAlphaUpper[30] = {
     {1, 113 - 32},  // Q
     {2, 119 - 32},  // W
     {3, 101 - 32},  // E
@@ -133,10 +134,10 @@ static const Keyboard::KeyMapping keyMappingsAlphaUpper[30] = {
     {30, 32}        // space
 };
 
-static const Keyboard::KeyMappingList keyMappingListAlphaUpper = {
+static const BamblooKeyboard2::KeyMappingList keyMappingListAlphaUpper = {
     keyMappingsAlphaUpper, 1};
 
-static const Keyboard::KeyMapping keyMappingsNumLower[30] = {
+static const BamblooKeyboard2::KeyMapping keyMappingsNumLower[30] = {
     {1, 49},  // 1
     {2, 50},  // 2
     {3, 51},  // 3
@@ -172,10 +173,10 @@ static const Keyboard::KeyMapping keyMappingsNumLower[30] = {
     {30, 32} // space
 };
 
-static const Keyboard::KeyMappingList keyMappingListNumLower = {
+static const BamblooKeyboard2::KeyMappingList keyMappingListNumLower = {
     keyMappingsNumLower, 1};
 
-static const Keyboard::KeyMapping keyMappingsNumUpper[30] = {
+static const BamblooKeyboard2::KeyMapping keyMappingsNumUpper[30] = {
     {1, 126},  // ~
     {2, 177},  // +/-
     {3, 215},  // x
@@ -211,7 +212,7 @@ static const Keyboard::KeyMapping keyMappingsNumUpper[30] = {
     {30, 32} // space
 };
 
-static const Keyboard::KeyMappingList keyMappingListNumUpper = {
+static const BamblooKeyboard2::KeyMappingList keyMappingListNumUpper = {
     keyMappingsNumUpper, 1};
 
 BamblooKeyboard::BamblooKeyboard()
@@ -257,15 +258,15 @@ void BamblooKeyboard::keyPressedHandler(Unicode::UnicodeChar key) {}
 void BamblooKeyboard::setKeymappingList() {
     if (alphaMode) {
         if (shiftMode) {
-            Keyboard::setKeymappingList(&keyMappingListAlphaUpper);
+            BamblooKeyboard2::setKeymappingList(&keyMappingListAlphaUpper);
         } else {
-            Keyboard::setKeymappingList(&keyMappingListAlphaLower);
+            BamblooKeyboard2::setKeymappingList(&keyMappingListAlphaLower);
         }
     } else {
         if (shiftMode) {
-            Keyboard::setKeymappingList(&keyMappingListNumUpper);
+            BamblooKeyboard2::setKeymappingList(&keyMappingListNumUpper);
         } else {
-            Keyboard::setKeymappingList(&keyMappingListNumLower);
+            BamblooKeyboard2::setKeymappingList(&keyMappingListNumLower);
         }   
     }
 }

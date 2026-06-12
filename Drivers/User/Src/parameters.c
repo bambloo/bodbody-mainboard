@@ -52,7 +52,7 @@ UINT parameters_save_pin(uint32_t pin) {
   UINT status = fx_file_create(&sdio_disk, "parameters.bin");
   status = fx_file_open(&sdio_disk, &file, "parameters.bin", FX_OPEN_FOR_WRITE);
   if (status != FX_SUCCESS) {
-    return FX_ERROR_NOT_FIXED;
+    return status;
   }
   status = fx_file_write(&file, &parameters, sizeof(parameters));
   status = fx_file_close(&file);

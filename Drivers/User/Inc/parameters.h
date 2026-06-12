@@ -20,6 +20,7 @@ extern "C" {
 #endif
 // parameters_t *parameters_get();
 UINT parameters_check_pin(uint32_t pin);
+UINT parameters_save_pin(uint32_t pin);
 UINT parameters_init();
 
 #if defined(__cplusplus)

@@ -16,6 +16,7 @@ public:
 
 protected:
   Unicode::UnicodeChar getCharForKey(uint8_t keyId) const;
+
 private:
   void backspacePressedHandler();
   void returnPressedHandler();

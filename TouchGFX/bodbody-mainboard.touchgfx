@@ -461,8 +461,8 @@
               {
                 "Type": "ButtonWithLabel",
                 "Name": "btnCpinExit",
-                "X": 506,
-                "Y": 344,
+                "X": 420,
+                "Y": 396,
                 "Width": 87,
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
@@ -484,8 +484,8 @@
               {
                 "Type": "ButtonWithLabel",
                 "Name": "btnCpinOkay",
-                "X": 396,
-                "Y": 344,
+                "X": 328,
+                "Y": 396,
                 "Width": 87,
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
@@ -503,6 +503,21 @@
                 },
                 "TextRotation": "0",
                 "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "ErrorPrompt",
+                "X": 328,
+                "Y": 345,
+                "Width": 413,
+                "Height": 25,
+                "TextId": "__SingleUse_L6QL",
+                "TextRotation": "0",
+                "Color": {
+                  "Green": 136,
+                  "Blue": 255
+                },
+                "Wildcard1": {}
               }
             ]
           }

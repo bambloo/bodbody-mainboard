@@ -6,6 +6,14 @@
   </Languages>
   <Texts>
     <TextGroup Id="Keyboard">
+      <Text Id="PasswordText" Alignment="Left" TypographyId="Password">
+        <Translation Language="GB">&lt;placeholder&gt;</Translation>
+        <Translation Language="ZH">&lt;placeholder&gt;</Translation>
+      </Text>
+      <Text Id="ModeNumText" Alignment="Center" TypographyId="Keyboard">
+        <Translation Language="GB">123/ABC</Translation>
+        <Translation Language="ZH">123/ABC</Translation>
+      </Text>
       <Text Id="ValueText" Alignment="Left" TypographyId="Password">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
@@ -30,6 +38,14 @@
       </Text>
     </TextGroup>
     <TextGroup Id="LoginView">
+      <Text Id="PinFormatError" Alignment="Left" TypographyId="Thin">
+        <Translation Language="GB">PIN is 6 bit number</Translation>
+        <Translation Language="ZH">PIN需要6位数字</Translation>
+      </Text>
+      <Text Id="PinMismatch" Alignment="Left" TypographyId="Thin">
+        <Translation Language="GB">Entered pin mismatch</Translation>
+        <Translation Language="ZH">输入的PIN码不一致</Translation>
+      </Text>
       <Text Id="CancelBtnLabel" Alignment="Center" TypographyId="Keyboard">
         <Translation Language="GB">Cancel</Translation>
         <Translation Language="ZH">取消</Translation>
@@ -60,6 +76,10 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_L6QL" Alignment="Left" TypographyId="Thin">
+        <Translation Language="GB">&lt;placeholder&gt;</Translation>
+        <Translation Language="ZH">&lt;placeholder&gt;</Translation>
+      </Text>
       <Text Id="__SingleUse_H1SH" Alignment="Right" TypographyId="Keyboard">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
@@ -112,5 +132,6 @@
     <Typography Id="Small" Font="SourceHanSansSC-Bold.otf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
     <Typography Id="Keyboard" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
     <Typography Id="Password" Font="SourceHanSansSC-Bold.otf" Size="24" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
+    <Typography Id="Thin" Font="SourceHanSansSC-Normal.otf" Size="16" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" />
   </Typographies>
 </TextDatabase>

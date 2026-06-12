@@ -58,6 +58,7 @@ protected:
     touchgfx::TextArea NewPinLabel;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnCpinExit;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnCpinOkay;
+    touchgfx::TextAreaWithOneWildcard ErrorPrompt;
 
     /*
      * Wildcard Buffers

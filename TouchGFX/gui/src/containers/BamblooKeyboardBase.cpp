@@ -1,3 +1,4 @@
+#include "texts/TextKeysAndLanguages.hpp"
 #include "touchgfx/Bitmap.hpp"
 #include "touchgfx/Color.hpp"
 #include "touchgfx/Drawable.hpp"
@@ -66,15 +67,22 @@ void BamblooKeyboardBase::setTextIndentation() {
     // settings
     uint8_t fontPadding = layout->textAreaFont.getFont()->getMaxPixelsLeft();
 
+    uint16_t line_height = layout->textAreaFont.getFont()->getBaseline() + 6;
+    uint16_t voff = (layout->textAreaPosition.height - line_height) / 2;
+
     // 3. Re-adjust the text container dimensions safely to prevent clipping
     enteredText.setPosition(layout->textAreaPosition.x - fontPadding,
-                            layout->textAreaPosition.y,
+                            layout->textAreaPosition.y + voff,
                             layout->textAreaPosition.width + (2 * fontPadding),
-                            layout->textAreaPosition.height);
+                            line_height);
 
     // 4. Force a repaint of the text area box
     enteredText.invalidate();
   }
+}
+
+void BamblooKeyboardBase::setPasswordMode(bool mode) {
+  enteredText.setTypedText(mode ? layout->pswdAreaFont : layout->textAreaFont);
 }
 
 void BamblooKeyboardBase::setBufferPosition(uint16_t newPos) {

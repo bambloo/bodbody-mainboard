@@ -52,15 +52,27 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_15.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_17.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Bold_otf_40_4bpp_18.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_0.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_10.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_11.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_12.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_14.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_15.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_16.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_17.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_18.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Font_SourceHanSansSC_Normal_otf_16_4bpp_9.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/GeneratedFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_SourceHanSansSC_Bold_otf_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_SourceHanSansSC_Bold_otf_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_SourceHanSansSC_Bold_otf_24_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_SourceHanSansSC_Bold_otf_40_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Kerning_SourceHanSansSC_Normal_otf_16_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_SourceHanSansSC_Bold_otf_10_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_SourceHanSansSC_Bold_otf_20_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_SourceHanSansSC_Bold_otf_24_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_SourceHanSansSC_Bold_otf_40_4bpp.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/Table_SourceHanSansSC_Normal_otf_16_4bpp.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/UnmappedDataFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/boot_screen/BootViewBase.cpp

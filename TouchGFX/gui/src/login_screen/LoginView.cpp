@@ -1,6 +1,7 @@
 #include "gui/common/FrontendApplication.hpp"
 #include "texts/TextKeysAndLanguages.hpp"
 #include "touchgfx/Callback.hpp"
+#include "touchgfx/TypedText.hpp"
 #include "touchgfx/Unicode.hpp"
 #include "touchgfx/widgets/ButtonWithLabel.hpp"
 #include <gui/login_screen/LoginView.hpp>
@@ -69,7 +70,7 @@ void LoginView::pinNumClicked(const touchgfx::ButtonWithLabel &source,
 
 void LoginView::funBtnClicked(const touchgfx::ButtonWithIcon &source,
                               const touchgfx::ClickEvent &evt) {
-  if (evt.getType() != evt.PRESSED) {
+  if (evt.getType() != evt.RELEASED) {
     return;
   }
   if (pinLen) {
@@ -94,7 +95,7 @@ void LoginView::pinTxtClicked(const touchgfx::TextAreaWithOneWildcard &source,
       const_cast<Unicode::UnicodeChar *>(source.getWildcard()),
       OLDPINAREA_SIZE);
   application->setKeyboardCallback(keyboardCallback);
-  application->showKeyboard();
+  application->showKeyboard(true);
 }
 
 void LoginView::keyboardEventHandler(Unicode::UnicodeChar c) {
@@ -103,8 +104,27 @@ void LoginView::keyboardEventHandler(Unicode::UnicodeChar c) {
   }
 }
 
+static int32_t checkPwdPin(Unicode::UnicodeChar *code) {
+  int32_t pin = 0;
+  for (int i = 0; i < 6; i++) {
+    Unicode::UnicodeChar c = *code++;
+    if (!c) {
+      return -1;
+    }
+    if (c >= '0' && c <= '9') {
+      pin = pin * 10 + (c - '0');
+    } else {
+      return -1;
+    }
+  }
+  return pin;
+}
+
 void LoginView::pinBtnClicked(const touchgfx::ButtonWithLabel &source,
                               const touchgfx::ClickEvent &evt) {
+  if (evt.getType() != evt.RELEASED) {
+    return;
+  }
   if (&source == &btnCpinExit) {
     oldPinAreaBuffer[0] = 0;
     newPinAreaBuffer[0] = 0;
@@ -112,5 +132,26 @@ void LoginView::pinBtnClicked(const touchgfx::ButtonWithLabel &source,
 
     ChangePwdModal.hide();
     ChangePwdModal.invalidate();
+  } else {
+    uint32_t opin;
+    uint32_t npin;
+    if (((opin = checkPwdPin(oldPinAreaBuffer)) < 0) ||
+        ((npin = checkPwdPin(newPinAreaBuffer)) < 0) ||
+        ((npin = checkPwdPin(reePinAreaBuffer)) < 0)) {
+      ErrorPrompt.setTypedText(TypedText(T_PINFORMATERROR));
+      ErrorPrompt.invalidate();
+      return;
+    }
+    if (Unicode::strncmp(newPinAreaBuffer, reePinAreaBuffer, 6)) {
+      ErrorPrompt.setTypedText(TypedText(T_PINMISMATCH));
+      ErrorPrompt.invalidate();
+      return;
+    }
+    if (!parameters_check_pin(opin)) {
+      ErrorPrompt.setTypedText(TypedText(T_PINMISMATCH));
+      ErrorPrompt.invalidate();
+      return;
+    }
+    parameters_save_pin(npin);
   }
 }

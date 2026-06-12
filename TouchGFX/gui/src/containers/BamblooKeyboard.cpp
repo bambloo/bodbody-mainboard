@@ -1,9 +1,10 @@
 #include "BitmapDatabase.hpp"
-#include <gui/containers/BamblooKeyboard.hpp>
 #include "gui/containers/BamblooKeyboardBase.hpp"
 #include "images/BitmapDatabase.hpp"
 #include "touchgfx/Color.hpp"
+#include "touchgfx/TypedText.hpp"
 #include <fonts/ApplicationFontProvider.hpp>
+#include <gui/containers/BamblooKeyboard.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/widgets/Keyboard.hpp>
 
@@ -62,6 +63,7 @@ static const bambloo::BamblooKeyboardBase::Layout layout = {
     4,                    // numberOfCallbackAreas
     Rect(12, 6, 792, 53), // textAreaPosition
     TypedText(T_ENTEREDTEXT),
+    TypedText(T_PASSWORDTEXT),
     touchgfx::Color::getColorFromRGB(0x55, 0x55, 0x55), // textAreaFontColor
     Typography::KEYBOARD,
     touchgfx::Color::getColorFromRGB(0x55, 0x55, 0x55),
@@ -116,8 +118,7 @@ static const Unicode::UnicodeChar keyMappingsNumUpper[31] = {
 };
 
 BamblooKeyboard::BamblooKeyboard()
-    : modeBtnTextArea(),
-      capslockPressed(this, &BamblooKeyboard::capsLockPressedHandler),
+    : capslockPressed(this, &BamblooKeyboard::capsLockPressedHandler),
       backspacePressed(this, &BamblooKeyboard::backspacePressedHandler),
       returnPressed(this, &BamblooKeyboard::returnPressedHandler),
       modePressed(this, &BamblooKeyboard::modePressedHandler),
@@ -135,9 +136,22 @@ BamblooKeyboard::BamblooKeyboard()
   memset(buffer, 0, sizeof(buffer));
   setBuffer(buffer, 16);
 
-  setBufferPosition(0);
+  TypedText txt = (T_MODENUMTEXT);
+  modeBtnTextArea.setTypedText(txt);
+  uint16_t voff = (::layout.callbackAreaArray[2].keyArea.height -
+                   txt.getFont()->getBaseline()) /
+                  2;
+  modeBtnTextArea.setPosition(::layout.callbackAreaArray[2].keyArea.x,
+                              ::layout.callbackAreaArray[2].keyArea.y + voff,
+                              ::layout.callbackAreaArray[2].keyArea.width,
+                              txt.getFont()->getBaseline());
+
+  modeBtnTextArea.setVisible(true);
+  modeBtnTextArea.setColor(Color::getColorFromRGB(0xFF, 0xFF, 0xFF));
+
   setKeymappingList();
   setTouchable(true);
+  add(modeBtnTextArea);
 }
 
 void BamblooKeyboard::capsLockPressedHandler() {

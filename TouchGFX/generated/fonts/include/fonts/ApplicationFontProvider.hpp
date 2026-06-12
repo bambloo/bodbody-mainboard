@@ -18,6 +18,7 @@ struct Typography
     static const touchgfx::FontId SMALL = 2;
     static const touchgfx::FontId KEYBOARD = 3;
     static const touchgfx::FontId PASSWORD = 4;
+    static const touchgfx::FontId THIN = 5;
 };
 
 struct TypographyFontIndex
@@ -27,7 +28,8 @@ struct TypographyFontIndex
     static const touchgfx::FontId SMALL = 2;    // SourceHanSansSC_Bold_otf_10_4bpp
     static const touchgfx::FontId KEYBOARD = 0; // SourceHanSansSC_Bold_otf_20_4bpp
     static const touchgfx::FontId PASSWORD = 3; // SourceHanSansSC_Bold_otf_24_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 4;
+    static const touchgfx::FontId THIN = 4;     // SourceHanSansSC_Normal_otf_16_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

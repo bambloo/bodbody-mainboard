@@ -45,9 +45,10 @@ public:
                                    ///< callbacks
     Rect textAreaPosition;         ///< The area where text is written
     TypedText textAreaFont;        ///< The font used for typing text
-    colortype textAreaFontColor;   ///< The color used for the typing text
-    FontId keyFont;                ///< The font used for the keys
-    colortype keyFontColor;        ///< The color used for the keys
+    TypedText pswdAreaFont;
+    colortype textAreaFontColor; ///< The color used for the typing text
+    FontId keyFont;              ///< The font used for the keys
+    colortype keyFontColor;      ///< The color used for the keys
   };
 
   BamblooKeyboardBase();
@@ -69,6 +70,8 @@ public:
   virtual void handleClickEvent(const ClickEvent &event);
 
   virtual void handleDragEvent(const DragEvent &event);
+
+  void setPasswordMode(bool mode);
 
   void setKeyListener(GenericCallback<Unicode::UnicodeChar> &callback) {
     keyListener = &callback;
@@ -99,6 +102,6 @@ protected:
   virtual void setupDrawChain(const Rect &invalidatedArea,
                               Drawable **nextPreviousElement);
 };
-} // namespace touchgfx
+} // namespace bambloo
 
 #endif // BAMBLOOKEYBOARD2_HPP

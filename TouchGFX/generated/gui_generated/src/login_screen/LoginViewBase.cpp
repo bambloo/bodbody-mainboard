@@ -160,19 +160,25 @@ LoginViewBase::LoginViewBase() :
     NewPinLabel.setTypedText(touchgfx::TypedText(T_INPUTNEWPSWDLABEL));
     ChangePwdModal.add(NewPinLabel);
 
-    btnCpinExit.setXY(506, 344);
+    btnCpinExit.setXY(420, 396);
     btnCpinExit.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
     btnCpinExit.setLabelText(touchgfx::TypedText(T_CANCELBTNLABEL));
     btnCpinExit.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btnCpinExit.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ChangePwdModal.add(btnCpinExit);
 
-    btnCpinOkay.setXY(396, 344);
+    btnCpinOkay.setXY(328, 396);
     btnCpinOkay.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
     btnCpinOkay.setLabelText(touchgfx::TypedText(T_OKBTNLABEL));
     btnCpinOkay.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     btnCpinOkay.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ChangePwdModal.add(btnCpinOkay);
+
+    ErrorPrompt.setPosition(328, 345, 413, 25);
+    ErrorPrompt.setColor(touchgfx::Color::getColorFromRGB(0, 136, 255));
+    ErrorPrompt.setLinespacing(0);
+    ErrorPrompt.setTypedText(touchgfx::TypedText(T___SINGLEUSE_L6QL));
+    ChangePwdModal.add(ErrorPrompt);
 
     add(ChangePwdModal);
 }

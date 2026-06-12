@@ -1,3 +1,5 @@
+#include "gui/common/FrontendApplication.hpp"
+#include "texts/TextKeysAndLanguages.hpp"
 #include "touchgfx/Callback.hpp"
 #include "touchgfx/Unicode.hpp"
 #include "touchgfx/widgets/ButtonWithLabel.hpp"
@@ -6,32 +8,41 @@
 #include "parameters.h"
 
 LoginView::LoginView()
-    : pinClickedCallback(this, &LoginView::pinClicked),
-      funClickedCallback(this, &LoginView::funClicked),
-      changePinClickedCallback(this, &LoginView::changePinClicked), pinLen(0),
+    : pinNumClickedCallback(this, &LoginView::pinNumClicked),
+      funBtnClickedCallback(this, &LoginView::funBtnClicked),
+      pinBtnClickedCallback(this, &LoginView::pinBtnClicked),
+      pinTxtClickedCallback(this, &LoginView::pinTxtClicked),
+      keyboardCallback(this, &LoginView::keyboardEventHandler), pinLen(0),
       pinVal(0) {}
 
 void LoginView::setupScreen() {
   LoginViewBase::setupScreen();
-  btnPin0.setClickAction(pinClickedCallback);
-  btnPin1.setClickAction(pinClickedCallback);
-  btnPin2.setClickAction(pinClickedCallback);
-  btnPin3.setClickAction(pinClickedCallback);
-  btnPin4.setClickAction(pinClickedCallback);
-  btnPin5.setClickAction(pinClickedCallback);
-  btnPin6.setClickAction(pinClickedCallback);
-  btnPin7.setClickAction(pinClickedCallback);
-  btnPin8.setClickAction(pinClickedCallback);
-  btnPin9.setClickAction(pinClickedCallback);
-  btnBack.setClickAction(funClickedCallback);
+  btnPin0.setClickAction(pinNumClickedCallback);
+  btnPin1.setClickAction(pinNumClickedCallback);
+  btnPin2.setClickAction(pinNumClickedCallback);
+  btnPin3.setClickAction(pinNumClickedCallback);
+  btnPin4.setClickAction(pinNumClickedCallback);
+  btnPin5.setClickAction(pinNumClickedCallback);
+  btnPin6.setClickAction(pinNumClickedCallback);
+  btnPin7.setClickAction(pinNumClickedCallback);
+  btnPin8.setClickAction(pinNumClickedCallback);
+  btnPin9.setClickAction(pinNumClickedCallback);
 
-  originalPinArea.setClickAction(changePinClickedCallback);
+  btnBack.setClickAction(funBtnClickedCallback);
+  btnCpin.setClickAction(funBtnClickedCallback);
+
+  oldPinArea.setClickAction(pinTxtClickedCallback);
+  newPinArea.setClickAction(pinTxtClickedCallback);
+  reePinArea.setClickAction(pinTxtClickedCallback);
+
+  btnCpinOkay.setClickAction(pinBtnClickedCallback);
+  btnCpinExit.setClickAction(pinBtnClickedCallback);
 }
 
 void LoginView::tearDownScreen() { LoginViewBase::tearDownScreen(); }
 
-void LoginView::pinClicked(const touchgfx::ButtonWithLabel &source,
-                           const touchgfx::ClickEvent &evt) {
+void LoginView::pinNumClicked(const touchgfx::ButtonWithLabel &source,
+                              const touchgfx::ClickEvent &evt) {
   if (evt.getType() != evt.PRESSED) {
     return;
   }
@@ -51,14 +62,13 @@ void LoginView::pinClicked(const touchgfx::ButtonWithLabel &source,
     pinLen = 0;
     pinVal = 0;
     pinAreaBuffer[0] = 0;
-
   }
   pinArea.invalidate();
   // pinArea.resizeToCurrentTextWithAlignment();
 }
 
-void LoginView::funClicked(const touchgfx::ButtonWithIcon &source,
-                           const touchgfx::ClickEvent &evt) {
+void LoginView::funBtnClicked(const touchgfx::ButtonWithIcon &source,
+                              const touchgfx::ClickEvent &evt) {
   if (evt.getType() != evt.PRESSED) {
     return;
   }
@@ -70,13 +80,37 @@ void LoginView::funClicked(const touchgfx::ButtonWithIcon &source,
   }
 }
 
-void LoginView::changePinClicked(
-    const touchgfx::TextAreaWithOneWildcard &source,
-    const touchgfx::ClickEvent &evt) {
+void LoginView::pinTxtClicked(const touchgfx::TextAreaWithOneWildcard &source,
+                              const touchgfx::ClickEvent &evt) {
   if (evt.getType() != evt.PRESSED) {
     return;
   }
 
-  bamblooKeyboard1.setVisible(true);
-  bamblooKeyboard1.invalidate();
+  currentPinArea = &source;
+
+  auto application = FrontendApplication::getInstance();
+  application->attachKeyboardToCurrentScreen();
+  application->setKeyboardBuffer(
+      const_cast<Unicode::UnicodeChar *>(source.getWildcard()),
+      OLDPINAREA_SIZE);
+  application->setKeyboardCallback(keyboardCallback);
+  application->showKeyboard();
+}
+
+void LoginView::keyboardEventHandler(Unicode::UnicodeChar c) {
+  if (currentPinArea && !c) {
+    currentPinArea->invalidate();
+  }
+}
+
+void LoginView::pinBtnClicked(const touchgfx::ButtonWithLabel &source,
+                              const touchgfx::ClickEvent &evt) {
+  if (&source == &btnCpinExit) {
+    oldPinAreaBuffer[0] = 0;
+    newPinAreaBuffer[0] = 0;
+    reePinAreaBuffer[0] = 0;
+
+    ChangePwdModal.hide();
+    ChangePwdModal.invalidate();
+  }
 }

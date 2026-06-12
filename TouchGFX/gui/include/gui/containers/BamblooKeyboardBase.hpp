@@ -1,5 +1,5 @@
-#ifndef BAMBLOOKEYBOARD2_HPP
-#define BAMBLOOKEYBOARD2_HPP
+#ifndef BAMBLOOKEYBOARDBASE_HPP
+#define BAMBLOOKEYBOARDBASE_HPP
 
 #include <touchgfx/Callback.hpp>
 #include <touchgfx/TypedText.hpp>
@@ -11,22 +11,28 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
-namespace touchgfx {
-class BamblooKeyboard2 : public Container {
+using namespace touchgfx;
+
+namespace bambloo {
+class BamblooKeyboardBase : public touchgfx::Container {
 public:
-  struct Key {
-    uint8_t keyId;              ///< The id of a key
+  struct __attribute__((aligned(4))) Key {
+    uint32_t keyId;             ///< The id of a key
     Rect keyArea;               ///< The area occupied by the key
     BitmapId highlightBitmapId; ///< A bitmap to show when the area is "pressed"
   };
 
   struct CallbackArea {
-    Rect keyArea; ///< The area occupied by a key
-    GenericCallback<>
-        *callback; ///< The callback to execute, when the area is "pressed". The
-                   ///< callback should be a Callback<YourClass> member in the
-                   ///< class using the keyboard
-    BitmapId highlightBitmapId; ///< A bitmap to show when the area is "pressed"
+    ///< The area occupied by a key
+    Rect keyArea;
+
+    ///< The callback to execute, when the area is "pressed". The
+    ///< callback should be a Callback<YourClass> member in the
+    ///< class using the keyboard
+    GenericCallback<> *callback;
+
+    ///< A bitmap to show when the area is "pressed"
+    BitmapId highlightBitmapId;
   };
 
   struct Layout {
@@ -44,26 +50,14 @@ public:
     colortype keyFontColor;        ///< The color used for the keys
   };
 
-  struct KeyMapping {
-    uint8_t keyId;                 ///< Id of a key
-    Unicode::UnicodeChar keyValue; ///< Unicode equivalent of the key id
-  };
-
-  struct KeyMappingList {
-    const KeyMapping
-        *keyMappingArray; ///< The array of key mappings used by the keyboard
-    uint8_t numberOfKeys; ///< The number of keys in the list
-  };
-
-  BamblooKeyboard2();
+  BamblooKeyboardBase();
 
   void setBuffer(Unicode::UnicodeChar *newBuffer, uint16_t newBufferSize);
   void setLayout(const Layout *newLayout);
   void setTextIndentation();
   const Layout *getLayout() const { return layout; }
 
-  void setKeymappingList(const KeyMappingList *newKeyMappingList);
-  const KeyMappingList *getKeyMappingList() const { return keyMappingList; }
+  void setKeymappingList(const Unicode::UnicodeChar *newKeyMappingList);
 
   void setBufferPosition(uint16_t newPos);
 
@@ -92,13 +86,12 @@ protected:
   Image image;                  ///< Layout bitmap.
   TextAreaWithOneWildcard
       enteredText; ///< Widget capable of displaying the entered text buffer.
-  const Layout *layout;                 ///< Pointer to layout.
-  const KeyMappingList *keyMappingList; ///< Pointer to key mapping.
+  const Layout *layout;                       ///< Pointer to layout.
+  const Unicode::UnicodeChar *keyMappingList; ///< Pointer to key mapping.
   Image highlightImage; ///< Image to display when a key is highlighted.
   bool cancelIsEmitted; ///< Tells if a cancel is emitted to check when a key is
   ///< released
 
-  Unicode::UnicodeChar getCharForKey(uint8_t keyId) const;
   bool getKeyForCoordinates(Key *, int16_t x, int16_t y) const;
   bool getCallbackAreaForCoordinates(CallbackArea *, int16_t x,
                                      int16_t y) const;

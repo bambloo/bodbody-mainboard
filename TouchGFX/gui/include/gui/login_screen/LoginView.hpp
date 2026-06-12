@@ -2,6 +2,7 @@
 #define LOGINVIEW_HPP
 
 #include "touchgfx/widgets/ButtonWithIcon.hpp"
+#include "touchgfx/widgets/ButtonWithLabel.hpp"
 #include "touchgfx/widgets/TextArea.hpp"
 #include "touchgfx/widgets/TextAreaWithWildcard.hpp"
 #include <gui_generated/login_screen/LoginViewBase.hpp>
@@ -15,15 +16,23 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
 protected:
-    touchgfx::Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinClickedCallback;
-    touchgfx::Callback<LoginView, const touchgfx::ButtonWithIcon&, const touchgfx::ClickEvent&> funClickedCallback;
-    touchgfx::Callback<LoginView, const touchgfx::TextAreaWithOneWildcard&, const touchgfx::ClickEvent&> changePinClickedCallback;
-    void pinClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
-    void funClicked(const touchgfx::ButtonWithIcon& source, const touchgfx::ClickEvent& evt);
-    void changePinClicked(const touchgfx::TextAreaWithOneWildcard& source, const touchgfx::ClickEvent& evt);
+    Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinNumClickedCallback;
+    Callback<LoginView, const touchgfx::ButtonWithIcon&, const touchgfx::ClickEvent&> funBtnClickedCallback;
+    Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinBtnClickedCallback;
+    Callback<LoginView, const touchgfx::TextAreaWithOneWildcard&, const touchgfx::ClickEvent&> pinTxtClickedCallback;
+
+    Callback<LoginView, Unicode::UnicodeChar> keyboardCallback;
+
+    void pinNumClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
+    void funBtnClicked(const touchgfx::ButtonWithIcon& source, const touchgfx::ClickEvent& evt);
+    void pinBtnClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
+    void pinTxtClicked(const touchgfx::TextAreaWithOneWildcard& source, const touchgfx::ClickEvent& evt);
+    void keyboardEventHandler(Unicode::UnicodeChar c);
 
     int pinLen;
     uint32_t pinVal;
+private:
+    const TextAreaWithOneWildcard *currentPinArea;
 };
 
 #endif // LOGINVIEW_HPP

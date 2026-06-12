@@ -54,7 +54,7 @@
               },
               {
                 "Type": "ButtonWithIcon",
-                "Name": "btnPwd",
+                "Name": "btnCpin",
                 "X": 241,
                 "Y": 415,
                 "Width": 87,
@@ -66,7 +66,8 @@
                 "IconX": 27,
                 "IconY": 10,
                 "IconHeight": 32,
-                "IconWidth": 32
+                "IconWidth": 32,
+                "Clickable": true
               },
               {
                 "Type": "ButtonWithLabel",
@@ -326,9 +327,9 @@
                 "Type": "TextArea",
                 "Name": "pinArea",
                 "X": 241,
-                "Y": 142,
+                "Y": 148,
                 "Width": 309,
-                "Height": 36,
+                "Height": 24,
                 "TextId": "PinValue",
                 "TextRotation": "0",
                 "Color": {
@@ -348,85 +349,162 @@
             "Name": "ChangePwdModal",
             "Width": 800,
             "Height": 600,
-            "Visible": false,
-            "FileName": "__generated\\dark_theme_images_containers_large_wide_dark.png",
-            "ModalX": 160,
-            "ModalY": 165,
-            "ModalWidth": 480,
-            "ModalHeight": 270,
-            "Alpha": 244,
+            "FileName": "change-pin-background.png",
+            "ModalWidth": 800,
+            "ModalHeight": 600,
             "Components": [
               {
-                "Type": "Image",
-                "Name": "image1",
-                "X": 149,
-                "Y": 21,
-                "Width": 309,
+                "Type": "TextArea",
+                "Name": "reePinArea",
+                "X": 341,
+                "Y": 288,
+                "Width": 289,
+                "Height": 24,
+                "TextId": "ValueText",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 7
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "newPinArea",
+                "X": 341,
+                "Y": 224,
+                "Width": 289,
+                "Height": 24,
+                "TextId": "ValueText",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 7
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "oldPinArea",
+                "X": 341,
+                "Y": 163,
+                "Width": 289,
+                "Height": 24,
+                "TextId": "ValueText",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 7
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "OldPinLabel",
+                "X": 89,
+                "Y": 161,
+                "Width": 229,
+                "Height": 26,
+                "TextId": "InputPswdLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "ReenterPinLabel",
+                "X": 89,
+                "Y": 288,
+                "Width": 229,
+                "Height": 26,
+                "TextId": "ReenterPswdLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "NewPinLabel",
+                "X": 89,
+                "Y": 225,
+                "Width": 229,
+                "Height": 26,
+                "TextId": "InputNewPswdLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                }
+              },
+              {
+                "Type": "ButtonWithLabel",
+                "Name": "btnCpinExit",
+                "X": 506,
+                "Y": 344,
+                "Width": 87,
                 "Height": 51,
-                "RelativeFilename": "pin-input-bkgrd.png",
-                "Clickable": true
-              },
-              {
-                "Type": "TextArea",
-                "Name": "originalPinArea",
-                "X": 159,
-                "Y": 27,
-                "Width": 289,
-                "Height": 38,
-                "TextId": "__SingleUse_EHXO",
-                "TextRotation": "0",
-                "Color": {
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "CancelBtnLabel",
+                "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
                   "Blue": 255
                 },
-                "Wildcard1": {},
-                "Clickable": true
-              },
-              {
-                "Type": "TextArea",
-                "Name": "NewPinArea",
-                "X": 159,
-                "Y": 123,
-                "Width": 289,
-                "Height": 38,
-                "TextId": "__SingleUse_9D0V",
-                "TextRotation": "0",
-                "Color": {
+                "PressedColor": {
                   "Red": 255,
                   "Green": 255,
                   "Blue": 255
                 },
-                "Wildcard1": {},
+                "TextRotation": "0",
                 "Clickable": true
               },
               {
-                "Type": "TextArea",
-                "Name": "RetypeNewPinArea",
-                "X": 159,
-                "Y": 173,
-                "Width": 289,
-                "Height": 38,
-                "TextId": "__SingleUse_F1QR",
-                "TextRotation": "0",
-                "Color": {
+                "Type": "ButtonWithLabel",
+                "Name": "btnCpinOkay",
+                "X": 396,
+                "Y": 344,
+                "Width": 87,
+                "Height": 51,
+                "Pressed": "pin-key-pressed.png",
+                "Released": "pin-key-normal.png",
+                "TextId": "OKBtnLabel",
+                "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
                   "Blue": 255
                 },
-                "Wildcard1": {},
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "TextRotation": "0",
                 "Clickable": true
               }
             ]
-          },
-          {
-            "Type": "CustomContainerInstance",
-            "Name": "bamblooKeyboard1",
-            "Y": 280,
-            "Width": 800,
-            "Height": 320,
-            "Visible": false,
-            "CustomContainerDefinitionName": "BamblooKeyboard"
           }
         ],
         "Interactions": [
@@ -445,7 +523,7 @@
             "InteractionName": "Interaction1",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "btnPwd"
+              "TriggerComponent": "btnCpin"
             },
             "Action": {
               "Type": "ActionShow",
@@ -602,23 +680,7 @@
         ]
       }
     ],
-    "CustomContainerDefinitions": [
-      {
-        "Name": "BamblooKeyboard",
-        "Y": 280,
-        "Width": 800,
-        "Height": 320,
-        "Components": [],
-        "Interactions": []
-      },
-      {
-        "Name": "BamblooKeyboard2",
-        "Width": 250,
-        "Height": 250,
-        "Components": [],
-        "Interactions": []
-      }
-    ],
+    "CustomContainerDefinitions": [],
     "Name": "bodbody-mainboard",
     "Resolution": {
       "Width": 800,

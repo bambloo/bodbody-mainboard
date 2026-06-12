@@ -31,9 +31,7 @@
     <ClCompile Include="..\..\gui\src\main_screen\MainView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\BamblooKeyboard.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\BamblooKeyboardBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\BamblooKeyboard2.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\BamblooKeyboard2Base.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\BamblooKeyboardBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -194,9 +192,7 @@
     <ClInclude Include="..\..\gui\include\gui\main_screen\MainView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\main_screen\MainViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\BamblooKeyboard.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BamblooKeyboardBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\BamblooKeyboard2.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\BamblooKeyboard2Base.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\BamblooKeyboardBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

@@ -4,25 +4,29 @@
 #include "touchgfx/FontManager.hpp"
 #include "touchgfx/containers/Container.hpp"
 #include "touchgfx/events/ClickEvent.hpp"
+#include "touchgfx/hal/HAL.hpp"
 #include "touchgfx/hal/Types.hpp"
 #include "touchgfx/lcd/LCD.hpp"
-#include <gui/containers/BamblooKeyboard2.hpp>
+#include <gui/containers/BamblooKeyboardBase.hpp>
+
+#include <cmath>
 
 using namespace touchgfx;
-BamblooKeyboard2::BamblooKeyboard2()
+using namespace bambloo;
+BamblooKeyboardBase::BamblooKeyboardBase()
     : Container(), keyListener(nullptr), buffer(nullptr), bufferSize(0),
       bufferPosition(0), layout(nullptr), keyMappingList(nullptr),
       cancelIsEmitted(false) {
   image.setXY(0, 0);
+  highlightImage.setVisible(false);
 
   add(image);
-  highlightImage.setVisible(false);
   add(highlightImage);
   add(enteredText);
 }
 
-void BamblooKeyboard2::setBuffer(Unicode::UnicodeChar *newBuffer,
-                                 uint16_t newBufferSize) {
+void BamblooKeyboardBase::setBuffer(Unicode::UnicodeChar *newBuffer,
+                                    uint16_t newBufferSize) {
   buffer = newBuffer;
   bufferSize = newBufferSize;
 
@@ -34,7 +38,7 @@ void BamblooKeyboard2::setBuffer(Unicode::UnicodeChar *newBuffer,
   }
 }
 
-void BamblooKeyboard2::setLayout(const Layout *newLayout) {
+void BamblooKeyboardBase::setLayout(const Layout *newLayout) {
 
   // 1. Store the layout reference
   layout = newLayout;
@@ -56,7 +60,7 @@ void BamblooKeyboard2::setLayout(const Layout *newLayout) {
   invalidate();
 }
 
-void BamblooKeyboard2::setTextIndentation() {
+void BamblooKeyboardBase::setTextIndentation() {
   if (layout != nullptr) {
     // 2. Fetch the automatic text padding / indentation from the layout's font
     // settings
@@ -73,26 +77,27 @@ void BamblooKeyboard2::setTextIndentation() {
   }
 }
 
-void BamblooKeyboard2::setBufferPosition(uint16_t newPos) {
+void BamblooKeyboardBase::setBufferPosition(uint16_t newPos) {
   bufferPosition = newPos;
+  buffer[bufferPosition] = 0;
   enteredText.invalidate();
 }
 
-void BamblooKeyboard2::setKeymappingList(
-    const KeyMappingList *newKeyMappingList) {
+void BamblooKeyboardBase::setKeymappingList(
+    const Unicode::UnicodeChar *newKeyMappingList) {
   keyMappingList = newKeyMappingList;
   invalidate();
 }
 
-void BamblooKeyboard2::setupDrawChain(const Rect &invalidatedArea,
-                                      Drawable **nextPreviousElement) {
+void BamblooKeyboardBase::setupDrawChain(const Rect &invalidatedArea,
+                                         Drawable **nextPreviousElement) {
   Container::setupDrawChain(invalidatedArea, nextPreviousElement);
   resetDrawChainCache();
   nextDrawChainElement = *nextPreviousElement;
   *nextPreviousElement = this;
 }
 
-void BamblooKeyboard2::handleDragEvent(const DragEvent &event) {
+void BamblooKeyboardBase::handleDragEvent(const DragEvent &event) {
   if (highlightImage.isVisible() &&
       !highlightImage.getRect().intersect(event.getNewX(), event.getNewY())) {
     if (!cancelIsEmitted) {
@@ -102,35 +107,56 @@ void BamblooKeyboard2::handleDragEvent(const DragEvent &event) {
   }
 }
 
-void BamblooKeyboard2::draw(const Rect &invalidatedArea) const {
-    if (!layout) {
-        return;
+void BamblooKeyboardBase::draw(const Rect &invalidatedArea) const {
+  if (!layout) {
+    return;
+  }
+
+  auto font = FontManager::getFont(layout->keyFont);
+  if (!font) {
+    return;
+  }
+
+  LCD::StringVisuals stringVisuals;
+  stringVisuals.font = font;
+  stringVisuals.alignment = CENTER;
+  stringVisuals.alpha = 255;
+
+  stringVisuals.color.color = layout->keyFontColor.color;
+
+  int fontHeight = font->getHeight();
+  auto keyCursor = layout->keyArray;
+  auto keyCursorEnd = layout->keyArray + layout->numberOfKeys;
+
+  while (keyCursor < keyCursorEnd) {
+    if (!keyCursor->keyArea.intersect(invalidatedArea)) {
+      keyCursor++;
+      continue;
     }
 
-    auto font = FontManager::getFont(layout->keyFont);
-    if (!font) {
-        return;
+    Unicode::UnicodeChar code = keyMappingList[keyCursor->keyId];
+    if (!code) {
+      keyCursor++;
+      continue;
     }
 
-    LCD::StringVisuals stringVisuals;
-    stringVisuals.font = font;
-    stringVisuals.color.color = layout->keyFontColor.color;
-    
-    int height = font->getHeight();
-    auto keyCursor = layout->keyArray;
-    auto keyCursorEnd = layout->keyArray + layout->numberOfKeys;
+    int16_t voff = (keyCursor->keyArea.height - fontHeight) / 2;
+    Rect rect2Draw = keyCursor->keyArea;
+    rect2Draw.y += voff;
+    rect2Draw.height = fontHeight;
 
-    while(keyCursor < keyCursorEnd) {
-        if (!keyCursor->keyArea.intersect(invalidatedArea)) {
-            keyCursor++;
-             continue;
-        }
-        
-        keyCursor++;
+    if (invalidatedArea.intersect(rect2Draw)) {
+      Unicode::UnicodeChar str[] = {code, 0};
+
+      Rect t(0, 0, rect2Draw.width, rect2Draw.height);
+      translateRectToAbsolute(rect2Draw);
+      touchgfx::HAL::lcd().drawString(rect2Draw, t, stringVisuals, str);
     }
+    keyCursor++;
+  }
 }
 
-void BamblooKeyboard2::handleClickEvent(const ClickEvent &event) {
+void BamblooKeyboardBase::handleClickEvent(const ClickEvent &event) {
   auto eventType = event.getType();
   if (eventType == ClickEvent::RELEASED && cancelIsEmitted) {
     cancelIsEmitted = false;
@@ -151,23 +177,32 @@ void BamblooKeyboard2::handleClickEvent(const ClickEvent &event) {
     } else if (callbackArea.callback && eventType == ClickEvent::RELEASED) {
       callbackArea.callback->execute();
     }
-  }
-  Key k;
-  if (getKeyForCoordinates(&k, clickX, clickY)) {
-    if (eventType == ClickEvent::PRESSED) {
-      highlightImage.setXY(k.keyArea.x, k.keyArea.y);
-      Bitmap bmp = Bitmap(k.highlightBitmapId);
-      highlightImage.setBitmap(bmp);
-      highlightImage.setVisible(true);
-      highlightImage.invalidate();
-      return;
-    } else {
-      if (keyListener && eventType == ClickEvent::RELEASED) {
-        keyListener->execute(k.keyId);
+  } else {
+    Key k;
+    if (getKeyForCoordinates(&k, clickX, clickY)) {
+      if (eventType == ClickEvent::PRESSED) {
+        highlightImage.setXY(k.keyArea.x, k.keyArea.y);
+        Bitmap bmp = Bitmap(k.highlightBitmapId);
+        highlightImage.setBitmap(bmp);
+        highlightImage.setVisible(true);
+        highlightImage.invalidate();
+        return;
+      } else {
+        if (keyListener && eventType == ClickEvent::RELEASED) {
+          Unicode::UnicodeChar code = keyMappingList[k.keyId];
+          if (!code || bufferPosition >= bufferSize - 1) {
+            goto end;
+          }
+          enteredText.invalidateContent();
+          buffer[bufferPosition++] = code;
+          buffer[bufferPosition] = 0;
+          enteredText.invalidateContent();
+          keyListener->execute(k.keyId);
+        }
       }
     }
   }
-
+end:
   highlightImage.setVisible(false);
   highlightImage.invalidate();
   if (eventType == ClickEvent::CANCEL) {
@@ -175,9 +210,9 @@ void BamblooKeyboard2::handleClickEvent(const ClickEvent &event) {
   }
 }
 
-bool BamblooKeyboard2::getCallbackAreaForCoordinates(CallbackArea *area,
-                                                     int16_t x,
-                                                     int16_t y) const {
+bool BamblooKeyboardBase::getCallbackAreaForCoordinates(CallbackArea *area,
+                                                        int16_t x,
+                                                        int16_t y) const {
 
   if (!layout)
     return false;
@@ -194,8 +229,8 @@ bool BamblooKeyboard2::getCallbackAreaForCoordinates(CallbackArea *area,
   return false;
 }
 
-bool BamblooKeyboard2::getKeyForCoordinates(Key *key, int16_t x,
-                                            int16_t y) const {
+bool BamblooKeyboardBase::getKeyForCoordinates(Key *key, int16_t x,
+                                               int16_t y) const {
   if (!layout)
     return false;
 

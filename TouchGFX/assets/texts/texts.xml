@@ -6,6 +6,10 @@
   </Languages>
   <Texts>
     <TextGroup Id="Keyboard">
+      <Text Id="ValueText" Alignment="Left" TypographyId="Password">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">&lt;value&gt;</Translation>
+      </Text>
       <Text Id="EnteredText" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">&lt;placeholder&gt;</Translation>
         <Translation Language="ZH">&lt;placeholder&gt;</Translation>
@@ -26,7 +30,27 @@
       </Text>
     </TextGroup>
     <TextGroup Id="LoginView">
-      <Text Id="PinValue" Alignment="Center" TypographyId="Keyboard">
+      <Text Id="CancelBtnLabel" Alignment="Center" TypographyId="Keyboard">
+        <Translation Language="GB">Cancel</Translation>
+        <Translation Language="ZH">取消</Translation>
+      </Text>
+      <Text Id="OKBtnLabel" Alignment="Center" TypographyId="Keyboard">
+        <Translation Language="GB">OK</Translation>
+        <Translation Language="ZH">确认</Translation>
+      </Text>
+      <Text Id="ReenterPswdLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Re-enter Password</Translation>
+        <Translation Language="ZH">重新输入密码</Translation>
+      </Text>
+      <Text Id="InputPswdLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Old Password</Translation>
+        <Translation Language="ZH">旧密码</Translation>
+      </Text>
+      <Text Id="InputNewPswdLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">New Password</Translation>
+        <Translation Language="ZH">新密码</Translation>
+      </Text>
+      <Text Id="PinValue" Alignment="Center" TypographyId="Password">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>
@@ -36,18 +60,6 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_F1QR" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-        <Translation Language="ZH">New Text&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_9D0V" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-        <Translation Language="ZH">New Text&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_EHXO" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-        <Translation Language="ZH">New Text&lt;value&gt;</Translation>
-      </Text>
       <Text Id="__SingleUse_H1SH" Alignment="Right" TypographyId="Keyboard">
         <Translation Language="GB">&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
@@ -95,9 +107,10 @@
     </TextGroup>
   </Texts>
   <Typographies>
-    <Typography Id="Default" Font="SourceHanSansSC-Bold.otf" Size="32" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
+    <Typography Id="Default" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
     <Typography Id="Large" Font="SourceHanSansSC-Bold.otf" Size="40" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
     <Typography Id="Small" Font="SourceHanSansSC-Bold.otf" Size="10" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
     <Typography Id="Keyboard" Font="SourceHanSansSC-Bold.otf" Size="20" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacters="!”&quot;#*%&amp;()'$+-@_, .:;?/~±×÷•º`´{}©£€^®¥_=[]¡¢|\¿&gt;&lt;" WildcardCharacterRanges="a-z,A-Z,0-9" />
+    <Typography Id="Password" Font="SourceHanSansSC-Bold.otf" Size="24" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="·" />
   </Typographies>
 </TextDatabase>

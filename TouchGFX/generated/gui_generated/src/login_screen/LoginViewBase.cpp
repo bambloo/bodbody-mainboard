@@ -19,11 +19,11 @@ LoginViewBase::LoginViewBase() :
     btnBack.setIconXY(27, 9);
     BackgroundContainer.add(btnBack);
 
-    btnPwd.setXY(241, 415);
-    btnPwd.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_COMMUNICATION_VPN_KEY_32_32_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_COMMUNICATION_VPN_KEY_32_32_E8F6FB_SVG_ID));
-    btnPwd.setIconXY(27, 10);
-    btnPwd.setAction(buttonCallback);
-    BackgroundContainer.add(btnPwd);
+    btnCpin.setXY(241, 415);
+    btnCpin.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_COMMUNICATION_VPN_KEY_32_32_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_COMMUNICATION_VPN_KEY_32_32_E8F6FB_SVG_ID));
+    btnCpin.setIconXY(27, 10);
+    btnCpin.setAction(buttonCallback);
+    BackgroundContainer.add(btnCpin);
 
     btnPin9.setXY(463, 345);
     btnPin9.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
@@ -105,7 +105,7 @@ LoginViewBase::LoginViewBase() :
     LoginPromptLabel.setTypedText(touchgfx::TypedText(T_ENTERPINPROMPT));
     BackgroundContainer.add(LoginPromptLabel);
 
-    pinArea.setPosition(241, 142, 309, 36);
+    pinArea.setPosition(241, 148, 309, 24);
     pinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     pinArea.setLinespacing(0);
     pinAreaBuffer[0] = 0;
@@ -115,37 +115,66 @@ LoginViewBase::LoginViewBase() :
 
     add(BackgroundContainer);
 
-    ChangePwdModal.setBackground(touchgfx::BitmapId(BITMAP_DARK_THEME_IMAGES_CONTAINERS_LARGE_WIDE_DARK_ID), 160, 165);
+    ChangePwdModal.setBackground(touchgfx::BitmapId(BITMAP_CHANGE_PIN_BACKGROUND_ID), 0, 0);
     ChangePwdModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    ChangePwdModal.setShadeAlpha(244);
-    ChangePwdModal.hide();
-    image1.setXY(149, 21);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_PIN_INPUT_BKGRD_ID));
-    ChangePwdModal.add(image1);
+    ChangePwdModal.setShadeAlpha(255);
+    reePinArea.setPosition(341, 288, 289, 24);
+    reePinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    reePinArea.setLinespacing(0);
+    reePinAreaBuffer[0] = 0;
+    reePinArea.setWildcard(reePinAreaBuffer);
+    reePinArea.setTypedText(touchgfx::TypedText(T_VALUETEXT));
+    ChangePwdModal.add(reePinArea);
 
-    originalPinArea.setPosition(159, 27, 289, 38);
-    originalPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    originalPinArea.setLinespacing(0);
-    originalPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_EHXO));
-    ChangePwdModal.add(originalPinArea);
+    newPinArea.setPosition(341, 224, 289, 24);
+    newPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    newPinArea.setLinespacing(0);
+    newPinAreaBuffer[0] = 0;
+    newPinArea.setWildcard(newPinAreaBuffer);
+    newPinArea.setTypedText(touchgfx::TypedText(T_VALUETEXT));
+    ChangePwdModal.add(newPinArea);
 
-    NewPinArea.setPosition(159, 123, 289, 38);
-    NewPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    NewPinArea.setLinespacing(0);
-    NewPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_9D0V));
-    ChangePwdModal.add(NewPinArea);
+    oldPinArea.setPosition(341, 163, 289, 24);
+    oldPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    oldPinArea.setLinespacing(0);
+    oldPinAreaBuffer[0] = 0;
+    oldPinArea.setWildcard(oldPinAreaBuffer);
+    oldPinArea.setTypedText(touchgfx::TypedText(T_VALUETEXT));
+    ChangePwdModal.add(oldPinArea);
 
-    RetypeNewPinArea.setPosition(159, 173, 289, 38);
-    RetypeNewPinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    RetypeNewPinArea.setLinespacing(0);
-    RetypeNewPinArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_F1QR));
-    ChangePwdModal.add(RetypeNewPinArea);
+    OldPinLabel.setPosition(89, 161, 229, 26);
+    OldPinLabel.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    OldPinLabel.setLinespacing(0);
+    OldPinLabel.setTypedText(touchgfx::TypedText(T_INPUTPSWDLABEL));
+    ChangePwdModal.add(OldPinLabel);
+
+    ReenterPinLabel.setPosition(89, 288, 229, 26);
+    ReenterPinLabel.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    ReenterPinLabel.setLinespacing(0);
+    ReenterPinLabel.setTypedText(touchgfx::TypedText(T_REENTERPSWDLABEL));
+    ChangePwdModal.add(ReenterPinLabel);
+
+    NewPinLabel.setPosition(89, 225, 229, 26);
+    NewPinLabel.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    NewPinLabel.setLinespacing(0);
+    NewPinLabel.setTypedText(touchgfx::TypedText(T_INPUTNEWPSWDLABEL));
+    ChangePwdModal.add(NewPinLabel);
+
+    btnCpinExit.setXY(506, 344);
+    btnCpinExit.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnCpinExit.setLabelText(touchgfx::TypedText(T_CANCELBTNLABEL));
+    btnCpinExit.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnCpinExit.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    ChangePwdModal.add(btnCpinExit);
+
+    btnCpinOkay.setXY(396, 344);
+    btnCpinOkay.setBitmaps(touchgfx::Bitmap(BITMAP_PIN_KEY_NORMAL_ID), touchgfx::Bitmap(BITMAP_PIN_KEY_PRESSED_ID));
+    btnCpinOkay.setLabelText(touchgfx::TypedText(T_OKBTNLABEL));
+    btnCpinOkay.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    btnCpinOkay.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    ChangePwdModal.add(btnCpinOkay);
 
     add(ChangePwdModal);
-
-    bamblooKeyboard1.setXY(0, 280);
-    bamblooKeyboard1.setVisible(false);
-    add(bamblooKeyboard1);
 }
 
 LoginViewBase::~LoginViewBase()
@@ -155,15 +184,15 @@ LoginViewBase::~LoginViewBase()
 
 void LoginViewBase::setupScreen()
 {
-    bamblooKeyboard1.initialize();
+
 }
 
 void LoginViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &btnPwd)
+    if (&src == &btnCpin)
     {
         //Interaction1
-        //When btnPwd clicked show ChangePwdModal
+        //When btnCpin clicked show ChangePwdModal
         //Show ChangePwdModal
         ChangePwdModal.setVisible(true);
         ChangePwdModal.invalidate();

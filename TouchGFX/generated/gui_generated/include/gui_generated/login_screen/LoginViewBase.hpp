@@ -16,7 +16,6 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
-#include <gui/containers/BamblooKeyboard.hpp>
 
 class LoginViewBase : public touchgfx::View<LoginPresenter>
 {
@@ -36,7 +35,7 @@ protected:
     touchgfx::Box __background;
     touchgfx::Container BackgroundContainer;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > btnBack;
-    touchgfx::ButtonWithIcon btnPwd;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > btnCpin;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin9;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin8;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnPin7;
@@ -51,17 +50,26 @@ protected:
     touchgfx::TextArea LoginPromptLabel;
     touchgfx::TextAreaWithOneWildcard pinArea;
     touchgfx::ModalWindow ChangePwdModal;
-    touchgfx::ClickListener< touchgfx::Image > image1;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > originalPinArea;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > NewPinArea;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > RetypeNewPinArea;
-    BamblooKeyboard bamblooKeyboard1;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > reePinArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > newPinArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > oldPinArea;
+    touchgfx::TextArea OldPinLabel;
+    touchgfx::TextArea ReenterPinLabel;
+    touchgfx::TextArea NewPinLabel;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnCpinExit;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > btnCpinOkay;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t PINAREA_SIZE = 7;
     touchgfx::Unicode::UnicodeChar pinAreaBuffer[PINAREA_SIZE];
+    static const uint16_t REEPINAREA_SIZE = 7;
+    touchgfx::Unicode::UnicodeChar reePinAreaBuffer[REEPINAREA_SIZE];
+    static const uint16_t NEWPINAREA_SIZE = 7;
+    touchgfx::Unicode::UnicodeChar newPinAreaBuffer[NEWPINAREA_SIZE];
+    static const uint16_t OLDPINAREA_SIZE = 7;
+    touchgfx::Unicode::UnicodeChar oldPinAreaBuffer[OLDPINAREA_SIZE];
 
 private:
 

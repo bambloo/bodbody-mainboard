@@ -118,6 +118,7 @@ LoginViewBase::LoginViewBase() :
     ChangePwdModal.setBackground(touchgfx::BitmapId(BITMAP_CHANGE_PIN_BACKGROUND_ID), 0, 0);
     ChangePwdModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     ChangePwdModal.setShadeAlpha(255);
+    ChangePwdModal.hide();
     reePinArea.setPosition(341, 288, 289, 24);
     reePinArea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     reePinArea.setLinespacing(0);

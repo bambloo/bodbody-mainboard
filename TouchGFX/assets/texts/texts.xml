@@ -76,6 +76,10 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_5JQC" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">New Text</Translation>
+        <Translation Language="ZH">New Text</Translation>
+      </Text>
       <Text Id="__SingleUse_L6QL" Alignment="Left" TypographyId="Thin">
         <Translation Language="GB">&lt;placeholder&gt;</Translation>
         <Translation Language="ZH">&lt;placeholder&gt;</Translation>

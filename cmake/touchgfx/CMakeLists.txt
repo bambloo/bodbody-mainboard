@@ -24,11 +24,14 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/common/FrontendApplication.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboard.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboardBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/CustomContainer1.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/main_screen/MainView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/model/Model.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/test_screen/TestPresenter.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/test_screen/TestView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/ApplicationFontProvider.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CachedFont.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/CompressedFontCache.cpp
@@ -77,8 +80,10 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/boot_screen/BootViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/CustomContainer1Base.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/login_screen/LoginViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/test_screen/TestViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/BitmapDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_list_100_100_E8F6FB.svg.cpp

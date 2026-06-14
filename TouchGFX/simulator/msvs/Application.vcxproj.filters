@@ -220,6 +220,18 @@
     <Filter Include="Source Files\generated\gui_generated\containers">
       <UniqueIdentifier>6C8E23C4-C04F-4AEE-F0B5-15044EDEF04F</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\test_screen">
+      <UniqueIdentifier>75418D2C-FF4B-3C89-647E-648976280509</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\test_screen">
+      <UniqueIdentifier>371B5AB5-07CE-5EA3-8EA3-F5CA22AD3544</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\test_screen">
+      <UniqueIdentifier>800306C3-506B-01A2-1FA4-3F5191BED77C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\test_screen">
+      <UniqueIdentifier>840648E6-4B7E-9053-7E78-096CB885F094</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -284,6 +296,21 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\BamblooKeyboardBase.cpp">
       <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\test_screen\TestPresenter.cpp">
+      <Filter>Source Files\gui\test_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\test_screen\TestView.cpp">
+      <Filter>Source Files\gui\test_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\test_screen\TestViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\test_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\containers\CustomContainer1.cpp">
+      <Filter>Source Files\gui\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\CustomContainer1Base.cpp">
+      <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -759,6 +786,21 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\BamblooKeyboardBase.hpp">
       <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\test_screen\TestPresenter.hpp">
+      <Filter>Header Files\gui\test_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\test_screen\TestView.hpp">
+      <Filter>Header Files\gui\test_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\test_screen\TestViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\test_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\containers\CustomContainer1.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CustomContainer1Base.hpp">
+      <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

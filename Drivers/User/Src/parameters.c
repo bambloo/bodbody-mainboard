@@ -1,10 +1,12 @@
 #include "parameters.h"
 #include "app_filex.h"
 #include "fx_api.h"
+#include "fx_directory.h"
 #include "fx_file.h"
 #include "hash.h"
 #include "stm32h7xx_hal_hash.h"
 #include "tx_api.h"
+// #include "sqlite3.h"
 
 static parameters_t parameters = {
     .magic = PARAMETERS_MAGIC,
@@ -12,6 +14,8 @@ static parameters_t parameters = {
     .pin_sha1 = {0xf3, 0x07, 0x06, 0x3a, 0x85, 0x8b, 0xe3, 0x3f, 0xf2, 0xba,
                  0x3e, 0xf5, 0xd1, 0xdb, 0x8e, 0x30, 0x6b, 0x62, 0xeb, 0x02},
 };
+
+// static sqlite3* database;
 
 UINT parameters_init() {
   FX_FILE file;
@@ -35,6 +39,9 @@ UINT parameters_init() {
 end:
   fx_file_close(&file);
   fx_media_flush(&sdio_disk);
+
+  // sqlite3_initialize();
+  // sqlite3_open("bodbody.sqlite", &database);
   return status;
 }
 

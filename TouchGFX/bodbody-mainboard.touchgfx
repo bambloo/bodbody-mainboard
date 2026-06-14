@@ -349,6 +349,7 @@
             "Name": "ChangePwdModal",
             "Width": 800,
             "Height": 600,
+            "Visible": false,
             "FileName": "change-pin-background.png",
             "ModalWidth": 800,
             "ModalHeight": 600,
@@ -693,9 +694,52 @@
             }
           }
         ]
+      },
+      {
+        "Name": "Test",
+        "Components": [
+          {
+            "Type": "ScrollList",
+            "Name": "scrollList1",
+            "Width": 406,
+            "Height": 600,
+            "ItemTemplateName": "CustomContainer1",
+            "NumberofItems": 20,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
+          }
+        ],
+        "Interactions": []
       }
     ],
-    "CustomContainerDefinitions": [],
+    "CustomContainerDefinitions": [
+      {
+        "Name": "CustomContainer1",
+        "Width": 406,
+        "Height": 53,
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "Y": 13,
+            "Width": 90,
+            "Height": 26,
+            "TextId": "__SingleUse_5JQC",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "AutoSize": true
+          }
+        ],
+        "Interactions": []
+      }
+    ],
     "Name": "bodbody-mainboard",
     "Resolution": {
       "Width": 800,

@@ -7,6 +7,7 @@
 #include <gui/login_screen/LoginView.hpp>
 
 #include "parameters.h"
+#include "sqlite3.h"
 
 LoginView::LoginView()
     : pinNumClickedCallback(this, &LoginView::pinNumClicked),
@@ -18,6 +19,10 @@ LoginView::LoginView()
 
 void LoginView::setupScreen() {
   LoginViewBase::setupScreen();
+
+  FrontendApplication::getInstance()->initDatabase();
+  FrontendApplication::getInstance()->testDatabase();
+  
   btnPin0.setClickAction(pinNumClickedCallback);
   btnPin1.setClickAction(pinNumClickedCallback);
   btnPin2.setClickAction(pinNumClickedCallback);

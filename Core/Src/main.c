@@ -20,6 +20,7 @@
 #include "app_threadx.h"
 #include "main.h"
 #include "crc.h"
+#include "dma.h"
 #include "dma2d.h"
 #include "eth.h"
 #include "hash.h"
@@ -118,6 +119,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_USB_OTG_HS_HCD_Init();
   MX_FMC_Init();
   MX_RNG_Init();
@@ -131,9 +133,9 @@ int main(void)
   MX_SPI4_Init();
   MX_UART4_Init();
   MX_USART1_UART_Init();
-  MX_CRC_Init();
   MX_USART2_UART_Init();
   MX_HASH_Init();
+  MX_CRC_Init();
   /* Call PreOsInit function */
   MX_TouchGFX_PreOSInit();
   /* USER CODE BEGIN 2 */

@@ -74,6 +74,7 @@ set(MX_Application_Src
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/gpio.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/app_threadx.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/crc.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/dma2d.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/eth.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../../Core/Src/fmc.c

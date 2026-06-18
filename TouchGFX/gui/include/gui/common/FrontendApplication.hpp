@@ -32,27 +32,36 @@ public:
   }
 
   int initDatabase() {
-    return sqlite3_initialize() || sqlite3_open("bambloo.db", &sqlite);
-  }
-
-  void testDatabase() {
-    sqlite3_stmt *stmt = NULL;
-    int rc = sqlite3_open("test.db", &sqlite);
+    int res = sqlite3_initialize();
+    if (res != SQLITE_OK) {
+      return res;
+    }
+    res = sqlite3_open("bodbody.db", &sqlite);
+    if (res != SQLITE_OK) {
+      return res;
+    }
 
     const char *sql_create_table = "CREATE TABLE IF NOT EXISTS users ("
                                    "id INTEGER PRIMARY KEY,"
                                    "name TEXT NOT NULL,"
-                                   "data BLOB);";
+                                   "gender TEXT NOT NULL,"
+                                   "age INTEGER NOT NULL,"
+                                   "weight REAL NOT NULL);";
 
-    rc = sqlite3_exec(sqlite, sql_create_table, 0, 0, 0);
-    if (rc != SQLITE_OK) {
-      // printf("SQL error (Create Table): %s\n", sqlite3_errmsg(sqlite));
+    res = sqlite3_exec(sqlite, sql_create_table, 0, 0, 0);
+    if (res != SQLITE_OK) {
       sqlite3_close(sqlite);
-      return;
+      return res;
     }
+    return SQLITE_OK;
+  }
+
+  void testDatabase() {
+    sqlite3_stmt *stmt = NULL;
+
 
     const char *sql_insert = "INSERT INTO users (name, data) VALUES (?, ?);";
-    rc = sqlite3_prepare_v2(sqlite, sql_insert, -1, &stmt, NULL);
+    int rc = sqlite3_prepare_v2(sqlite, sql_insert, -1, &stmt, NULL);
     if (rc != SQLITE_OK) {
       // printf("Failed to prepare statement: %s\n", sqlite3_errmsg(sqlite));
       sqlite3_close(sqlite);

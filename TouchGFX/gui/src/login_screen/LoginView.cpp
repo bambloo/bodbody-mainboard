@@ -21,7 +21,7 @@ void LoginView::setupScreen() {
   LoginViewBase::setupScreen();
 
   FrontendApplication::getInstance()->initDatabase();
-  FrontendApplication::getInstance()->testDatabase();
+  // FrontendApplication::getInstance()->testDatabase();
   
   btnPin0.setClickAction(pinNumClickedCallback);
   btnPin1.setClickAction(pinNumClickedCallback);

@@ -6,18 +6,17 @@
 
 #define BUF_SIZE 256
 struct uart_helper;
-typedef void (*uart_data_clbk_t)(struct uart_helper *helper);
+typedef void (*uart_data_clbk_t)(void *userdata);
 typedef struct uart_helper {
   UART_HandleTypeDef *uart;
   uint16_t tx_csr;
   uint16_t rx_csr;
+
   uint16_t rx_lst;
   uint16_t rx_cnt;
+
   uint8_t tx_buf[BUF_SIZE];
   uint8_t rx_buf[BUF_SIZE];
-  uint8_t cm_buf[BUF_SIZE];
-
-  uint8_t cm_stg;
 
   IRQn_Type irq;
 
@@ -26,11 +25,15 @@ typedef struct uart_helper {
   TX_MUTEX mutex;
 } uart_helper_t;
 
-void uart_helper_register(uart_helper_t *uart_helper, UART_HandleTypeDef *uart,
-                          uart_data_clbk_t callback, IRQn_Type irq);
-void uart_helper_send(uart_helper_t *helper, uint16_t id, uint8_t *buf,
-                      uint16_t len);
+uint8_t uart_helper_register(uart_helper_t *uart_helper,
+                             UART_HandleTypeDef *uart,
+                             uart_data_clbk_t callback, IRQn_Type irq);
+uint8_t uart_helper_send(uart_helper_t *helper, uint8_t *buf, uint16_t len);
 void uart_helper_check();
+
+static inline uint8_t uart_helper_available(uart_helper_t *helper) {
+  return helper->rx_cnt;
+}
 
 static inline uint8_t uart_helper_read_byte(uart_helper_t *helper) {
   uint8_t byte = helper->rx_buf[helper->rx_csr++];

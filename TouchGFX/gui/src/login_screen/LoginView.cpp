@@ -13,8 +13,7 @@ LoginView::LoginView()
     : pinNumClickedCallback(this, &LoginView::pinNumClicked),
       funBtnClickedCallback(this, &LoginView::funBtnClicked),
       pinBtnClickedCallback(this, &LoginView::pinBtnClicked),
-      pinTxtClickedCallback(this, &LoginView::pinTxtClicked),
-      keyboardCallback(this, &LoginView::keyboardEventHandler), pinLen(0),
+      pinTxtClickedCallback(this, &LoginView::pinTxtClicked), pinLen(0),
       pinVal(0) {}
 
 void LoginView::setupScreen() {
@@ -22,7 +21,7 @@ void LoginView::setupScreen() {
 
   FrontendApplication::getInstance()->initDatabase();
   // FrontendApplication::getInstance()->testDatabase();
-  
+
   btnPin0.setClickAction(pinNumClickedCallback);
   btnPin1.setClickAction(pinNumClickedCallback);
   btnPin2.setClickAction(pinNumClickedCallback);
@@ -96,17 +95,8 @@ void LoginView::pinTxtClicked(const touchgfx::TextAreaWithOneWildcard &source,
 
   auto application = FrontendApplication::getInstance();
   application->attachKeyboardToCurrentScreen();
-  application->setKeyboardBuffer(
-      const_cast<Unicode::UnicodeChar *>(source.getWildcard()),
-      OLDPINAREA_SIZE);
-  application->setKeyboardCallback(keyboardCallback);
-  application->showKeyboard(true);
-}
-
-void LoginView::keyboardEventHandler(Unicode::UnicodeChar c) {
-  if (currentPinArea && !c) {
-    currentPinArea->invalidate();
-  }
+  application->bindKeyboardTextArea(source, PINAREA_SIZE);
+  application->showKeyboard(3);
 }
 
 static int32_t checkPwdPin(Unicode::UnicodeChar *code) {
@@ -157,6 +147,9 @@ void LoginView::pinBtnClicked(const touchgfx::ButtonWithLabel &source,
       ErrorPrompt.invalidate();
       return;
     }
+    ErrorPrompt.setTypedText(TypedText());
+    ErrorPrompt.invalidate();
     parameters_save_pin(npin);
+    FrontendApplication::getInstance()->gotoLoginScreenNoTransition();
   }
 }

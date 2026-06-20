@@ -121,16 +121,15 @@ BamblooKeyboard::BamblooKeyboard()
     : capslockPressed(this, &BamblooKeyboard::capsLockPressedHandler),
       backspacePressed(this, &BamblooKeyboard::backspacePressedHandler),
       returnPressed(this, &BamblooKeyboard::returnPressedHandler),
-      modePressed(this, &BamblooKeyboard::modePressedHandler),
-      keyPressed(this, &BamblooKeyboard::keyPressedHandler) {
-        
+      modePressed(this, &BamblooKeyboard::modePressedHandler), alphaMode(true),
+      shiftMode(false) {
+
   ::layout.callbackAreaArray[0].callback = &capslockPressed;
   ::layout.callbackAreaArray[1].callback = &backspacePressed;
   ::layout.callbackAreaArray[2].callback = &modePressed;
   ::layout.callbackAreaArray[3].callback = &returnPressed;
 
   setLayout(&::layout);
-  setKeyListener(keyPressed);
   setPosition(0, 0, 800, 320);
   setTextIndentation();
   memset(buffer, 0, sizeof(buffer));
@@ -165,17 +164,15 @@ void BamblooKeyboard::backspacePressedHandler() {
 }
 void BamblooKeyboard::returnPressedHandler() {
   setVisible(false);
-  invalidate();
-
-  if (keyListener) {
-    keyListener->execute(0);
+  if (bindedTextArea) {
+    bindedTextArea->invalidate();
   }
+  invalidate();
 }
 void BamblooKeyboard::modePressedHandler() {
   alphaMode = !alphaMode;
   setKeymappingList();
 }
-void BamblooKeyboard::keyPressedHandler(Unicode::UnicodeChar key) {}
 
 void BamblooKeyboard::setKeymappingList() {
   if (alphaMode) {
@@ -194,3 +191,13 @@ void BamblooKeyboard::setKeymappingList() {
 }
 
 void BamblooKeyboard::initialize() {}
+
+void BamblooKeyboard::setMode(int mode) {
+  enteredText.setTypedText((mode & 1) ? layout->pswdAreaFont
+                                      : layout->textAreaFont);
+  if (mode & 2) {
+    alphaMode = false;
+    shiftMode = false;
+  }
+  setKeymappingList();
+}

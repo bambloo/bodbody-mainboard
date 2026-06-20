@@ -71,17 +71,8 @@ public:
 
   virtual void handleDragEvent(const DragEvent &event);
 
-  void setMode(int mode);
-
-  void setKeyListener(GenericCallback<Unicode::UnicodeChar> &callback) {
-    keyListener = &callback;
-  }
-
+  void bindTextArea(const TextAreaWithOneWildcard &textArea, int bufSize);
 protected:
-  GenericCallback<Unicode::UnicodeChar>
-      *keyListener; ///< Pointer to callback being executed when a key is
-                    ///< pressed.
-
   Unicode::UnicodeChar *buffer; ///< Pointer to null-terminated buffer where the
                                 ///< entered text is being displayed.
   uint16_t bufferSize;          ///< Size of the buffer
@@ -95,15 +86,14 @@ protected:
   bool cancelIsEmitted; ///< Tells if a cancel is emitted to check when a key is
   ///< released
 
-  bool alphaMode;
-  bool shiftMode;
-
   bool getKeyForCoordinates(Key *, int16_t x, int16_t y) const;
   bool getCallbackAreaForCoordinates(CallbackArea *, int16_t x,
                                      int16_t y) const;
 
   virtual void setupDrawChain(const Rect &invalidatedArea,
                               Drawable **nextPreviousElement);
+
+  const TextAreaWithOneWildcard *bindedTextArea;
 };
 } // namespace bambloo
 

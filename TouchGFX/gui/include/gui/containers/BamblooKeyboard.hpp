@@ -13,6 +13,7 @@ public:
   virtual ~BamblooKeyboard() {}
 
   virtual void initialize();
+  void setMode(int mode);
 
 protected:
   Unicode::UnicodeChar getCharForKey(uint8_t keyId) const;
@@ -22,7 +23,6 @@ private:
   void returnPressedHandler();
   void modePressedHandler();
   void capsLockPressedHandler();
-  void keyPressedHandler(Unicode::UnicodeChar key);
   void setKeymappingList();
 
   TextArea modeBtnTextArea;
@@ -34,6 +34,9 @@ private:
   Callback<BamblooKeyboard, Unicode::UnicodeChar> keyPressed;
 
   Unicode::UnicodeChar buffer[32];
+
+  bool alphaMode;
+  bool shiftMode;
 };
 
 #endif // BAMBLOOKEYBOARD_HPP

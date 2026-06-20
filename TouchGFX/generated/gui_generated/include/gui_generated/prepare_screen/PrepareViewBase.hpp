@@ -51,6 +51,10 @@ protected:
     touchgfx::TextArea ageLabel;
     touchgfx::TextArea heightLabel;
     touchgfx::TextArea weightLabel;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > userArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > ageArea;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > heightArea;
+    touchgfx::TextAreaWithOneWildcard weightArea;
     touchgfx::TextArea currMenuLabel;
 
     /*
@@ -58,6 +62,14 @@ protected:
      */
     static const uint16_t QUERYSTRINGAREA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar queryStringAreaBuffer[QUERYSTRINGAREA_SIZE];
+    static const uint16_t USERAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar userAreaBuffer[USERAREA_SIZE];
+    static const uint16_t AGEAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar ageAreaBuffer[AGEAREA_SIZE];
+    static const uint16_t HEIGHTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar heightAreaBuffer[HEIGHTAREA_SIZE];
+    static const uint16_t WEIGHTAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar weightAreaBuffer[WEIGHTAREA_SIZE];
 
 private:
 

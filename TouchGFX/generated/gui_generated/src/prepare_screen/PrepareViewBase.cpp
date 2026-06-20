@@ -111,6 +111,38 @@ PrepareViewBase::PrepareViewBase()
     weightLabel.setTypedText(touchgfx::TypedText(T_WEIGHTLABEL));
     addModUserModal.add(weightLabel);
 
+    userArea.setPosition(259, 109, 220, 26);
+    userArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    userArea.setLinespacing(0);
+    userAreaBuffer[0] = 0;
+    userArea.setWildcard(userAreaBuffer);
+    userArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
+    addModUserModal.add(userArea);
+
+    ageArea.setPosition(259, 175, 220, 26);
+    ageArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    ageArea.setLinespacing(0);
+    ageAreaBuffer[0] = 0;
+    ageArea.setWildcard(ageAreaBuffer);
+    ageArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
+    addModUserModal.add(ageArea);
+
+    heightArea.setPosition(259, 241, 220, 26);
+    heightArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    heightArea.setLinespacing(0);
+    heightAreaBuffer[0] = 0;
+    heightArea.setWildcard(heightAreaBuffer);
+    heightArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
+    addModUserModal.add(heightArea);
+
+    weightArea.setPosition(259, 305, 220, 26);
+    weightArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
+    weightArea.setLinespacing(0);
+    weightAreaBuffer[0] = 0;
+    weightArea.setWildcard(weightAreaBuffer);
+    weightArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
+    addModUserModal.add(weightArea);
+
     add(addModUserModal);
 
     currMenuLabel.setXY(44, 46);

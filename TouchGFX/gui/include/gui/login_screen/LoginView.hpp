@@ -21,8 +21,6 @@ protected:
     Callback<LoginView, const touchgfx::ButtonWithLabel&, const touchgfx::ClickEvent&> pinBtnClickedCallback;
     Callback<LoginView, const touchgfx::TextAreaWithOneWildcard&, const touchgfx::ClickEvent&> pinTxtClickedCallback;
 
-    Callback<LoginView, Unicode::UnicodeChar> keyboardCallback;
-
     void pinNumClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);
     void funBtnClicked(const touchgfx::ButtonWithIcon& source, const touchgfx::ClickEvent& evt);
     void pinBtnClicked(const touchgfx::ButtonWithLabel& source, const touchgfx::ClickEvent& evt);

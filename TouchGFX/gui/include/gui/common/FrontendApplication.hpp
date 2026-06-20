@@ -4,6 +4,7 @@
 #include "gui/containers/BamblooKeyboard.hpp"
 #include "sqlite3.h"
 #include "touchgfx/Callback.hpp"
+#include "touchgfx/widgets/TextAreaWithWildcard.hpp"
 #include <gui_generated/common/FrontendApplicationBase.hpp>
 
 class FrontendHeap;
@@ -24,8 +25,10 @@ public:
   void hideKeyboard();
   bool isKeyboardVisible() const;
   void setKeyboardBuffer(Unicode::UnicodeChar *buffer, uint16_t size);
-  void setKeyboardCallback(GenericCallback<Unicode::UnicodeChar> &callback);
   void attachKeyboardToCurrentScreen();
+  void bindKeyboardTextArea(const TextAreaWithOneWildcard &textArea, int bufSize) {
+    globalKeyboard.bindTextArea(textArea, bufSize);
+  }
 
   static FrontendApplication *getInstance() {
     return static_cast<FrontendApplication *>(Application::getInstance());
@@ -59,7 +62,6 @@ public:
   void testDatabase() {
     sqlite3_stmt *stmt = NULL;
 
-
     const char *sql_insert = "INSERT INTO users (name, data) VALUES (?, ?);";
     int rc = sqlite3_prepare_v2(sqlite, sql_insert, -1, &stmt, NULL);
     if (rc != SQLITE_OK) {
@@ -92,6 +94,7 @@ public:
 private:
   sqlite3 *sqlite;
   BamblooKeyboard globalKeyboard;
+  
 };
 
 #endif // FRONTENDAPPLICATION_HPP

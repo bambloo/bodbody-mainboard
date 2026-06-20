@@ -15,9 +15,8 @@
 using namespace touchgfx;
 using namespace bambloo;
 BamblooKeyboardBase::BamblooKeyboardBase()
-    : Container(), keyListener(nullptr), buffer(nullptr), bufferSize(0),
-      bufferPosition(0), layout(nullptr), keyMappingList(nullptr),
-      alphaMode(true), shiftMode(false), cancelIsEmitted(false) {
+    : Container(), buffer(nullptr), bufferSize(0), bufferPosition(0),
+      layout(nullptr), keyMappingList(nullptr), cancelIsEmitted(false) {
   image.setXY(0, 0);
   highlightImage.setVisible(false);
 
@@ -81,15 +80,6 @@ void BamblooKeyboardBase::setTextIndentation() {
   }
 }
 
-void BamblooKeyboardBase::setMode(int mode) {
-  enteredText.setTypedText(mode == 1 ? layout->pswdAreaFont
-                                     : layout->textAreaFont);
-  if (mode == 2) {
-    alphaMode = 0;
-    shiftMode = 0;
-  }
-}
-
 void BamblooKeyboardBase::setBufferPosition(uint16_t newPos) {
   bufferPosition = newPos;
   buffer[bufferPosition] = 0;
@@ -118,6 +108,14 @@ void BamblooKeyboardBase::handleDragEvent(const DragEvent &event) {
       handleClickEvent(ce);
     }
   }
+}
+
+void BamblooKeyboardBase::bindTextArea(const TextAreaWithOneWildcard &textArea,
+                                       int bufSize) {
+
+  bindedTextArea = &textArea;
+  setBuffer(const_cast<Unicode::UnicodeChar *>(bindedTextArea->getWildcard()),
+            bufSize);
 }
 
 void BamblooKeyboardBase::draw(const Rect &invalidatedArea) const {
@@ -201,7 +199,7 @@ void BamblooKeyboardBase::handleClickEvent(const ClickEvent &event) {
         highlightImage.invalidate();
         return;
       } else {
-        if (keyListener && eventType == ClickEvent::RELEASED) {
+        if (eventType == ClickEvent::RELEASED) {
           Unicode::UnicodeChar code = keyMappingList[k.keyId];
           if (!code || bufferPosition >= bufferSize - 1) {
             goto end;
@@ -210,7 +208,6 @@ void BamblooKeyboardBase::handleClickEvent(const ClickEvent &event) {
           buffer[bufferPosition++] = code;
           buffer[bufferPosition] = 0;
           enteredText.invalidateContent();
-          keyListener->execute(k.keyId);
         }
       }
     }

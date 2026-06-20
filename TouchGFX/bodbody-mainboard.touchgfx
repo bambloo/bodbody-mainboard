@@ -995,6 +995,65 @@
                   "Green": 68,
                   "Blue": 68
                 }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "userArea",
+                "X": 259,
+                "Y": 109,
+                "Width": 220,
+                "Height": 26,
+                "TextId": "DefaultValue",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "ageArea",
+                "X": 259,
+                "Y": 175,
+                "Width": 220,
+                "Height": 26,
+                "TextId": "DefaultValue",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "heightArea",
+                "X": 259,
+                "Y": 241,
+                "Width": 220,
+                "Height": 26,
+                "TextId": "DefaultValue",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                },
+                "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "weightArea",
+                "X": 259,
+                "Y": 305,
+                "Width": 220,
+                "Height": 26,
+                "TextId": "DefaultValue",
+                "TextRotation": "0",
+                "Wildcard1": {
+                  "UseBuffer": true,
+                  "BufferSize": 10
+                }
               }
             ]
           },

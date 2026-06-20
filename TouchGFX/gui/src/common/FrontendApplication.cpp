@@ -24,10 +24,6 @@ void FrontendApplication::setKeyboardBuffer(Unicode::UnicodeChar *buffer,
   globalKeyboard.setBuffer(buffer, size);
 }
 
-void FrontendApplication::setKeyboardCallback(GenericCallback<Unicode::UnicodeChar> &callback) {
-  globalKeyboard.setKeyListener(callback);
-}
-
 void FrontendApplication::attachKeyboardToCurrentScreen() {
   auto *container = &getCurrentScreen()->getRootContainer();
   if (globalKeyboard.getParent() != container) {

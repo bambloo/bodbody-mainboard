@@ -47,11 +47,11 @@ protected:
     touchgfx::Image image1_3;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonDone;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonCancel;
-    touchgfx::TextArea textArea1;
-    touchgfx::TextArea textArea1_1;
-    touchgfx::TextArea textArea1_1_1;
-    touchgfx::TextArea textArea1_1_1_1;
-    touchgfx::TextArea textArea1_1_1_1_1;
+    touchgfx::TextArea userLabel;
+    touchgfx::TextArea ageLabel;
+    touchgfx::TextArea heightLabel;
+    touchgfx::TextArea weightLabel;
+    touchgfx::TextArea currMenuLabel;
 
     /*
      * Wildcard Buffers

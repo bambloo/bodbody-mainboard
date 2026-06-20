@@ -17,7 +17,7 @@ using namespace bambloo;
 BamblooKeyboardBase::BamblooKeyboardBase()
     : Container(), keyListener(nullptr), buffer(nullptr), bufferSize(0),
       bufferPosition(0), layout(nullptr), keyMappingList(nullptr),
-      cancelIsEmitted(false) {
+      alphaMode(true), shiftMode(false), cancelIsEmitted(false) {
   image.setXY(0, 0);
   highlightImage.setVisible(false);
 
@@ -81,8 +81,13 @@ void BamblooKeyboardBase::setTextIndentation() {
   }
 }
 
-void BamblooKeyboardBase::setPasswordMode(bool mode) {
-  enteredText.setTypedText(mode ? layout->pswdAreaFont : layout->textAreaFont);
+void BamblooKeyboardBase::setMode(int mode) {
+  enteredText.setTypedText(mode == 1 ? layout->pswdAreaFont
+                                     : layout->textAreaFont);
+  if (mode == 2) {
+    alphaMode = 0;
+    shiftMode = 0;
+  }
 }
 
 void BamblooKeyboardBase::setBufferPosition(uint16_t newPos) {

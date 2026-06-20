@@ -13,9 +13,9 @@ void FrontendApplication::hideKeyboard() {
   globalKeyboard.setVisible(false);
 }
 
-void FrontendApplication::showKeyboard(bool passwordMode) {
+void FrontendApplication::showKeyboard(int mode) {
   globalKeyboard.setVisible(true);
-  globalKeyboard.setPasswordMode(passwordMode);
+  globalKeyboard.setMode(mode);
   globalKeyboard.invalidate();
 }
 

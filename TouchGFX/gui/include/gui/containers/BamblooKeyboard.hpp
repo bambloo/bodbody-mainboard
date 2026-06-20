@@ -33,9 +33,6 @@ private:
 
   Callback<BamblooKeyboard, Unicode::UnicodeChar> keyPressed;
 
-  bool alphaMode;
-  bool shiftMode;
-
   Unicode::UnicodeChar buffer[32];
 };
 

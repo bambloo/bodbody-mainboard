@@ -5,7 +5,7 @@
 #include "touchgfx/widgets/ButtonWithIcon.hpp"
 #include <gui/prepare_screen/PreparePresenter.hpp>
 #include <gui_generated/prepare_screen/PrepareViewBase.hpp>
-
+#include <sys/types.h>
 
 class PrepareView : public PrepareViewBase {
 public:
@@ -15,10 +15,11 @@ public:
   virtual void tearDownScreen();
 
 protected:
-  Callback<PrepareView, ButtonWithIcon &, ClickEvent &> btnClickedCallback;
+  Callback<PrepareView, const ButtonWithIcon&, const ClickEvent&> btnClickedCallback;
 
 private:
-  void btnClicked(ButtonWithIcon &sender, ClickEvent &event);
+  uint8_t profileMode;
+  void btnClicked(const ButtonWithIcon &sender, const ClickEvent &event);
 };
 
 #endif // PREPAREVIEW_HPP

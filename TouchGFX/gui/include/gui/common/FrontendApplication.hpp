@@ -20,7 +20,7 @@ public:
     FrontendApplicationBase::handleTickEvent();
   }
 
-  void showKeyboard(bool passwordMode = false);
+  void showKeyboard(int mode = 0);
   void hideKeyboard();
   bool isKeyboardVisible() const;
   void setKeyboardBuffer(Unicode::UnicodeChar *buffer, uint16_t size);

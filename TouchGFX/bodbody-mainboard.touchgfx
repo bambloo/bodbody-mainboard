@@ -935,12 +935,72 @@
                 "IconHeight": 40,
                 "IconWidth": 40,
                 "Clickable": true
+              },
+              {
+                "Type": "TextArea",
+                "Name": "userLabel",
+                "X": 78,
+                "Y": 106,
+                "Width": 155,
+                "Height": 26,
+                "TextId": "usernameLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 68,
+                  "Green": 68,
+                  "Blue": 68
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "ageLabel",
+                "X": 78,
+                "Y": 175,
+                "Width": 155,
+                "Height": 26,
+                "TextId": "ageLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 68,
+                  "Green": 68,
+                  "Blue": 68
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "heightLabel",
+                "X": 78,
+                "Y": 241,
+                "Width": 155,
+                "Height": 26,
+                "TextId": "heightLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 68,
+                  "Green": 68,
+                  "Blue": 68
+                }
+              },
+              {
+                "Type": "TextArea",
+                "Name": "weightLabel",
+                "X": 78,
+                "Y": 305,
+                "Width": 155,
+                "Height": 26,
+                "TextId": "weightLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 68,
+                  "Green": 68,
+                  "Blue": 68
+                }
               }
             ]
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
+            "Name": "currMenuLabel",
             "X": 44,
             "Y": 46,
             "Width": 100,
@@ -953,66 +1013,6 @@
               "Blue": 68
             },
             "AutoSize": true
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1_1",
-            "X": 78,
-            "Y": 106,
-            "Width": 155,
-            "Height": 26,
-            "TextId": "usernameLabel",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 68,
-              "Green": 68,
-              "Blue": 68
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1_1_1",
-            "X": 78,
-            "Y": 175,
-            "Width": 155,
-            "Height": 26,
-            "TextId": "ageLabel",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 68,
-              "Green": 68,
-              "Blue": 68
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1_1_1_1",
-            "X": 78,
-            "Y": 241,
-            "Width": 155,
-            "Height": 26,
-            "TextId": "heightLabel",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 68,
-              "Green": 68,
-              "Blue": 68
-            }
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1_1_1_1_1",
-            "X": 78,
-            "Y": 305,
-            "Width": 155,
-            "Height": 26,
-            "TextId": "weightLabel",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 68,
-              "Green": 68,
-              "Blue": 68
-            }
           }
         ],
         "Interactions": []

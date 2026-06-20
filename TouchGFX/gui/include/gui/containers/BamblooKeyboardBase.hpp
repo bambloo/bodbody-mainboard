@@ -71,7 +71,7 @@ public:
 
   virtual void handleDragEvent(const DragEvent &event);
 
-  void setPasswordMode(bool mode);
+  void setMode(int mode);
 
   void setKeyListener(GenericCallback<Unicode::UnicodeChar> &callback) {
     keyListener = &callback;
@@ -94,6 +94,9 @@ protected:
   Image highlightImage; ///< Image to display when a key is highlighted.
   bool cancelIsEmitted; ///< Tells if a cancel is emitted to check when a key is
   ///< released
+
+  bool alphaMode;
+  bool shiftMode;
 
   bool getKeyForCoordinates(Key *, int16_t x, int16_t y) const;
   bool getCallbackAreaForCoordinates(CallbackArea *, int16_t x,

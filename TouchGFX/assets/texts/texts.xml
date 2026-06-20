@@ -6,7 +6,7 @@
   </Languages>
   <Texts>
     <TextGroup Id="PrepareView">
-      <Text Id="weightLabel" Alignment="Left" TypographyId="Default">
+      <Text Id="weightLabel" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Weight(kg)</Translation>
         <Translation Language="ZH">体重(kg)</Translation>
       </Text>
@@ -14,7 +14,7 @@
         <Translation Language="GB">Height(cm)</Translation>
         <Translation Language="ZH">身高(cm)</Translation>
       </Text>
-      <Text Id="ageLabel" Alignment="Left" TypographyId="Default">
+      <Text Id="ageLabel" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Age</Translation>
         <Translation Language="ZH">年龄</Translation>
       </Text>

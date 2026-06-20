@@ -87,37 +87,37 @@ PrepareViewBase::PrepareViewBase()
     buttonCancel.setIconXY(33, 8);
     addModUserModal.add(buttonCancel);
 
+    userLabel.setPosition(78, 106, 155, 26);
+    userLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    userLabel.setLinespacing(0);
+    userLabel.setTypedText(touchgfx::TypedText(T_USERNAMELABEL));
+    addModUserModal.add(userLabel);
+
+    ageLabel.setPosition(78, 175, 155, 26);
+    ageLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    ageLabel.setLinespacing(0);
+    ageLabel.setTypedText(touchgfx::TypedText(T_AGELABEL));
+    addModUserModal.add(ageLabel);
+
+    heightLabel.setPosition(78, 241, 155, 26);
+    heightLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    heightLabel.setLinespacing(0);
+    heightLabel.setTypedText(touchgfx::TypedText(T_HEIGHTLABEL));
+    addModUserModal.add(heightLabel);
+
+    weightLabel.setPosition(78, 305, 155, 26);
+    weightLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    weightLabel.setLinespacing(0);
+    weightLabel.setTypedText(touchgfx::TypedText(T_WEIGHTLABEL));
+    addModUserModal.add(weightLabel);
+
     add(addModUserModal);
 
-    textArea1.setXY(44, 46);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T_CHOOSEUSERLABEL));
-    add(textArea1);
-
-    textArea1_1.setPosition(78, 106, 155, 26);
-    textArea1_1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    textArea1_1.setLinespacing(0);
-    textArea1_1.setTypedText(touchgfx::TypedText(T_USERNAMELABEL));
-    add(textArea1_1);
-
-    textArea1_1_1.setPosition(78, 175, 155, 26);
-    textArea1_1_1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    textArea1_1_1.setLinespacing(0);
-    textArea1_1_1.setTypedText(touchgfx::TypedText(T_AGELABEL));
-    add(textArea1_1_1);
-
-    textArea1_1_1_1.setPosition(78, 241, 155, 26);
-    textArea1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    textArea1_1_1_1.setLinespacing(0);
-    textArea1_1_1_1.setTypedText(touchgfx::TypedText(T_HEIGHTLABEL));
-    add(textArea1_1_1_1);
-
-    textArea1_1_1_1_1.setPosition(78, 305, 155, 26);
-    textArea1_1_1_1_1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    textArea1_1_1_1_1.setLinespacing(0);
-    textArea1_1_1_1_1.setTypedText(touchgfx::TypedText(T_WEIGHTLABEL));
-    add(textArea1_1_1_1_1);
+    currMenuLabel.setXY(44, 46);
+    currMenuLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    currMenuLabel.setLinespacing(0);
+    currMenuLabel.setTypedText(touchgfx::TypedText(T_CHOOSEUSERLABEL));
+    add(currMenuLabel);
 }
 
 PrepareViewBase::~PrepareViewBase()

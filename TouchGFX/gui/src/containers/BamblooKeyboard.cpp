@@ -122,8 +122,8 @@ BamblooKeyboard::BamblooKeyboard()
       backspacePressed(this, &BamblooKeyboard::backspacePressedHandler),
       returnPressed(this, &BamblooKeyboard::returnPressedHandler),
       modePressed(this, &BamblooKeyboard::modePressedHandler),
-      keyPressed(this, &BamblooKeyboard::keyPressedHandler), alphaMode(true),
-      shiftMode(false) {
+      keyPressed(this, &BamblooKeyboard::keyPressedHandler) {
+        
   ::layout.callbackAreaArray[0].callback = &capslockPressed;
   ::layout.callbackAreaArray[1].callback = &backspacePressed;
   ::layout.callbackAreaArray[2].callback = &modePressed;

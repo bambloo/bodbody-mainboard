@@ -5,6 +5,86 @@
     <Language Id="ZH" />
   </Languages>
   <Texts>
+    <TextGroup Id="PrepareView">
+      <Text Id="weightLabel" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Weight(kg)</Translation>
+        <Translation Language="ZH">体重(kg)</Translation>
+      </Text>
+      <Text Id="heightLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Height(cm)</Translation>
+        <Translation Language="ZH">身高(cm)</Translation>
+      </Text>
+      <Text Id="ageLabel" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Age</Translation>
+        <Translation Language="ZH">年龄</Translation>
+      </Text>
+      <Text Id="usernameLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">User</Translation>
+        <Translation Language="ZH">账号</Translation>
+      </Text>
+      <Text Id="editUserLabel" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Edit Profile</Translation>
+        <Translation Language="ZH">修改用户</Translation>
+      </Text>
+      <Text Id="addUserLabel" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Create Profile</Translation>
+        <Translation Language="ZH">创建用户</Translation>
+      </Text>
+      <Text Id="chooseUserLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Choose Profile</Translation>
+        <Translation Language="ZH">请选择用户</Translation>
+      </Text>
+    </TextGroup>
+    <TextGroup Id="Common">
+      <Text Id="Default9" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">9</Translation>
+        <Translation Language="ZH">9</Translation>
+      </Text>
+      <Text Id="Default8" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">8</Translation>
+        <Translation Language="ZH">8</Translation>
+      </Text>
+      <Text Id="Default7" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">7</Translation>
+        <Translation Language="ZH">7</Translation>
+      </Text>
+      <Text Id="Default6" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">6</Translation>
+        <Translation Language="ZH">6</Translation>
+      </Text>
+      <Text Id="Default5" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">5</Translation>
+        <Translation Language="ZH">5</Translation>
+      </Text>
+      <Text Id="Default4" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">4</Translation>
+        <Translation Language="ZH">4</Translation>
+      </Text>
+      <Text Id="Default3" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">3</Translation>
+        <Translation Language="ZH">3</Translation>
+      </Text>
+      <Text Id="Default2" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">2</Translation>
+        <Translation Language="ZH">2</Translation>
+      </Text>
+      <Text Id="Default1" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">1</Translation>
+        <Translation Language="ZH">1</Translation>
+      </Text>
+      <Text Id="Default0" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+        <Translation Language="ZH">0</Translation>
+      </Text>
+      <Text Id="DefaultValue" Alignment="Left" TypographyId="Keyboard">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+        <Translation Language="ZH">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="ThinPlaceHolder" Alignment="Left" TypographyId="Thin">
+        <Translation Language="GB">&lt;placeholder&gt;</Translation>
+        <Translation Language="ZH">&lt;placeholder&gt;</Translation>
+      </Text>
+    </TextGroup>
     <TextGroup Id="Keyboard">
       <Text Id="PasswordText" Alignment="Left" TypographyId="Password">
         <Translation Language="GB">&lt;placeholder&gt;</Translation>
@@ -76,57 +156,9 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_5JQC" Alignment="Left" TypographyId="Default">
+      <Text Id="DefaultNewText" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">New Text</Translation>
         <Translation Language="ZH">New Text</Translation>
-      </Text>
-      <Text Id="__SingleUse_L6QL" Alignment="Left" TypographyId="Thin">
-        <Translation Language="GB">&lt;placeholder&gt;</Translation>
-        <Translation Language="ZH">&lt;placeholder&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_H1SH" Alignment="Right" TypographyId="Keyboard">
-        <Translation Language="GB">&lt;value&gt;</Translation>
-        <Translation Language="ZH">&lt;value&gt;</Translation>
-      </Text>
-      <Text Id="__SingleUse_YVMI" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">9</Translation>
-        <Translation Language="ZH">9</Translation>
-      </Text>
-      <Text Id="__SingleUse_KKKB" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">8</Translation>
-        <Translation Language="ZH">8</Translation>
-      </Text>
-      <Text Id="__SingleUse_NWFD" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">7</Translation>
-        <Translation Language="ZH">7</Translation>
-      </Text>
-      <Text Id="__SingleUse_VVSQ" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">6</Translation>
-        <Translation Language="ZH">6</Translation>
-      </Text>
-      <Text Id="__SingleUse_AQKX" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">5</Translation>
-        <Translation Language="ZH">5</Translation>
-      </Text>
-      <Text Id="__SingleUse_R1D1" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">4</Translation>
-        <Translation Language="ZH">4</Translation>
-      </Text>
-      <Text Id="__SingleUse_M4VS" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">3</Translation>
-        <Translation Language="ZH">3</Translation>
-      </Text>
-      <Text Id="__SingleUse_CT3G" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">2</Translation>
-        <Translation Language="ZH">2</Translation>
-      </Text>
-      <Text Id="__SingleUse_BOZV" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">1</Translation>
-        <Translation Language="ZH">1</Translation>
-      </Text>
-      <Text Id="__SingleUse_OJ5Y" Alignment="Center" TypographyId="Default">
-        <Translation Language="GB">0</Translation>
-        <Translation Language="ZH">0</Translation>
       </Text>
     </TextGroup>
   </Texts>

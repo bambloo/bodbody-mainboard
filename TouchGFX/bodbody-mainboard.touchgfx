@@ -78,7 +78,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_YVMI",
+                "TextId": "Default9",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -101,7 +101,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_KKKB",
+                "TextId": "Default8",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -124,7 +124,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_NWFD",
+                "TextId": "Default7",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -147,7 +147,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_VVSQ",
+                "TextId": "Default6",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -170,7 +170,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_AQKX",
+                "TextId": "Default5",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -193,7 +193,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_R1D1",
+                "TextId": "Default4",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -216,7 +216,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_M4VS",
+                "TextId": "Default3",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -239,7 +239,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_CT3G",
+                "TextId": "Default2",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -262,7 +262,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_BOZV",
+                "TextId": "Default1",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -285,7 +285,7 @@
                 "Height": 51,
                 "Pressed": "pin-key-pressed.png",
                 "Released": "pin-key-normal.png",
-                "TextId": "__SingleUse_OJ5Y",
+                "TextId": "Default0",
                 "ReleasedColor": {
                   "Red": 255,
                   "Green": 255,
@@ -512,7 +512,7 @@
                 "Y": 345,
                 "Width": 413,
                 "Height": 25,
-                "TextId": "__SingleUse_L6QL",
+                "TextId": "ThinPlaceHolder",
                 "TextRotation": "0",
                 "Color": {
                   "Green": 136,
@@ -549,7 +549,7 @@
         ]
       },
       {
-        "Name": "Main",
+        "Name": "Menu",
         "Components": [
           {
             "Type": "Container",
@@ -591,7 +591,7 @@
               },
               {
                 "Type": "ButtonWithIcon",
-                "Name": "buttonWithIcon1",
+                "Name": "testButton",
                 "X": 290,
                 "Y": 50,
                 "Width": 510,
@@ -668,7 +668,7 @@
             "Y": 12,
             "Width": 295,
             "Height": 27,
-            "TextId": "__SingleUse_H1SH",
+            "TextId": "DefaultValue",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -683,33 +683,336 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "GotoMainView",
+            "InteractionName": "GotoMenuView",
             "Trigger": {
               "Type": "TriggerNone"
             },
             "Action": {
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Main"
+              "ActionComponent": "Menu"
+            }
+          },
+          {
+            "InteractionName": "GotoPrepareView",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "testButton"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Prepare"
             }
           }
         ]
       },
       {
-        "Name": "Test",
+        "Name": "Prepare",
         "Components": [
           {
-            "Type": "ScrollList",
-            "Name": "scrollList1",
-            "Width": 406,
+            "Type": "Image",
+            "Name": "background",
+            "Width": 800,
             "Height": 600,
-            "ItemTemplateName": "CustomContainer1",
-            "NumberofItems": 20,
-            "Easing": "Back",
-            "EasingOption": "Out",
-            "SwipeAcceleration": 1.0,
-            "DragAcceleration": 1.0,
-            "OverShootPercentage": 75
+            "RelativeFilename": "prepare-page.png"
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonQuery",
+            "X": 652,
+            "Y": 95,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "query-pressed.png",
+            "Released": "query-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_search_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_action_search_40_40_E8F6FB.svg.png",
+            "IconX": 33,
+            "IconY": 8,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonAdd",
+            "X": 44,
+            "Y": 444,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "add-pressed.png",
+            "Released": "add-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_social_person_add_alt_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_social_person_add_alt_1_40_40_E8F6FB.svg.png",
+            "IconX": 33,
+            "IconY": 8,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonStart",
+            "X": 549,
+            "Y": 444,
+            "Width": 208,
+            "Height": 56,
+            "Pressed": "start-pressed.png",
+            "Released": "start-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_av_play_circle_filled_40_40_000000.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_av_play_circle_filled_40_40_E8F6FB.svg.png",
+            "IconX": 84,
+            "IconY": 7,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonMod",
+            "X": 150,
+            "Y": 444,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "mod-pressed.png",
+            "Released": "mod-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_content_attribution_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_content_attribution_40_40_E8F6FB.svg.png",
+            "IconX": 33,
+            "IconY": 8,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonDel",
+            "X": 256,
+            "Y": 444,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "del-pressed.png",
+            "Released": "del-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_social_person_remove_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_social_person_remove_40_40_E8F6FB.svg.png",
+            "IconX": 33,
+            "IconY": 8,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonPrev",
+            "X": 44,
+            "Y": 503,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "next-pressed.png",
+            "Released": "next-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_navigation_arrow_back_ios_40_40_555555.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_back_ios_40_40_555555.svg.png",
+            "IconX": 33,
+            "IconY": 7,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonNext",
+            "X": 653,
+            "Y": 503,
+            "Width": 104,
+            "Height": 56,
+            "Pressed": "next-pressed.png",
+            "Released": "next-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_navigation_arrow_forward_ios_40_40_555555.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_forward_ios_40_40_555555.svg.png",
+            "IconX": 33,
+            "IconY": 7,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "queryStringArea",
+            "X": 58,
+            "Y": 106,
+            "Width": 580,
+            "Height": 29,
+            "TextId": "DefaultValue",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Clickable": true
+          },
+          {
+            "Type": "ModalWindow",
+            "Name": "addModUserModal",
+            "Width": 800,
+            "Height": 600,
+            "FileName": "main-background.png",
+            "ModalWidth": 800,
+            "ModalHeight": 600,
+            "Alpha": 150,
+            "Components": [
+              {
+                "Type": "Image",
+                "Name": "image1",
+                "X": 245,
+                "Y": 95,
+                "Width": 248,
+                "Height": 56,
+                "RelativeFilename": "input-box.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "image1_1",
+                "X": 245,
+                "Y": 290,
+                "Width": 248,
+                "Height": 56,
+                "RelativeFilename": "input-box.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "image1_2",
+                "X": 245,
+                "Y": 226,
+                "Width": 248,
+                "Height": 56,
+                "RelativeFilename": "input-box.png"
+              },
+              {
+                "Type": "Image",
+                "Name": "image1_3",
+                "X": 245,
+                "Y": 160,
+                "Width": 248,
+                "Height": 56,
+                "RelativeFilename": "input-box.png"
+              },
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "buttonDone",
+                "X": 245,
+                "Y": 388,
+                "Width": 104,
+                "Height": 56,
+                "Pressed": "add-pressed.png",
+                "Released": "add-normal.png",
+                "IconPressed": "__generated\\icon_theme_images_action_done_40_40_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_action_done_40_40_E8F6FB.svg.png",
+                "IconX": 33,
+                "IconY": 8,
+                "IconHeight": 40,
+                "IconWidth": 40,
+                "Clickable": true
+              },
+              {
+                "Type": "ButtonWithIcon",
+                "Name": "buttonCancel",
+                "X": 389,
+                "Y": 388,
+                "Width": 104,
+                "Height": 56,
+                "Pressed": "mod-pressed.png",
+                "Released": "mod-normal.png",
+                "IconPressed": "__generated\\icon_theme_images_content_clear_40_40_E8F6FB.svg.png",
+                "IconReleased": "__generated\\icon_theme_images_content_clear_40_40_E8F6FB.svg.png",
+                "IconX": 33,
+                "IconY": 8,
+                "IconHeight": 40,
+                "IconWidth": 40,
+                "Clickable": true
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1",
+            "X": 44,
+            "Y": 46,
+            "Width": 100,
+            "Height": 26,
+            "TextId": "chooseUserLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            },
+            "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1",
+            "X": 78,
+            "Y": 106,
+            "Width": 155,
+            "Height": 26,
+            "TextId": "usernameLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1_1",
+            "X": 78,
+            "Y": 175,
+            "Width": 155,
+            "Height": 26,
+            "TextId": "ageLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1_1_1",
+            "X": 78,
+            "Y": 241,
+            "Width": 155,
+            "Height": 26,
+            "TextId": "heightLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "textArea1_1_1_1_1",
+            "X": 78,
+            "Y": 305,
+            "Width": 155,
+            "Height": 26,
+            "TextId": "weightLabel",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            }
           }
         ],
         "Interactions": []
@@ -724,10 +1027,11 @@
           {
             "Type": "TextArea",
             "Name": "textArea1",
+            "X": 15,
             "Y": 13,
             "Width": 90,
             "Height": 26,
-            "TextId": "__SingleUse_5JQC",
+            "TextId": "DefaultNewText",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -738,6 +1042,13 @@
           }
         ],
         "Interactions": []
+      },
+      {
+        "Name": "AddUserContainer",
+        "Width": 800,
+        "Height": 136,
+        "Components": [],
+        "Interactions": []
       }
     ],
     "Name": "bodbody-mainboard",
@@ -747,7 +1058,7 @@
     },
     "SelectedColorDepth": 24,
     "StartupScreenName": "Boot",
-    "SelectedStartupLanguage": "GB",
+    "SelectedStartupLanguage": "ZH",
     "TouchGfxPath": "../Middlewares/ST/touchgfx",
     "UIPath": ".",
     "AvailableColorDepths": [

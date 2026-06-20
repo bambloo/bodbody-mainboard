@@ -5,6 +5,7 @@
 #include "stm32h753xx.h"
 #include "usart.h"
 
-uint8_t bodbody_helper_register(UART_HandleTypeDef *uart, IRQn_Type irq);
+uint8_t bodbody_register(UART_HandleTypeDef *uart, IRQn_Type irq);
+uint8_t bodbody_read_status();
 
 #endif

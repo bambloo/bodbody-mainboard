@@ -26,8 +26,11 @@ public:
     // Login
     void gotoLoginScreenNoTransition();
 
-    // Main
-    void gotoMainScreenNoTransition();
+    // Menu
+    void gotoMenuScreenNoTransition();
+
+    // Prepare
+    void gotoPrepareScreenNoTransition();
 
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
@@ -40,8 +43,11 @@ protected:
     // Login
     void gotoLoginScreenNoTransitionImpl();
 
-    // Main
-    void gotoMainScreenNoTransitionImpl();
+    // Menu
+    void gotoMenuScreenNoTransitionImpl();
+
+    // Prepare
+    void gotoPrepareScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

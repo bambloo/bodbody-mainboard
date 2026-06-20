@@ -13,10 +13,10 @@
 #include <gui/boot_screen/BootPresenter.hpp>
 #include <gui/login_screen/LoginView.hpp>
 #include <gui/login_screen/LoginPresenter.hpp>
-#include <gui/main_screen/MainView.hpp>
-#include <gui/main_screen/MainPresenter.hpp>
-#include <gui/test_screen/TestView.hpp>
-#include <gui/test_screen/TestPresenter.hpp>
+#include <gui/menu_screen/MenuView.hpp>
+#include <gui/menu_screen/MenuPresenter.hpp>
+#include <gui/prepare_screen/PrepareView.hpp>
+#include <gui/prepare_screen/PreparePresenter.hpp>
 
 using namespace touchgfx;
 
@@ -27,7 +27,7 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
       model(m)
 {
     touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
-    touchgfx::Texts::setLanguage(GB);
+    touchgfx::Texts::setLanguage(ZH);
     reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
     reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorL8_All();
     reinterpret_cast<touchgfx::LCD24bpp&>(touchgfx::HAL::lcd()).enableDecompressorRGB();
@@ -63,15 +63,28 @@ void FrontendApplicationBase::gotoLoginScreenNoTransitionImpl()
     touchgfx::makeTransition<LoginView, LoginPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Main
+// Menu
 
-void FrontendApplicationBase::gotoMainScreenNoTransition()
+void FrontendApplicationBase::gotoMenuScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoMainScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoMenuScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoMainScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoMenuScreenNoTransitionImpl()
 {
-    touchgfx::makeTransition<MainView, MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<MenuView, MenuPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Prepare
+
+void FrontendApplicationBase::gotoPrepareScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotoPrepareScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoPrepareScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<PrepareView, PreparePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

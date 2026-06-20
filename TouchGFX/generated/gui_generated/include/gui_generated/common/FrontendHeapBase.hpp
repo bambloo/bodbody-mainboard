@@ -16,10 +16,10 @@
 #include <gui/boot_screen/BootPresenter.hpp>
 #include <gui/login_screen/LoginView.hpp>
 #include <gui/login_screen/LoginPresenter.hpp>
-#include <gui/main_screen/MainView.hpp>
-#include <gui/main_screen/MainPresenter.hpp>
-#include <gui/test_screen/TestView.hpp>
-#include <gui/test_screen/TestPresenter.hpp>
+#include <gui/menu_screen/MenuView.hpp>
+#include <gui/menu_screen/MenuPresenter.hpp>
+#include <gui/prepare_screen/PrepareView.hpp>
+#include <gui/prepare_screen/PreparePresenter.hpp>
 
 
 /**
@@ -44,8 +44,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< BootView,
             touchgfx::meta::TypeList< LoginView,
-            touchgfx::meta::TypeList< MainView,
-            touchgfx::meta::TypeList< TestView,
+            touchgfx::meta::TypeList< MenuView,
+            touchgfx::meta::TypeList< PrepareView,
             touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
@@ -60,8 +60,8 @@ public:
      */
     typedef touchgfx::meta::TypeList< BootPresenter,
             touchgfx::meta::TypeList< LoginPresenter,
-            touchgfx::meta::TypeList< MainPresenter,
-            touchgfx::meta::TypeList< TestPresenter,
+            touchgfx::meta::TypeList< MenuPresenter,
+            touchgfx::meta::TypeList< PreparePresenter,
             touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 

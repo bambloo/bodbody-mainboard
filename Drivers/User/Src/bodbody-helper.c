@@ -23,7 +23,7 @@ enum {
 static body_helper_t body_helper __attribute__((section(".d2ram")));
 
 void bodbody_cmmd_clbk(body_helper_t *helper) {
-  tx_event_flags_set(&bhelper.efg, 0x01, TX_OR);
+  tx_event_flags_set(&helper->efg, 0x01, TX_OR);
 }
 
 uint8_t bodbody_push_data(uart_helper_t *helper, uint8_t data, uint8_t pck) {
@@ -111,7 +111,7 @@ uint8_t bodbody_read_status() {
   return 0;
 }
 
-uint8_t bodbody_helper_register(UART_HandleTypeDef *uart, IRQn_Type irq) {
+uint8_t bodbody_register(UART_HandleTypeDef *uart, IRQn_Type irq) {
   uint8_t res = uart_helper_register(&body_helper.uh, uart,
                                      (uart_data_clbk_t)body_data_clbk, irq);
 

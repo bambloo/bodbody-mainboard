@@ -9,10 +9,10 @@ CustomContainer1Base::CustomContainer1Base()
 {
     setWidth(406);
     setHeight(53);
-    textArea1.setXY(0, 13);
+    textArea1.setXY(15, 13);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_5JQC));
+    textArea1.setTypedText(touchgfx::TypedText(T_DEFAULTNEWTEXT));
     add(textArea1);
 }
 

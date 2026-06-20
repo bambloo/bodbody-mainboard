@@ -22,11 +22,12 @@ uint8_t thread_main_create(void) {
   uint32_t jedec_id;
   w25_read_jedec_id(&jedec_id);
   // is42s32200_test();
+  
   memory_pool_init();
   thread_ltdc_create();
   thread_touchpad_create();
 
-  bodbody_helper_register(&huart1, DMA1_Stream0_IRQn);
+  bodbody_register(&huart1, DMA1_Stream0_IRQn);
 
   void *stack = malloc(DEFAULT_APP_STACK_SIZE);
   if (!stack) {

@@ -63,7 +63,7 @@ void LoginView::pinNumClicked(const touchgfx::ButtonWithLabel &source,
 
   if (pinLen == PINAREA_SIZE - 1) {
     if (parameters_check_pin(pinVal)) {
-      application().gotoMainScreenNoTransition();
+      application().gotoMenuScreenNoTransition();
     }
     pinLen = 0;
     pinVal = 0;

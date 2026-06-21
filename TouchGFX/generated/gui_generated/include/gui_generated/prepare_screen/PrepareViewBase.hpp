@@ -14,6 +14,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/containers/ModalWindow.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
 
 class PrepareViewBase : public touchgfx::View<PreparePresenter>
 {
@@ -42,19 +43,18 @@ protected:
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > queryStringArea;
     touchgfx::ModalWindow addModUserModal;
     touchgfx::Image image1;
-    touchgfx::Image image1_1;
     touchgfx::Image image1_2;
     touchgfx::Image image1_3;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonDone;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonCancel;
     touchgfx::TextArea userLabel;
+    touchgfx::TextArea userLabel_1;
     touchgfx::TextArea ageLabel;
     touchgfx::TextArea heightLabel;
-    touchgfx::TextArea weightLabel;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > userArea;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > ageArea;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > heightArea;
-    touchgfx::TextAreaWithOneWildcard weightArea;
+    touchgfx::ClickListener< touchgfx::ButtonWithLabel > genderButton;
     touchgfx::TextArea currMenuLabel;
 
     /*
@@ -62,14 +62,12 @@ protected:
      */
     static const uint16_t QUERYSTRINGAREA_SIZE = 10;
     touchgfx::Unicode::UnicodeChar queryStringAreaBuffer[QUERYSTRINGAREA_SIZE];
-    static const uint16_t USERAREA_SIZE = 10;
+    static const uint16_t USERAREA_SIZE = 17;
     touchgfx::Unicode::UnicodeChar userAreaBuffer[USERAREA_SIZE];
-    static const uint16_t AGEAREA_SIZE = 10;
+    static const uint16_t AGEAREA_SIZE = 8;
     touchgfx::Unicode::UnicodeChar ageAreaBuffer[AGEAREA_SIZE];
-    static const uint16_t HEIGHTAREA_SIZE = 10;
+    static const uint16_t HEIGHTAREA_SIZE = 8;
     touchgfx::Unicode::UnicodeChar heightAreaBuffer[HEIGHTAREA_SIZE];
-    static const uint16_t WEIGHTAREA_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar weightAreaBuffer[WEIGHTAREA_SIZE];
 
 private:
 

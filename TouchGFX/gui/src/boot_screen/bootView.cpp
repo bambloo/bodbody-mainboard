@@ -17,6 +17,9 @@ void BootView::setupScreen() {
   Texts::setLanguage(ZH);
 
   int rc = sqlite3_initialize();
+  if (rc != SQLITE_OK) {
+    return;
+  }
   tx_timer_create(&timer, (CHAR *)"boot timer", boot_timeout, (ULONG)this, 3000,
                   0, TX_AUTO_ACTIVATE);
 }

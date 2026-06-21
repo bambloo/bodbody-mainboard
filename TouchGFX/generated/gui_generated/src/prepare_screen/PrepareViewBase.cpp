@@ -61,57 +61,54 @@ PrepareViewBase::PrepareViewBase()
 
     addModUserModal.setBackground(touchgfx::BitmapId(BITMAP_MAIN_BACKGROUND_ID), 0, 0);
     addModUserModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    image1.setXY(245, 95);
+    addModUserModal.hide();
+    image1.setXY(245, 106);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_INPUT_BOX_ID));
     addModUserModal.add(image1);
 
-    image1_1.setXY(245, 290);
-    image1_1.setBitmap(touchgfx::Bitmap(BITMAP_INPUT_BOX_ID));
-    addModUserModal.add(image1_1);
-
-    image1_2.setXY(245, 226);
+    image1_2.setXY(245, 286);
     image1_2.setBitmap(touchgfx::Bitmap(BITMAP_INPUT_BOX_ID));
     addModUserModal.add(image1_2);
 
-    image1_3.setXY(245, 160);
+    image1_3.setXY(245, 226);
     image1_3.setBitmap(touchgfx::Bitmap(BITMAP_INPUT_BOX_ID));
     addModUserModal.add(image1_3);
 
-    buttonDone.setXY(245, 388);
+    buttonDone.setXY(245, 356);
     buttonDone.setBitmaps(touchgfx::Bitmap(BITMAP_ADD_NORMAL_ID), touchgfx::Bitmap(BITMAP_ADD_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_40_40_E8F6FB_SVG_ID));
     buttonDone.setIconXY(33, 8);
     addModUserModal.add(buttonDone);
 
-    buttonCancel.setXY(389, 388);
+    buttonCancel.setXY(389, 356);
     buttonCancel.setBitmaps(touchgfx::Bitmap(BITMAP_MOD_NORMAL_ID), touchgfx::Bitmap(BITMAP_MOD_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_CONTENT_CLEAR_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_CONTENT_CLEAR_40_40_E8F6FB_SVG_ID));
     buttonCancel.setIconXY(33, 8);
     addModUserModal.add(buttonCancel);
 
-    userLabel.setPosition(78, 106, 155, 26);
+    userLabel.setPosition(78, 120, 155, 26);
     userLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
     userLabel.setLinespacing(0);
     userLabel.setTypedText(touchgfx::TypedText(T_USERNAMELABEL));
     addModUserModal.add(userLabel);
 
-    ageLabel.setPosition(78, 175, 155, 26);
+    userLabel_1.setPosition(78, 180, 155, 26);
+    userLabel_1.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    userLabel_1.setLinespacing(0);
+    userLabel_1.setTypedText(touchgfx::TypedText(T_GENDERLABEL));
+    addModUserModal.add(userLabel_1);
+
+    ageLabel.setPosition(78, 240, 155, 26);
     ageLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
     ageLabel.setLinespacing(0);
     ageLabel.setTypedText(touchgfx::TypedText(T_AGELABEL));
     addModUserModal.add(ageLabel);
 
-    heightLabel.setPosition(78, 241, 155, 26);
+    heightLabel.setPosition(78, 300, 155, 26);
     heightLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
     heightLabel.setLinespacing(0);
     heightLabel.setTypedText(touchgfx::TypedText(T_HEIGHTLABEL));
     addModUserModal.add(heightLabel);
 
-    weightLabel.setPosition(78, 305, 155, 26);
-    weightLabel.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
-    weightLabel.setLinespacing(0);
-    weightLabel.setTypedText(touchgfx::TypedText(T_WEIGHTLABEL));
-    addModUserModal.add(weightLabel);
-
-    userArea.setPosition(259, 109, 220, 26);
+    userArea.setPosition(259, 120, 220, 26);
     userArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     userArea.setLinespacing(0);
     userAreaBuffer[0] = 0;
@@ -119,7 +116,7 @@ PrepareViewBase::PrepareViewBase()
     userArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
     addModUserModal.add(userArea);
 
-    ageArea.setPosition(259, 175, 220, 26);
+    ageArea.setPosition(256, 240, 220, 26);
     ageArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     ageArea.setLinespacing(0);
     ageAreaBuffer[0] = 0;
@@ -127,7 +124,7 @@ PrepareViewBase::PrepareViewBase()
     ageArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
     addModUserModal.add(ageArea);
 
-    heightArea.setPosition(259, 241, 220, 26);
+    heightArea.setPosition(259, 300, 220, 26);
     heightArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     heightArea.setLinespacing(0);
     heightAreaBuffer[0] = 0;
@@ -135,13 +132,12 @@ PrepareViewBase::PrepareViewBase()
     heightArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
     addModUserModal.add(heightArea);
 
-    weightArea.setPosition(259, 305, 220, 26);
-    weightArea.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
-    weightArea.setLinespacing(0);
-    weightAreaBuffer[0] = 0;
-    weightArea.setWildcard(weightAreaBuffer);
-    weightArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
-    addModUserModal.add(weightArea);
+    genderButton.setXY(245, 167);
+    genderButton.setBitmaps(touchgfx::Bitmap(BITMAP_MOD_NORMAL_ID), touchgfx::Bitmap(BITMAP_MOD_PRESSED_ID));
+    genderButton.setLabelText(touchgfx::TypedText(T_MALE));
+    genderButton.setLabelColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    genderButton.setLabelColorPressed(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    addModUserModal.add(genderButton);
 
     add(addModUserModal);
 

@@ -9,9 +9,7 @@ bool FrontendApplication::isKeyboardVisible() const {
   return globalKeyboard.isVisible();
 }
 
-void FrontendApplication::hideKeyboard() {
-  globalKeyboard.setVisible(false);
-}
+void FrontendApplication::hideKeyboard() { globalKeyboard.setVisible(false); }
 
 void FrontendApplication::showKeyboard(int mode) {
   globalKeyboard.setVisible(true);
@@ -26,18 +24,16 @@ void FrontendApplication::setKeyboardBuffer(Unicode::UnicodeChar *buffer,
 
 void FrontendApplication::attachKeyboardToCurrentScreen() {
   auto *container = &getCurrentScreen()->getRootContainer();
-  if (globalKeyboard.getParent() != container) {
-    // Remove from previous parent if exists
-    if (globalKeyboard.getParent()) {
-      static_cast<Container *>(globalKeyboard.getParent())
-          ->remove(globalKeyboard);
-    }
-
-    // Add to current screen
-    container->add(globalKeyboard);
-
-    // Position the keyboard (e.g., at the bottom)
-    // You might want to store desired X/Y in members
-    globalKeyboard.setXY(0, 280); // Example position
+  // Remove from previous parent if exists
+  if (globalKeyboard.getParent()) {
+    static_cast<Container *>(globalKeyboard.getParent())
+        ->remove(globalKeyboard);
   }
+
+  // Add to current screen
+  container->add(globalKeyboard);
+
+  // Position the keyboard (e.g., at the bottom)
+  // You might want to store desired X/Y in members
+  globalKeyboard.setXY(0, 280); // Example position
 }

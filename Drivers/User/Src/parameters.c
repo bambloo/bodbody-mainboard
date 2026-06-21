@@ -61,6 +61,7 @@ UINT parameters_save_pin(uint32_t pin) {
   if (status != FX_SUCCESS) {
     return status;
   }
+  status = fx_file_seek(&file, 0);
   status = fx_file_write(&file, &parameters, sizeof(parameters));
   status = fx_file_close(&file);
   status = fx_media_flush(&sdio_disk);

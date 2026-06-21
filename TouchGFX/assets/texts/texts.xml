@@ -6,6 +6,18 @@
   </Languages>
   <Texts>
     <TextGroup Id="PrepareView">
+      <Text Id="female" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Female</Translation>
+        <Translation Language="ZH">女</Translation>
+      </Text>
+      <Text Id="male" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Male</Translation>
+        <Translation Language="ZH">男</Translation>
+      </Text>
+      <Text Id="genderLabel" Alignment="Right" TypographyId="Default">
+        <Translation Language="GB">Gender</Translation>
+        <Translation Language="ZH">性别</Translation>
+      </Text>
       <Text Id="weightLabel" Alignment="Right" TypographyId="Default">
         <Translation Language="GB">Weight(kg)</Translation>
         <Translation Language="ZH">体重(kg)</Translation>
@@ -30,7 +42,7 @@
         <Translation Language="GB">Create Profile</Translation>
         <Translation Language="ZH">创建用户</Translation>
       </Text>
-      <Text Id="chooseUserLabel" Alignment="Right" TypographyId="Default">
+      <Text Id="chooseUserLabel" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">Choose Profile</Translation>
         <Translation Language="ZH">请选择用户</Translation>
       </Text>

@@ -13,6 +13,9 @@ enum LANGUAGES
 
 enum TEXTS
 {
+    T_FEMALE,
+    T_MALE,
+    T_GENDERLABEL,
     T_WEIGHTLABEL,
     T_HEIGHTLABEL,
     T_AGELABEL,

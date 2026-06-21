@@ -119,19 +119,23 @@ KEEP extern const touchgfx::GlyphNode glyphs_SourceHanSansSC_Bold_otf_20_4bpp[] 
     {     0, 0x5165,  20,  19,  18,   0,  20,   0,   0, 0x00 },
     {   190, 0x5168,  20,  20,  18,   0,  20,   0,   0, 0x00 },
     {   390, 0x521B,  19,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   590, 0x53D6,  20,  19,  17,   0,  20,   0,   0, 0x00 },
-    {   780, 0x53F7,  18,  20,  18,   1,  20,   0,   0, 0x00 },
-    {     0, 0x5B89,  18,  20,  18,   1,  20,   0,   0, 0x00 },
-    {   180, 0x5BC6,  20,  21,  19,   0,  20,   0,   0, 0x00 },
-    {   390, 0x5E74,  20,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   590, 0x5EFA,  20,  20,  18,   0,  20,   0,   0, 0x00 },
-    {     0, 0x6237,  18,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   180, 0x62E9,  20,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   380, 0x6539,  20,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   580, 0x65B0,  20,  20,  18,   0,  20,   0,   0, 0x00 },
-    {   780, 0x65E7,  18,  19,  17,   1,  20,   0,   0, 0x00 },
+    {   590, 0x522B,  19,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   790, 0x53D6,  20,  19,  17,   0,  20,   0,   0, 0x00 },
+    {   980, 0x53F7,  18,  20,  18,   1,  20,   0,   0, 0x00 },
+    {     0, 0x5973,  19,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   200, 0x5B89,  18,  20,  18,   1,  20,   0,   0, 0x00 },
+    {   380, 0x5BC6,  20,  21,  19,   0,  20,   0,   0, 0x00 },
+    {   590, 0x5E74,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   790, 0x5EFA,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {     0, 0x6027,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   200, 0x6237,  18,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   380, 0x62E9,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   580, 0x6539,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   780, 0x65B0,  20,  20,  18,   0,  20,   0,   0, 0x00 },
+    {   980, 0x65E7,  18,  19,  17,   1,  20,   0,   0, 0x00 },
     {     0, 0x6D88,  19,  20,  18,   0,  20,   0,   0, 0x00 },
     {     0, 0x7528,  18,  19,  17,   0,  20,   0,   0, 0x00 },
+    {   171, 0x7537,  18,  19,  17,   0,  20,   0,   0, 0x00 },
     {     0, 0x7801,  19,  19,  17,   0,  20,   0,   0, 0x00 },
     {   190, 0x786E,  19,  20,  18,   0,  20,   0,   0, 0x00 },
     {     0, 0x8BA4,  20,  20,  18,   0,  20,   0,   0, 0x00 },
@@ -203,6 +207,6 @@ touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_20_4bpp();
 
 touchgfx::GeneratedFont& getFont_SourceHanSansSC_Bold_otf_20_4bpp()
 {
-    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_20_4bpp(glyphs_SourceHanSansSC_Bold_otf_20_4bpp, 141, 26, 20, 0, 0, 4, 1, 1, 1, unicodes_SourceHanSansSC_Bold_otf_20_4bpp, kerning_SourceHanSansSC_Bold_otf_20_4bpp, 63, 0, 0, 0);
+    static touchgfx::GeneratedFont SourceHanSansSC_Bold_otf_20_4bpp(glyphs_SourceHanSansSC_Bold_otf_20_4bpp, 145, 26, 20, 0, 0, 4, 1, 1, 1, unicodes_SourceHanSansSC_Bold_otf_20_4bpp, kerning_SourceHanSansSC_Bold_otf_20_4bpp, 63, 0, 0, 0);
     return SourceHanSansSC_Bold_otf_20_4bpp;
 }

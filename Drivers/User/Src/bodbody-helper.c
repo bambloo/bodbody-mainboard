@@ -1,4 +1,5 @@
 #include "bodbody-helper.h"
+#include "sqlite3.h"
 #include "stm32h753xx.h"
 #include "stm32h7xx_hal_def.h"
 #include "tx_api.h"
@@ -119,3 +120,51 @@ uint8_t bodbody_register(UART_HandleTypeDef *uart, IRQn_Type irq) {
   body_helper.cm_stg = 0;
   return res;
 }
+
+uint8_t bodbody_save_user_info(sqlite3 *db, bodbody_user_info_t *info) {
+  uint8_t res = 0;
+  sqlite3_stmt *stmt = NULL;
+  res = sqlite3_prepare_v2(db,
+                           "INSERT INTO user_info_t(name, gender, age, height, "
+                           "weight) VALUES(?, ?, ?, ?, ?)",
+                           -1, &stmt, NULL);
+  if (res != SQLITE_OK) {
+    return res;
+  }
+
+  res = sqlite3_bind_text(stmt, 1, info->name, -1, SQLITE_STATIC);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_bind_int(stmt, 2, info->gender);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_bind_int(stmt, 3, info->age);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_bind_int(stmt, 4, info->height);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_bind_double(stmt, 5, info->weight);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_step(stmt);
+error:
+  sqlite3_finalize(stmt);
+
+  return res;
+}
+
+// uint8_t bodbody_update_user_info(sqlite3 *db, bodbody_user_info_t *info) {
+//   uint8_t res = 0;
+//   sqlite3_stmt *stmt = NULL;
+//   res = sqlite3_prepare_v2(db,
+//                            "UPDATE user_info SET name = ?, age = ?, height =
+//                            "
+//                            "?, weight = ? WHERE id = 1",
+//                            -1, &stmt, null);
+// }

@@ -861,6 +861,7 @@
             "Name": "addModUserModal",
             "Width": 800,
             "Height": 600,
+            "Visible": false,
             "FileName": "main-background.png",
             "ModalWidth": 800,
             "ModalHeight": 600,
@@ -870,16 +871,7 @@
                 "Type": "Image",
                 "Name": "image1",
                 "X": 245,
-                "Y": 95,
-                "Width": 248,
-                "Height": 56,
-                "RelativeFilename": "input-box.png"
-              },
-              {
-                "Type": "Image",
-                "Name": "image1_1",
-                "X": 245,
-                "Y": 290,
+                "Y": 106,
                 "Width": 248,
                 "Height": 56,
                 "RelativeFilename": "input-box.png"
@@ -888,7 +880,7 @@
                 "Type": "Image",
                 "Name": "image1_2",
                 "X": 245,
-                "Y": 226,
+                "Y": 286,
                 "Width": 248,
                 "Height": 56,
                 "RelativeFilename": "input-box.png"
@@ -897,7 +889,7 @@
                 "Type": "Image",
                 "Name": "image1_3",
                 "X": 245,
-                "Y": 160,
+                "Y": 226,
                 "Width": 248,
                 "Height": 56,
                 "RelativeFilename": "input-box.png"
@@ -906,7 +898,7 @@
                 "Type": "ButtonWithIcon",
                 "Name": "buttonDone",
                 "X": 245,
-                "Y": 388,
+                "Y": 356,
                 "Width": 104,
                 "Height": 56,
                 "Pressed": "add-pressed.png",
@@ -923,7 +915,7 @@
                 "Type": "ButtonWithIcon",
                 "Name": "buttonCancel",
                 "X": 389,
-                "Y": 388,
+                "Y": 356,
                 "Width": 104,
                 "Height": 56,
                 "Pressed": "mod-pressed.png",
@@ -940,7 +932,7 @@
                 "Type": "TextArea",
                 "Name": "userLabel",
                 "X": 78,
-                "Y": 106,
+                "Y": 120,
                 "Width": 155,
                 "Height": 26,
                 "TextId": "usernameLabel",
@@ -953,9 +945,24 @@
               },
               {
                 "Type": "TextArea",
+                "Name": "userLabel_1",
+                "X": 78,
+                "Y": 180,
+                "Width": 155,
+                "Height": 26,
+                "TextId": "genderLabel",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 68,
+                  "Green": 68,
+                  "Blue": 68
+                }
+              },
+              {
+                "Type": "TextArea",
                 "Name": "ageLabel",
                 "X": 78,
-                "Y": 175,
+                "Y": 240,
                 "Width": 155,
                 "Height": 26,
                 "TextId": "ageLabel",
@@ -970,7 +977,7 @@
                 "Type": "TextArea",
                 "Name": "heightLabel",
                 "X": 78,
-                "Y": 241,
+                "Y": 300,
                 "Width": 155,
                 "Height": 26,
                 "TextId": "heightLabel",
@@ -983,46 +990,31 @@
               },
               {
                 "Type": "TextArea",
-                "Name": "weightLabel",
-                "X": 78,
-                "Y": 305,
-                "Width": 155,
-                "Height": 26,
-                "TextId": "weightLabel",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 68,
-                  "Green": 68,
-                  "Blue": 68
-                }
-              },
-              {
-                "Type": "TextArea",
                 "Name": "userArea",
                 "X": 259,
-                "Y": 109,
+                "Y": 120,
                 "Width": 220,
                 "Height": 26,
                 "TextId": "DefaultValue",
                 "TextRotation": "0",
                 "Wildcard1": {
                   "UseBuffer": true,
-                  "BufferSize": 10
+                  "BufferSize": 17
                 },
                 "Clickable": true
               },
               {
                 "Type": "TextArea",
                 "Name": "ageArea",
-                "X": 259,
-                "Y": 175,
+                "X": 256,
+                "Y": 240,
                 "Width": 220,
                 "Height": 26,
                 "TextId": "DefaultValue",
                 "TextRotation": "0",
                 "Wildcard1": {
                   "UseBuffer": true,
-                  "BufferSize": 10
+                  "BufferSize": 8
                 },
                 "Clickable": true
               },
@@ -1030,30 +1022,39 @@
                 "Type": "TextArea",
                 "Name": "heightArea",
                 "X": 259,
-                "Y": 241,
+                "Y": 300,
                 "Width": 220,
                 "Height": 26,
                 "TextId": "DefaultValue",
                 "TextRotation": "0",
                 "Wildcard1": {
                   "UseBuffer": true,
-                  "BufferSize": 10
+                  "BufferSize": 8
                 },
                 "Clickable": true
               },
               {
-                "Type": "TextArea",
-                "Name": "weightArea",
-                "X": 259,
-                "Y": 305,
-                "Width": 220,
-                "Height": 26,
-                "TextId": "DefaultValue",
+                "Type": "ButtonWithLabel",
+                "Name": "genderButton",
+                "X": 245,
+                "Y": 167,
+                "Width": 104,
+                "Height": 56,
+                "Pressed": "mod-pressed.png",
+                "Released": "mod-normal.png",
+                "TextId": "male",
+                "ReleasedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "PressedColor": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
                 "TextRotation": "0",
-                "Wildcard1": {
-                  "UseBuffer": true,
-                  "BufferSize": 10
-                }
+                "Clickable": true
               }
             ]
           },

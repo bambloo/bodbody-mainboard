@@ -197,7 +197,9 @@ void BamblooKeyboard::setMode(int mode) {
                                       : layout->textAreaFont);
   if (mode & 2) {
     alphaMode = false;
-    shiftMode = false;
+  } else {
+    alphaMode = true;
   }
+  shiftMode = false;
   setKeymappingList();
 }

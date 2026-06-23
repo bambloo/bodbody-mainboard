@@ -5,6 +5,16 @@
 
 using namespace touchgfx;
 
+uint16_t HAL::DISPLAY_WIDTH;
+uint16_t HAL::DISPLAY_HEIGHT;
+uint16_t HAL::FRAME_BUFFER_WIDTH;
+uint16_t HAL::FRAME_BUFFER_HEIGHT;
+
+bool HAL::USE_DOUBLE_BUFFERING;
+bool HAL::USE_ANIMATION_STORAGE;
+
+bool HAL::isDrawing;
+
 HAL *HAL::instance;
 
 // void HAL::noTouch() {

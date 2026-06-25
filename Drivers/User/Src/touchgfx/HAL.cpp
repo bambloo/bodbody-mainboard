@@ -2,6 +2,7 @@
 #include "touchgfx/hal/GPIO.hpp"
 #include "touchgfx/hal/HAL.hpp"
 #include "touchgfx/hal/OSWrappers.hpp"
+#include "touchgfx/hal/Types.hpp"
 
 using namespace touchgfx;
 
@@ -9,6 +10,8 @@ uint16_t HAL::DISPLAY_WIDTH;
 uint16_t HAL::DISPLAY_HEIGHT;
 uint16_t HAL::FRAME_BUFFER_WIDTH;
 uint16_t HAL::FRAME_BUFFER_HEIGHT;
+
+DisplayRotation HAL::DISPLAY_ROTATION;
 
 bool HAL::USE_DOUBLE_BUFFERING;
 bool HAL::USE_ANIMATION_STORAGE;
@@ -51,3 +54,27 @@ void HAL::swapFrameBuffers() {
     }
   }
 }
+
+bool HAL::beginFrame() { return !(USE_DOUBLE_BUFFERING && swapRequested); }
+
+// void HAL::tick() {
+//   if (!beginFrame()) {
+//     goto end;
+//   }
+
+//   endFrame();
+//   if (refreshStrategy != REFRESH_STRATEGY_PARTIAL_BUFFER_TFT_CTRL) {
+//     GPIO::clear(GPIO::GPIO_ID::RENDER_TIME);
+//   }
+//   vSyncForFrame = vSyncCnt;
+//   frameBufferUpdatedThisFrame = 0;
+
+//   if (displayOrientationChangeRequested) {
+//     performDisplayOrientationChange();
+//     displayOrientationChangeRequested = 0;
+//   }
+
+//   isDrawing = 1;
+// end;
+//   isDrawing = 0;
+// }

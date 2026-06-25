@@ -1,10 +1,14 @@
 #include "touchgfx/HAL/hal.hpp"
 #include "touchgfx/Bitmap.hpp"
+#include "touchgfx/events/ClickEvent.hpp"
 #include "touchgfx/hal/BlitOp.hpp"
 #include "touchgfx/hal/GPIO.hpp"
+#include "touchgfx/hal/Gestures.hpp"
 #include "touchgfx/hal/HAL.hpp"
 #include "touchgfx/hal/OSWrappers.hpp"
 #include "touchgfx/hal/Types.hpp"
+#include "touchgfx/transforms/DisplayTransformation.hpp"
+#include "touchgfx/transforms/TouchCalibration.hpp"
 #include <cstdint>
 
 using namespace touchgfx;
@@ -23,13 +27,35 @@ bool HAL::isDrawing;
 
 HAL *HAL::instance;
 
-// void HAL::noTouch() {
-//   if (lastTouched) {
-//     gestures.registerClickEvent(ClickEvent::ClickEventType::RELEASED, lastX,
-//                                 lastY);
-//     latTouched = false;
-//   }
-// }
+void HAL::touch(int32_t x, int32_t y) {
+  Point p = {x, y};
+
+  TouchCalibration::translatePoint(p);
+
+  int16_t nx = p.x, ny = p.y;
+
+  DisplayTransformation::transformFrameBufferToDisplay(nx, ny);
+
+  auto gestures = getGestures();
+  if (lastTouched) {
+    int result = gestures->registerDragEvent(lastX, lastY, nx, ny);
+    if (!result) {
+      return;
+    }
+  } else {
+    gestures->registerClickEvent(ClickEvent::ClickEventType::PRESSED, nx, ny);
+  }
+  lastX = nx;
+  lastY = ny;
+}
+
+void HAL::noTouch() {
+  if (lastTouched) {
+    gestures.registerClickEvent(ClickEvent::ClickEventType::RELEASED, lastX,
+                                lastY);
+    lastTouched = false;
+  }
+}
 
 void HAL::allowDMATransfers() {
   dma.setAllowed(true);

@@ -1,8 +1,11 @@
 #include "touchgfx/HAL/hal.hpp"
+#include "touchgfx/Bitmap.hpp"
+#include "touchgfx/hal/BlitOp.hpp"
 #include "touchgfx/hal/GPIO.hpp"
 #include "touchgfx/hal/HAL.hpp"
 #include "touchgfx/hal/OSWrappers.hpp"
 #include "touchgfx/hal/Types.hpp"
+#include <cstdint>
 
 using namespace touchgfx;
 
@@ -24,7 +27,7 @@ HAL *HAL::instance;
 //   if (lastTouched) {
 //     gestures.registerClickEvent(ClickEvent::ClickEventType::RELEASED, lastX,
 //                                 lastY);
-//     lastTouched = false;
+//     latTouched = false;
 //   }
 // }
 
@@ -35,7 +38,7 @@ void HAL::allowDMATransfers() {
 
 void HAL::flushDMA() { dma.flush(); }
 
-void HAL::lockFrameBuffer() {
+uint16_t *HAL::lockFrameBuffer() {
   if (!USE_DOUBLE_BUFFERING && refreshStrategy == REFRESH_STRATEGY_DEFAULT &&
       dma.isDmaQueueEmpty()) {
     while (!dma.getAllowed()) {
@@ -44,6 +47,49 @@ void HAL::lockFrameBuffer() {
   OSWrappers::takeFrameBufferSemaphore();
   setRenderingMethod(RenderingMethod::SOFTWARE);
   return getClientFrameBuffer();
+}
+
+void HAL::unlockFrameBuffer() {
+  OSWrappers::giveFrameBufferSemaphore();
+  dma.setReserved(true);
+}
+
+void HAL::blitCopy(const uint16_t *pSrc, const uint8_t *pClut, uint16_t x,
+                   uint16_t y, uint16_t width, uint16_t height,
+                   uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels,
+                   uint16_t dstWidth, Bitmap::BitmapFormat srcFormat,
+                   Bitmap::BitmapFormat dstFormat, bool replaceBgAlpha) {
+  BlitOp dop;
+  if (srcFormat == Bitmap::BitmapFormat::L8) {
+    dop.operation = BlitOperations::BLIT_OP_COPY_L8;
+  } else if (srcFormat == Bitmap::BitmapFormat::ARGB8888) {
+    if (alpha != 0xff || hasTransparentPixels) {
+      dop.operation = BLIT_OP_COPY_ARGB8888_WITH_ALPHA;
+    } else {
+      dop.operation = BLIT_OP_COPY_ARGB8888;
+    }
+  } else {
+    if (alpha != 0xff || hasTransparentPixels) {
+      dop.operation = BLIT_OP_COPY_WITH_ALPHA;
+    } else {
+      dop.operation = BLIT_OP_COPY;
+    }
+  }
+
+  dop.pClut = pClut;
+  dop.alpha = alpha;
+  dop.nSteps = width;
+  dop.nLoops = height;
+  dop.pSrc = pSrc;
+  dop.srcLoopStride = srcWidth;
+  auto cfb = getClientFrameBuffer();
+  dop.pDst = getDstAddress(x, y, cfb, dstWidth, dstFormat);
+  dop.dstLoopStride = dstWidth;
+  dop.srcFormat = srcFormat;
+  dop.dstFormat = dstFormat;
+  dop.replaceBgAlpha = replaceBgAlpha;
+  dop.replaceFgAlpha = false;
+  dma.addToQueue(dop);
 }
 
 void HAL::taskEntry() {

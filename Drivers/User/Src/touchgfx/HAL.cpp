@@ -28,6 +28,11 @@ HAL *HAL::instance;
 //   }
 // }
 
+void HAL::allowDMATransfers() {
+  dma.setAllowed(true);
+  dma.start();
+}
+
 void HAL::taskEntry() {
   enableLCDControllerInterrupt();
   enableInterrupts();

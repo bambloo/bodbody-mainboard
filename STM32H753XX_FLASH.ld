@@ -218,9 +218,11 @@ SECTIONS
  /* Initialized TLS data section */
   .tdata : ALIGN(4)
   {
+    . = ALIGN(4);
     *(.tdata .tdata.* .gnu.linkonce.td.*)
     . = ALIGN(4);
     _edata = .;        /* define a global symbol at data end */
+    . = ALIGN(4);
     PROVIDE(__data_end = .);
     PROVIDE(__tdata_end = .);
   } >DTCMRAM AT> FLASH
@@ -241,6 +243,7 @@ SECTIONS
   /* Uninitialized data section */
   .tbss (NOLOAD) : ALIGN(4)
   {
+    . = ALIGN(4);
      /* This is used by the startup in order to initialize the .bss secion */
     _sbss = .;         /* define a global symbol at bss start */
     __bss_start__ = _sbss;
@@ -263,6 +266,7 @@ SECTIONS
 
   .bss (NOLOAD) : ALIGN(4)
   {
+    . = ALIGN(4);
     *(.bss)
     *(.bss*)
     *(COMMON)

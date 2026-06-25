@@ -48,6 +48,8 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 file(GLOB_RECURSE ALL_SOURCES
     Threads/Src/*.c
     Drivers/User/Src/*.c
+    # Drivers/User/Src/touchgfx/*.cpp
+
 )
 
 # Add sources to executable

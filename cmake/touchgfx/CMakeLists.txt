@@ -22,10 +22,9 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/boot_screen/BootPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/boot_screen/bootView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/common/FrontendApplication.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/AddUserContainer.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboard.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/BamblooKeyboardBase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/CustomContainer1.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/containers/UserInfoListItem.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginPresenter.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/login_screen/LoginView.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/gui/src/menu_screen/MenuPresenter.cpp
@@ -83,8 +82,7 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/fonts/src/VectorFontRendererBuffers.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/boot_screen/BootViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/AddUserContainerBase.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/CustomContainer1Base.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/containers/UserInfoListItemBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/login_screen/LoginViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/menu_screen/MenuViewBase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/gui_generated/src/prepare_screen/PrepareViewBase.cpp
@@ -92,7 +90,6 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/SVGDatabase.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_done_40_40_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_list_100_100_E8F6FB.svg.cpp
-    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_search_40_40_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_action_settings_100_100_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_av_play_circle_filled_40_40_000000.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_av_play_circle_filled_40_40_E8F6FB.svg.cpp
@@ -103,6 +100,7 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_image_mic_external_on_100_100_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_navigation_arrow_back_ios_40_40_555555.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_navigation_arrow_forward_ios_40_40_555555.svg.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_navigation_refresh_40_40_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_social_person_add_alt_1_40_40_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_social_person_add_alt_40_40_E8F6FB.svg.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/__generated/image_icon_theme_images_social_person_remove_40_40_E8F6FB.svg.cpp

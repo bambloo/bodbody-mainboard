@@ -16,6 +16,8 @@ public:
   FrontendApplication(Model &m, FrontendHeap &heap);
   virtual ~FrontendApplication() {}
 
+  // virtual void drawCachedAreas();
+
   virtual void handleTickEvent() {
     model.tick();
     FrontendApplicationBase::handleTickEvent();
@@ -26,7 +28,8 @@ public:
   bool isKeyboardVisible() const;
   void setKeyboardBuffer(Unicode::UnicodeChar *buffer, uint16_t size);
   void attachKeyboardToCurrentScreen();
-  void bindKeyboardTextArea(const TextAreaWithOneWildcard &textArea, int bufSize) {
+  void bindKeyboardTextArea(const TextAreaWithOneWildcard &textArea,
+                            int bufSize) {
     globalKeyboard.bindTextArea(textArea, bufSize);
   }
 
@@ -60,9 +63,7 @@ public:
     return SQLITE_OK;
   }
 
-  static sqlite3* getDatabase() {
-    return getInstance()->sqlite;
-  }
+  static sqlite3 *getDatabase() { return getInstance()->sqlite; }
 
   // void testDatabase() {
   //   sqlite3_stmt *stmt = NULL;
@@ -90,8 +91,8 @@ public:
   //     const unsigned char *ret_name = sqlite3_column_text(stmt, 0);
 
   //     // 🌟 读取 BLOB 数据及其字节长度
-  //     const uint8_t *ret_blob = (const uint8_t *)sqlite3_column_blob(stmt, 1);
-  //     int ret_blob_len = sqlite3_column_bytes(stmt, 1);
+  //     const uint8_t *ret_blob = (const uint8_t *)sqlite3_column_blob(stmt,
+  //     1); int ret_blob_len = sqlite3_column_bytes(stmt, 1);
   //   } else {
   //   }
   // }
@@ -99,7 +100,6 @@ public:
 private:
   sqlite3 *sqlite;
   BamblooKeyboard globalKeyboard;
-  
 };
 
 #endif // FRONTENDAPPLICATION_HPP

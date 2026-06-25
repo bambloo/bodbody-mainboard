@@ -6,18 +6,33 @@
 #include <images/BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 
-PrepareViewBase::PrepareViewBase()
+PrepareViewBase::PrepareViewBase() :
+    updateItemCallback(this, &PrepareViewBase::updateItemCallbackHandler)
 {
     __background.setPosition(0, 0, 800, 600);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
+
+    userInfoList.setPosition(48, 171, 704, 253);
+    userInfoList.setHorizontal(false);
+    userInfoList.setCircular(false);
+    userInfoList.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    userInfoList.setSwipeAcceleration(10);
+    userInfoList.setDragAcceleration(10);
+    userInfoList.setNumberOfItems(10);
+    userInfoList.setPadding(0, 0);
+    userInfoList.setSnapping(false);
+    userInfoList.setOvershootPercentage(75);
+    userInfoList.setDrawableSize(44, 0);
+    userInfoList.setDrawables(userInfoListListItems, updateItemCallback);
+    add(userInfoList);
 
     background.setXY(0, 0);
     background.setBitmap(touchgfx::Bitmap(BITMAP_PREPARE_PAGE_ID));
     add(background);
 
     buttonQuery.setXY(652, 95);
-    buttonQuery.setBitmaps(touchgfx::Bitmap(BITMAP_QUERY_NORMAL_ID), touchgfx::Bitmap(BITMAP_QUERY_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_SEARCH_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_SEARCH_40_40_E8F6FB_SVG_ID));
+    buttonQuery.setBitmaps(touchgfx::Bitmap(BITMAP_QUERY_NORMAL_ID), touchgfx::Bitmap(BITMAP_QUERY_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_REFRESH_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_REFRESH_40_40_E8F6FB_SVG_ID));
     buttonQuery.setIconXY(33, 8);
     add(buttonQuery);
 
@@ -146,6 +161,14 @@ PrepareViewBase::PrepareViewBase()
     currMenuLabel.setLinespacing(0);
     currMenuLabel.setTypedText(touchgfx::TypedText(T_CHOOSEUSERLABEL));
     add(currMenuLabel);
+
+    pageIndexArea.setPosition(311, 518, 179, 26);
+    pageIndexArea.setColor(touchgfx::Color::getColorFromRGB(68, 68, 68));
+    pageIndexArea.setLinespacing(0);
+    pageIndexAreaBuffer[0] = 0;
+    pageIndexArea.setWildcard(pageIndexAreaBuffer);
+    pageIndexArea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_3PDM));
+    add(pageIndexArea);
 }
 
 PrepareViewBase::~PrepareViewBase()
@@ -155,5 +178,17 @@ PrepareViewBase::~PrepareViewBase()
 
 void PrepareViewBase::setupScreen()
 {
+    userInfoList.initialize();
+    for (int i = 0; i < userInfoListListItems.getNumberOfDrawables(); i++)
+    {
+        userInfoListListItems[i].initialize();
+    }
+}
 
+void PrepareViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
+{
+    if (items == &userInfoListListItems)
+    {
+        userInfoListUpdateItem(userInfoListListItems[containerIndex], itemIndex);
+    }
 }

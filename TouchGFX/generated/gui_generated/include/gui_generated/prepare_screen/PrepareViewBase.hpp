@@ -8,6 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/prepare_screen/PreparePresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/containers/scrollers/ScrollList.hpp>
+#include <gui/containers/UserInfoListItem.hpp>
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
@@ -23,6 +25,11 @@ public:
     virtual ~PrepareViewBase();
     virtual void setupScreen();
 
+    virtual void userInfoListUpdateItem(UserInfoListItem& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Prepare
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -32,6 +39,8 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::ScrollList userInfoList;
+    touchgfx::DrawableListItems<UserInfoListItem, 7> userInfoListListItems;
     touchgfx::Image background;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonQuery;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonAdd;
@@ -56,11 +65,12 @@ protected:
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > heightArea;
     touchgfx::ClickListener< touchgfx::ButtonWithLabel > genderButton;
     touchgfx::TextArea currMenuLabel;
+    touchgfx::TextAreaWithOneWildcard pageIndexArea;
 
     /*
      * Wildcard Buffers
      */
-    static const uint16_t QUERYSTRINGAREA_SIZE = 10;
+    static const uint16_t QUERYSTRINGAREA_SIZE = 17;
     touchgfx::Unicode::UnicodeChar queryStringAreaBuffer[QUERYSTRINGAREA_SIZE];
     static const uint16_t USERAREA_SIZE = 17;
     touchgfx::Unicode::UnicodeChar userAreaBuffer[USERAREA_SIZE];
@@ -68,8 +78,20 @@ protected:
     touchgfx::Unicode::UnicodeChar ageAreaBuffer[AGEAREA_SIZE];
     static const uint16_t HEIGHTAREA_SIZE = 8;
     touchgfx::Unicode::UnicodeChar heightAreaBuffer[HEIGHTAREA_SIZE];
+    static const uint16_t PAGEINDEXAREA_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar pageIndexAreaBuffer[PAGEINDEXAREA_SIZE];
 
 private:
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<PrepareViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
+
+    /*
+     * Callback Handler Declarations
+     */
+    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
 };
 

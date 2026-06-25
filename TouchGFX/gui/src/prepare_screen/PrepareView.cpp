@@ -1,5 +1,6 @@
 #include "bodbody-helper.h"
 #include "gui/common/FrontendApplication.hpp"
+#include "gui/containers/UserInfoListItem.hpp"
 #include "gui_generated/common/FrontendApplicationBase.hpp"
 #include "sqlite3.h"
 #include "texts/TextKeysAndLanguages.hpp"
@@ -25,6 +26,7 @@ PrepareView::PrepareView()
   userArea.setClickAction(textClickedCallback);
   ageArea.setClickAction(textClickedCallback);
   heightArea.setClickAction(textClickedCallback);
+  queryStringArea.setClickAction(textClickedCallback);
 
   genderButton.setClickAction(genderClickedCallback);
 }
@@ -41,6 +43,8 @@ void PrepareView::setupScreen() {
   profile.name[0] = 0;
 
   updateProfile(0);
+
+  updateUserInfoList();
 }
 
 void PrepareView::tearDownScreen() { PrepareViewBase::tearDownScreen(); }
@@ -95,6 +99,22 @@ void PrepareView::btnClicked(const ButtonWithIcon &button,
       invalidate();
     }
   }
+
+  if (&button == &buttonQuery) {
+    updateUserInfoList();
+  }
+
+  if (&button == &buttonNext) {
+    if (currentPage < totalPage) {
+      switchPage(currentPage + 1);
+    }
+  }
+
+  if (&button == &buttonPrev) {
+    if (currentPage > 1) {
+      switchPage(currentPage - 1);
+    }
+  }
 }
 
 void PrepareView::textClicked(const TextAreaWithOneWildcard &textArea,
@@ -127,6 +147,13 @@ void PrepareView::textClicked(const TextAreaWithOneWildcard &textArea,
     FrontendApplication::getInstance()->showKeyboard(2);
     return;
   }
+
+  if (&textArea == &queryStringArea) {
+    FrontendApplication::getInstance()->bindKeyboardTextArea(
+        queryStringArea, QUERYSTRINGAREA_SIZE);
+    FrontendApplication::getInstance()->showKeyboard(0);
+    return;
+  }
 }
 
 void PrepareView::genderClicked(const ButtonWithLabel &button,
@@ -144,4 +171,50 @@ void PrepareView::genderClicked(const ButtonWithLabel &button,
     genderButton.setLabelText(TypedText(T_MALE));
     genderButton.invalidate();
   }
+}
+
+void PrepareView::updateUserInfoList() {
+  char name[18];
+  int count = Unicode::toUTF8(queryStringAreaBuffer, (uint8_t *)name,
+                              QUERYSTRINGAREA_SIZE) -
+              1;
+  name[count] = '%';
+  name[++count] = 0;
+
+  count = bodbody_count(FrontendApplication::getDatabase(), (char *)name);
+  currentPage = count ? 1 : 0;
+  totalPage = (count + 5 / 6);
+  sprintf(name, "%d/%d", count ? 1 : 0, totalPage);
+  Unicode::fromUTF8((uint8_t *)name, pageIndexAreaBuffer, PAGEINDEXAREA_SIZE);
+  pageIndexArea.invalidate();
+
+  switchPage(1);
+}
+
+void PrepareView::switchPage(uint8_t page) {
+  if (page > totalPage || page < 1) {
+    return;
+  }
+
+  char name[18];
+  int count = Unicode::toUTF8(queryStringAreaBuffer, (uint8_t *)name,
+                              QUERYSTRINGAREA_SIZE) -
+              1;
+  name[count] = '%';
+  name[++count] = 0;
+
+  count = bodbody_load_user_info(FrontendApplication::getDatabase(), name,
+                                 userInfos,
+                                 (page - 1) * PREPARE_VIEW_MAX_ITEM_PER_PAGE,
+                                 PREPARE_VIEW_MAX_ITEM_PER_PAGE);
+  userInfoList.setNumberOfItems(count);
+  userInfoList.invalidate();
+}
+
+// void PrepareView::updateUserItem(uint16_t item, UserInfoListItem &item) {
+
+// }
+
+void PrepareView::userInfoListUpdateItem(UserInfoListItem& item, int16_t itemIndex) {
+  
 }

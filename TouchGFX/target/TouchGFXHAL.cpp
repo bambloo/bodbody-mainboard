@@ -22,6 +22,12 @@
 
 #include <TouchGFXHAL.hpp>
 
+/**
+ * Specifies the width of the frame buffer stride.
+ * This number should be the result of your display width rounded-up to the closest multiple of 64.
+ */
+static const uint16_t framebufferStride = 800;
+
 /* USER CODE BEGIN TouchGFXHAL.cpp */
 
 using namespace touchgfx;

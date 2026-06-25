@@ -288,12 +288,6 @@
     <ClCompile Include="..\..\gui\src\containers\BamblooKeyboardBase.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\CustomContainer1.cpp">
-      <Filter>Source Files\gui\containers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\CustomContainer1Base.cpp">
-      <Filter>Source Files\generated\gui_generated\containers</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\menu_screen\MenuPresenter.cpp">
       <Filter>Source Files\gui\menu_screen</Filter>
     </ClCompile>
@@ -312,10 +306,10 @@
     <ClCompile Include="..\..\generated\gui_generated\src\prepare_screen\PrepareViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\prepare_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\AddUserContainer.cpp">
+    <ClCompile Include="..\..\gui\src\containers\UserInfoListItem.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\AddUserContainerBase.cpp">
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\UserInfoListItemBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -784,12 +778,6 @@
     <ClInclude Include="..\..\gui\include\gui\containers\BamblooKeyboardBase.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\CustomContainer1.hpp">
-      <Filter>Header Files\gui\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\CustomContainer1Base.hpp">
-      <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\menu_screen\MenuPresenter.hpp">
       <Filter>Header Files\gui\menu_screen</Filter>
     </ClInclude>
@@ -808,10 +796,10 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\prepare_screen\PrepareViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\prepare_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\AddUserContainer.hpp">
+    <ClInclude Include="..\..\gui\include\gui\containers\UserInfoListItem.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\AddUserContainerBase.hpp">
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\UserInfoListItemBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>

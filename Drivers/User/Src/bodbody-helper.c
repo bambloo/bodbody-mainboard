@@ -159,6 +159,65 @@ error:
   return res;
 }
 
+int bodbody_count(sqlite3 *db, char *username) {
+  sqlite3_stmt *stmt = NULL;
+  int res = 0;
+  res = sqlite3_prepare_v2(db,
+                           "SELECT COUNT(*) FROM user_info_t WHERE name like ?",
+                           -1, &stmt, NULL);
+
+  res = sqlite3_bind_text(stmt, 1, username, -1, SQLITE_STATIC);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_step(stmt);
+  if (res != SQLITE_ROW) {
+    goto error;
+  }
+  res = sqlite3_column_int(stmt, 0);
+error:
+  sqlite3_finalize(stmt);
+  return res;
+}
+
+int bodbody_load_user_info(sqlite3 *db, char *username,
+                           bodbody_user_info_t *info, int skip, int count) {
+  sqlite3_stmt *stmt = NULL;
+  bodbody_user_info_t *cursor = info;
+  int res = 0;
+  res = sqlite3_prepare_v2(
+      db, "SELECT * FROM user_info_t WHERE name like ? LIMIT ?, ?", -1, &stmt,
+      NULL);
+  res = sqlite3_bind_text(stmt, 1, username, -1, SQLITE_STATIC);
+  if (res != SQLITE_OK) {
+    res = -res;
+    goto error;
+  }
+  res = sqlite3_bind_int(stmt, 2, skip);
+  if (res != SQLITE_OK) {
+    res = -res;
+    goto error;
+  }
+  res = sqlite3_bind_int(stmt, 3, count);
+  if (res != SQLITE_OK) {
+    res = -res;
+    goto error;
+  }
+  while ((res = sqlite3_step(stmt)) == SQLITE_ROW) {
+    cursor->id = sqlite3_column_int(stmt, 0);
+    strcpy(info->name, (char *)sqlite3_column_text(stmt, 1));
+    cursor->gender = sqlite3_column_int(stmt, 2);
+    cursor->age = sqlite3_column_int(stmt, 3);
+    cursor->height = sqlite3_column_int(stmt, 4);
+    cursor->weight = sqlite3_column_double(stmt, 5);
+    cursor++;
+  }
+  res = cursor - info;
+error:
+  sqlite3_finalize(stmt);
+  return res;
+}
+
 // uint8_t bodbody_update_user_info(sqlite3 *db, bodbody_user_info_t *info) {
 //   uint8_t res = 0;
 //   sqlite3_stmt *stmt = NULL;

@@ -711,6 +711,21 @@
         "Name": "Prepare",
         "Components": [
           {
+            "Type": "ScrollList",
+            "Name": "userInfoList",
+            "X": 48,
+            "Y": 171,
+            "Width": 704,
+            "Height": 253,
+            "ItemTemplateName": "UserInfoListItem",
+            "NumberofItems": 10,
+            "Easing": "Back",
+            "EasingOption": "Out",
+            "SwipeAcceleration": 1.0,
+            "DragAcceleration": 1.0,
+            "OverShootPercentage": 75
+          },
+          {
             "Type": "Image",
             "Name": "background",
             "Width": 800,
@@ -726,8 +741,8 @@
             "Height": 56,
             "Pressed": "query-pressed.png",
             "Released": "query-normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_search_40_40_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_action_search_40_40_E8F6FB.svg.png",
+            "IconPressed": "__generated\\icon_theme_images_navigation_refresh_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_refresh_40_40_E8F6FB.svg.png",
             "IconX": 33,
             "IconY": 8,
             "IconHeight": 40,
@@ -852,7 +867,7 @@
             },
             "Wildcard1": {
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 17
             },
             "Clickable": true
           },
@@ -1073,6 +1088,25 @@
               "Blue": 68
             },
             "AutoSize": true
+          },
+          {
+            "Type": "TextArea",
+            "Name": "pageIndexArea",
+            "X": 311,
+            "Y": 518,
+            "Width": 179,
+            "Height": 26,
+            "TextId": "__SingleUse_3PDM",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 68,
+              "Green": 68,
+              "Blue": 68
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           }
         ],
         "Interactions": []
@@ -1080,34 +1114,87 @@
     ],
     "CustomContainerDefinitions": [
       {
-        "Name": "CustomContainer1",
-        "Width": 406,
-        "Height": 53,
+        "Name": "UserInfoListItem",
+        "Width": 704,
+        "Height": 44,
         "Components": [
           {
             "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 15,
-            "Y": 13,
-            "Width": 90,
+            "Name": "userArea",
+            "X": 51,
+            "Y": 9,
+            "Width": 147,
             "Height": 26,
-            "TextId": "DefaultNewText",
+            "TextId": "__SingleUse_VL7O",
             "TextRotation": "0",
             "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 85,
+              "Green": 85,
+              "Blue": 85
             },
-            "AutoSize": true
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 17
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ageArea",
+            "X": 225,
+            "Y": 9,
+            "Width": 69,
+            "Height": 26,
+            "TextId": "__SingleUse_S0KL",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 85,
+              "Green": 85,
+              "Blue": 85
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 17
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "heightArea",
+            "X": 334,
+            "Y": 9,
+            "Width": 173,
+            "Height": 26,
+            "TextId": "__SingleUse_DFVJ",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 85,
+              "Green": 85,
+              "Blue": 85
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 17
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "weightArea",
+            "X": 524,
+            "Y": 9,
+            "Width": 173,
+            "Height": 26,
+            "TextId": "__SingleUse_W6MI",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 85,
+              "Green": 85,
+              "Blue": 85
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 17
+            }
           }
         ],
-        "Interactions": []
-      },
-      {
-        "Name": "AddUserContainer",
-        "Width": 800,
-        "Height": 136,
-        "Components": [],
         "Interactions": []
       }
     ],

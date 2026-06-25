@@ -33,8 +33,17 @@ void HAL::allowDMATransfers() {
   dma.start();
 }
 
-void HAL::flushDMA() {
-  dma.flush();
+void HAL::flushDMA() { dma.flush(); }
+
+void HAL::lockFrameBuffer() {
+  if (!USE_DOUBLE_BUFFERING && refreshStrategy == REFRESH_STRATEGY_DEFAULT &&
+      dma.isDmaQueueEmpty()) {
+    while (!dma.getAllowed()) {
+    }
+  }
+  OSWrappers::takeFrameBufferSemaphore();
+  setRenderingMethod(RenderingMethod::SOFTWARE);
+  return getClientFrameBuffer();
 }
 
 void HAL::taskEntry() {

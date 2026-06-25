@@ -33,6 +33,10 @@ void HAL::allowDMATransfers() {
   dma.start();
 }
 
+void HAL::flushDMA() {
+  dma.flush();
+}
+
 void HAL::taskEntry() {
   enableLCDControllerInterrupt();
   enableInterrupts();

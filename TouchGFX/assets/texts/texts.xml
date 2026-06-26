@@ -168,19 +168,19 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_W6MI" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_W6MI" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">New Text&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_DFVJ" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_DFVJ" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">New Text&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_S0KL" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_S0KL" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">New Text&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>
-      <Text Id="__SingleUse_VL7O" Alignment="Left" TypographyId="Default">
+      <Text Id="__SingleUse_VL7O" Alignment="Center" TypographyId="Default">
         <Translation Language="GB">New Text&lt;value&gt;</Translation>
         <Translation Language="ZH">&lt;value&gt;</Translation>
       </Text>

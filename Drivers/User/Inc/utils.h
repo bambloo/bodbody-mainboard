@@ -3,19 +3,38 @@
 
 #include <stdio.h>
 
-#define htons(x) (unsigned short)((((unsigned short)x) << 8) | (((unsigned short)x) >> 8))
-#define htonl(x)                                                                                                       \
-  ((((x) >> 24) & 0x000000FF) | (((x) >> 8) & 0x0000FF00) | (((x) << 8) & 0x00FF0000) | (((x) << 24) & 0xFF000000))
+#define htons(x)                                                               \
+  (unsigned short)((((unsigned short)x) << 8) | (((unsigned short)x) >> 8))
+#define htonl(x)                                                               \
+  ((((x) >> 24) & 0x000000FF) | (((x) >> 8) & 0x0000FF00) |                    \
+   (((x) << 8) & 0x00FF0000) | (((x) << 24) & 0xFF000000))
 
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 #define SWAP(a, b) ((a) ^= (b), (b) ^= (a), (a) ^= (b))
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 static inline void f2s(char *c, float v) {
   int32_t integer = (int32_t)v;
   int32_t decimal = (int32_t)((v - integer) * 10.0f);
 
   sprintf(c, "%ld.%01ld", integer, decimal);
 }
+
+static inline void f2u(uint16_t *c, float v) {
+  char buffer[16];
+  f2s(buffer, v);
+
+  int i = 0;
+  do {
+    c[i] = buffer[i];
+  } while (c[i]);
+}
+#ifdef __cplusplus
+}
+#endif
+
 #endif

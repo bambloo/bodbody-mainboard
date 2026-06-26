@@ -13,23 +13,23 @@ PrepareViewBase::PrepareViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    userInfoList.setPosition(48, 171, 704, 253);
-    userInfoList.setHorizontal(false);
-    userInfoList.setCircular(false);
-    userInfoList.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
-    userInfoList.setSwipeAcceleration(10);
-    userInfoList.setDragAcceleration(10);
-    userInfoList.setNumberOfItems(10);
-    userInfoList.setPadding(0, 0);
-    userInfoList.setSnapping(false);
-    userInfoList.setOvershootPercentage(75);
-    userInfoList.setDrawableSize(44, 0);
-    userInfoList.setDrawables(userInfoListListItems, updateItemCallback);
-    add(userInfoList);
-
     background.setXY(0, 0);
     background.setBitmap(touchgfx::Bitmap(BITMAP_PREPARE_PAGE_ID));
     add(background);
+
+    userInfoList.setPosition(58, 160, 680, 273);
+    userInfoList.setHorizontal(false);
+    userInfoList.setCircular(false);
+    userInfoList.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    userInfoList.setSwipeAcceleration(0);
+    userInfoList.setDragAcceleration(0);
+    userInfoList.setNumberOfItems(7);
+    userInfoList.setPadding(0, 0);
+    userInfoList.setSnapping(false);
+    userInfoList.setOvershootPercentage(0);
+    userInfoList.setDrawableSize(37, 1);
+    userInfoList.setDrawables(userInfoListListItems, updateItemCallback);
+    add(userInfoList);
 
     buttonQuery.setXY(652, 95);
     buttonQuery.setBitmaps(touchgfx::Bitmap(BITMAP_QUERY_NORMAL_ID), touchgfx::Bitmap(BITMAP_QUERY_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_REFRESH_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_REFRESH_40_40_E8F6FB_SVG_ID));
@@ -73,6 +73,18 @@ PrepareViewBase::PrepareViewBase() :
     queryStringArea.setWildcard(queryStringAreaBuffer);
     queryStringArea.setTypedText(touchgfx::TypedText(T_DEFAULTVALUE));
     add(queryStringArea);
+
+    buttonDelCancel.setXY(360, 444);
+    buttonDelCancel.setBitmaps(touchgfx::Bitmap(BITMAP_DEL_CANCEL_NORMAL_ID), touchgfx::Bitmap(BITMAP_DEL_CANCEL_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_CONTENT_CLEAR_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_CONTENT_CLEAR_40_40_E8F6FB_SVG_ID));
+    buttonDelCancel.setIconXY(9, 7);
+    buttonDelCancel.setVisible(false);
+    add(buttonDelCancel);
+
+    buttonDelOk.setXY(416, 444);
+    buttonDelOk.setBitmaps(touchgfx::Bitmap(BITMAP_DEL_OK_NORMAL_ID), touchgfx::Bitmap(BITMAP_DEL_OK_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_40_40_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_40_40_E8F6FB_SVG_ID));
+    buttonDelOk.setIconXY(9, 7);
+    buttonDelOk.setVisible(false);
+    add(buttonDelOk);
 
     addModUserModal.setBackground(touchgfx::BitmapId(BITMAP_MAIN_BACKGROUND_ID), 0, 0);
     addModUserModal.setShadeColor(touchgfx::Color::getColorFromRGB(0, 0, 0));

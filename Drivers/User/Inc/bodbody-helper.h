@@ -30,6 +30,8 @@ uint8_t bodbody_update_user_info(sqlite3 *db, bodbody_user_info_t *info);
 int bodbody_count(sqlite3 *db, char *username);
 int bodbody_load_user_info(sqlite3 *db, char *username,
                            bodbody_user_info_t *info, int skip, int count);
+
+int bodbody_delete_user(sqlite3 *db, int user);
 #ifdef __cplusplus
 }
 #endif

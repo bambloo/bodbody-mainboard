@@ -8,9 +8,9 @@
 #include <mvp/View.hpp>
 #include <gui/prepare_screen/PreparePresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/containers/scrollers/ScrollList.hpp>
 #include <gui/containers/UserInfoListItem.hpp>
-#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
@@ -39,9 +39,9 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::ScrollList userInfoList;
-    touchgfx::DrawableListItems<UserInfoListItem, 7> userInfoListListItems;
     touchgfx::Image background;
+    touchgfx::ScrollList userInfoList;
+    touchgfx::DrawableListItems<UserInfoListItem, 9> userInfoListListItems;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonQuery;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonAdd;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonStart;
@@ -50,6 +50,8 @@ protected:
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonPrev;
     touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonNext;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > queryStringArea;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonDelCancel;
+    touchgfx::ClickListener< touchgfx::ButtonWithIcon > buttonDelOk;
     touchgfx::ModalWindow addModUserModal;
     touchgfx::Image image1;
     touchgfx::Image image1_2;

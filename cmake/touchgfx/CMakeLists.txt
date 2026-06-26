@@ -113,7 +113,11 @@ set(TouchGFX_Src
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_boot-page-rotate.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_boot-page.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_change-pin-background.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-cancel-normal.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-cancel-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-normal.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-ok-normal.cpp
+    ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-ok-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_del-pressed.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_input-box.cpp
     ${CMAKE_SOURCE_DIR}/TouchGFX/generated/images/src/image_key-normal-letter.cpp

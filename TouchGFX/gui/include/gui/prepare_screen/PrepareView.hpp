@@ -10,7 +10,6 @@
 #include <gui_generated/prepare_screen/PrepareViewBase.hpp>
 #include <sys/types.h>
 
-
 #define PREPARE_VIEW_MAX_ITEM_PER_PAGE 7
 
 class PrepareView : public PrepareViewBase {
@@ -19,7 +18,9 @@ public:
   virtual ~PrepareView() {}
   virtual void setupScreen();
   virtual void tearDownScreen();
-  virtual void userInfoListUpdateItem(UserInfoListItem& item, int16_t itemIndex);
+  virtual void userInfoListUpdateItem(UserInfoListItem &item,
+                                      int16_t itemIndex);
+  virtual void handleClickEvent(const ClickEvent &event);
 
 protected:
   Callback<PrepareView, const ButtonWithIcon &, const ClickEvent &>
@@ -28,11 +29,13 @@ protected:
       textClickedCallback;
   Callback<PrepareView, const ButtonWithLabel &, const ClickEvent &>
       genderClickedCallback;
+  Callback<PrepareView, int16_t> userSelectedCallback;
 
 private:
   uint8_t profileMode;
   uint8_t currentPage;
   uint8_t totalPage;
+  int8_t selectedUser;
 
   bodbody_user_info_t userInfos[PREPARE_VIEW_MAX_ITEM_PER_PAGE];
   bodbody_user_info_t profile;
@@ -40,11 +43,14 @@ private:
   void updateUserInfoList();
   void switchPage(uint8_t page);
 
+  // 0 - profile to ui
   void updateProfile(uint8_t mode);
   void btnClicked(const ButtonWithIcon &sender, const ClickEvent &event);
   void textClicked(const TextAreaWithOneWildcard &sender,
                    const ClickEvent &event);
   void genderClicked(const ButtonWithLabel &sender, const ClickEvent &event);
+  void userSelected(int16_t item);
+  void showDeleteModal(bool show);
 };
 
 #endif // PREPAREVIEW_HPP

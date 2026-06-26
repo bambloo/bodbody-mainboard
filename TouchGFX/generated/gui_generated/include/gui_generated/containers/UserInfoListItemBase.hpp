@@ -6,6 +6,7 @@
 
 #include <gui/common/FrontendApplication.hpp>
 #include <touchgfx/containers/Container.hpp>
+#include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class UserInfoListItemBase : public touchgfx::Container
@@ -23,6 +24,7 @@ protected:
     /*
      * Member Declarations
      */
+    touchgfx::Box background;
     touchgfx::TextAreaWithOneWildcard userArea;
     touchgfx::TextAreaWithOneWildcard ageArea;
     touchgfx::TextAreaWithOneWildcard heightArea;

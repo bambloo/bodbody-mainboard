@@ -124,10 +124,13 @@ uint8_t bodbody_register(UART_HandleTypeDef *uart, IRQn_Type irq) {
 uint8_t bodbody_save_user_info(sqlite3 *db, bodbody_user_info_t *info) {
   uint8_t res = 0;
   sqlite3_stmt *stmt = NULL;
-  res = sqlite3_prepare_v2(db,
-                           "INSERT INTO user_info_t(name, gender, age, height, "
-                           "weight) VALUES(?, ?, ?, ?, ?)",
-                           -1, &stmt, NULL);
+  res = sqlite3_prepare_v2(
+      db,
+      info->id ? "UPDATE user_info_t set "
+                 "name=?,gender=?,age=?,height=?,weight=? where id=?"
+               : "INSERT INTO user_info_t(name, gender, age, height, weight) "
+                 "VALUES(?, ?, ?, ?, ?)",
+      -1, &stmt, NULL);
   if (res != SQLITE_OK) {
     return res;
   }
@@ -152,6 +155,13 @@ uint8_t bodbody_save_user_info(sqlite3 *db, bodbody_user_info_t *info) {
   if (res != SQLITE_OK) {
     goto error;
   }
+
+  if (info->id) {
+    res = sqlite3_bind_int(stmt, 6, info->id);
+    if (res != SQLITE_OK) {
+      goto error;
+    }
+  }
   res = sqlite3_step(stmt);
 error:
   sqlite3_finalize(stmt);
@@ -175,6 +185,23 @@ int bodbody_count(sqlite3 *db, char *username) {
     goto error;
   }
   res = sqlite3_column_int(stmt, 0);
+error:
+  sqlite3_finalize(stmt);
+  return res;
+}
+
+int bodbody_delete_user(sqlite3 *db, int id) {
+  sqlite3_stmt *stmt = NULL;
+  int res = sqlite3_prepare_v2(db, "delete from user_info_t where id=?", -1,
+                               &stmt, NULL);
+  if (res != SQLITE_OK) {
+    return res;
+  }
+  res = sqlite3_bind_int(stmt, 1, id);
+  if (res != SQLITE_OK) {
+    goto error;
+  }
+  res = sqlite3_step(stmt);
 error:
   sqlite3_finalize(stmt);
   return res;
@@ -205,7 +232,7 @@ int bodbody_load_user_info(sqlite3 *db, char *username,
   }
   while ((res = sqlite3_step(stmt)) == SQLITE_ROW) {
     cursor->id = sqlite3_column_int(stmt, 0);
-    strcpy(info->name, (char *)sqlite3_column_text(stmt, 1));
+    strcpy(cursor->name, (char *)sqlite3_column_text(stmt, 1));
     cursor->gender = sqlite3_column_int(stmt, 2);
     cursor->age = sqlite3_column_int(stmt, 3);
     cursor->height = sqlite3_column_int(stmt, 4);

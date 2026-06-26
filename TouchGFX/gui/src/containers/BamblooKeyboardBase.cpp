@@ -62,20 +62,16 @@ void BamblooKeyboardBase::setLayout(const Layout *newLayout) {
 
 void BamblooKeyboardBase::setTextIndentation() {
   if (layout != nullptr) {
-    // 2. Fetch the automatic text padding / indentation from the layout's font
-    // settings
     uint8_t fontPadding = layout->textAreaFont.getFont()->getMaxPixelsLeft();
 
     uint16_t line_height = layout->textAreaFont.getFont()->getBaseline() + 6;
     uint16_t voff = (layout->textAreaPosition.height - line_height) / 2;
 
-    // 3. Re-adjust the text container dimensions safely to prevent clipping
     enteredText.setPosition(layout->textAreaPosition.x - fontPadding,
                             layout->textAreaPosition.y + voff,
                             layout->textAreaPosition.width + (2 * fontPadding),
                             line_height);
 
-    // 4. Force a repaint of the text area box
     enteredText.invalidate();
   }
 }
@@ -207,6 +203,9 @@ void BamblooKeyboardBase::handleClickEvent(const ClickEvent &event) {
           enteredText.invalidateContent();
           buffer[bufferPosition++] = code;
           buffer[bufferPosition] = 0;
+          if (bindedTextArea) {
+            bindedTextArea->invalidate();
+          }
           enteredText.invalidateContent();
         }
       }

@@ -711,26 +711,24 @@
         "Name": "Prepare",
         "Components": [
           {
-            "Type": "ScrollList",
-            "Name": "userInfoList",
-            "X": 48,
-            "Y": 171,
-            "Width": 704,
-            "Height": 253,
-            "ItemTemplateName": "UserInfoListItem",
-            "NumberofItems": 10,
-            "Easing": "Back",
-            "EasingOption": "Out",
-            "SwipeAcceleration": 1.0,
-            "DragAcceleration": 1.0,
-            "OverShootPercentage": 75
-          },
-          {
             "Type": "Image",
             "Name": "background",
             "Width": 800,
             "Height": 600,
             "RelativeFilename": "prepare-page.png"
+          },
+          {
+            "Type": "ScrollList",
+            "Name": "userInfoList",
+            "X": 58,
+            "Y": 160,
+            "Width": 680,
+            "Height": 273,
+            "ItemTemplateName": "UserInfoListItem",
+            "NumberofItems": 7,
+            "ItemMargin": 1,
+            "Easing": "Back",
+            "EasingOption": "Out"
           },
           {
             "Type": "ButtonWithIcon",
@@ -869,6 +867,42 @@
               "UseBuffer": true,
               "BufferSize": 17
             },
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonDelCancel",
+            "X": 360,
+            "Y": 444,
+            "Width": 56,
+            "Height": 56,
+            "Visible": false,
+            "Pressed": "del-cancel-pressed.png",
+            "Released": "del-cancel-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_content_clear_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_content_clear_40_40_E8F6FB.svg.png",
+            "IconX": 9,
+            "IconY": 7,
+            "IconHeight": 40,
+            "IconWidth": 40,
+            "Clickable": true
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonDelOk",
+            "X": 416,
+            "Y": 444,
+            "Width": 56,
+            "Height": 56,
+            "Visible": false,
+            "Pressed": "del-ok-pressed.png",
+            "Released": "del-ok-normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_40_40_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_action_done_40_40_E8F6FB.svg.png",
+            "IconX": 9,
+            "IconY": 7,
+            "IconHeight": 40,
+            "IconWidth": 40,
             "Clickable": true
           },
           {
@@ -1115,14 +1149,25 @@
     "CustomContainerDefinitions": [
       {
         "Name": "UserInfoListItem",
-        "Width": 704,
-        "Height": 44,
+        "Width": 680,
+        "Height": 37,
         "Components": [
+          {
+            "Type": "Box",
+            "Name": "background",
+            "Width": 680,
+            "Height": 38,
+            "Color": {
+              "Red": 255,
+              "Green": 250,
+              "Blue": 250
+            }
+          },
           {
             "Type": "TextArea",
             "Name": "userArea",
-            "X": 51,
-            "Y": 9,
+            "X": 38,
+            "Y": 8,
             "Width": 147,
             "Height": 26,
             "TextId": "__SingleUse_VL7O",
@@ -1140,8 +1185,8 @@
           {
             "Type": "TextArea",
             "Name": "ageArea",
-            "X": 225,
-            "Y": 9,
+            "X": 226,
+            "Y": 8,
             "Width": 69,
             "Height": 26,
             "TextId": "__SingleUse_S0KL",
@@ -1159,8 +1204,8 @@
           {
             "Type": "TextArea",
             "Name": "heightArea",
-            "X": 334,
-            "Y": 9,
+            "X": 327,
+            "Y": 8,
             "Width": 173,
             "Height": 26,
             "TextId": "__SingleUse_DFVJ",
@@ -1178,8 +1223,8 @@
           {
             "Type": "TextArea",
             "Name": "weightArea",
-            "X": 524,
-            "Y": 9,
+            "X": 517,
+            "Y": 8,
             "Width": 173,
             "Height": 26,
             "TextId": "__SingleUse_W6MI",
